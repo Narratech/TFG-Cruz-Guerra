@@ -15,8 +15,11 @@ using System.Text;
 
 namespace Arquitecture_Sketch_In_Console
 {
-    class Parser_Event
+    class Parser_Event : Parser
     {
-
+        public void Parse(string filename)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

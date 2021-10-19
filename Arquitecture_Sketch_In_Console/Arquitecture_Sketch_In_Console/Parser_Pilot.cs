@@ -18,8 +18,11 @@ using System.Text;
 
 namespace Arquitecture_Sketch_In_Console
 {
-    class Parser_Pilot
+    class Parser_Pilot : Parser
     {
-
+        public void Parse(string filename)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

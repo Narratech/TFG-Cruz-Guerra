@@ -50,7 +50,23 @@ namespace Arquitecture_Sketch_In_Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Parser_Scene parser_Scene = new Parser_Scene();
+            try
+            {
+                parser_Scene.Parse("Test1");
+                Console.WriteLine(parser_Scene.Name);
+                Console.WriteLine(parser_Scene.TakeOffAirport);
+                Console.WriteLine(parser_Scene.DestinationAirport);
+                Console.WriteLine(parser_Scene.Weather);
+                foreach (string Event in parser_Scene.Events)
+                {
+                    Console.WriteLine(Event);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
