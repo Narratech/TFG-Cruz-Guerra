@@ -48,12 +48,12 @@ namespace Arquitecture_Sketch_In_Console
 {
     class Program
     {
-        static void Main(string[] args)
+        static void testScene(string filename)
         {
             Parser_Scene parser_Scene = new Parser_Scene();
-            try
+            try 
             {
-                parser_Scene.Parse("Test1");
+                parser_Scene.Parse(filename);
                 Console.WriteLine(parser_Scene.Name);
                 Console.WriteLine(parser_Scene.TakeOffAirport);
                 Console.WriteLine(parser_Scene.DestinationAirport);
@@ -67,6 +67,34 @@ namespace Arquitecture_Sketch_In_Console
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        static void testPilot(string filename)
+        {
+            Parser_Pilot parser_Pilot = new Parser_Pilot();
+            try
+            {
+                parser_Pilot.Parse(filename);
+                Console.WriteLine(parser_Pilot.Name);
+                Console.WriteLine(parser_Pilot.Age);
+                Console.WriteLine(parser_Pilot.Experience);
+                Console.WriteLine(parser_Pilot.ImageRoute);
+                Console.WriteLine(parser_Pilot.BehaviourTable);
+                foreach (var comp in parser_Pilot.Competences)
+                {
+                    Console.WriteLine(comp.Key + ": " + comp.Value);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            testScene("Test");
+            testPilot("Test");
         }
     }
 }

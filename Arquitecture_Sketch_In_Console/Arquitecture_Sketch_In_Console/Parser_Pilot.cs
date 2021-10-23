@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 /*
@@ -20,9 +21,46 @@ namespace Arquitecture_Sketch_In_Console
 {
     class Parser_Pilot : Parser
     {
+        #region Properties
+        public string Name { get; private set; }
+        public string Age { get; private set; }
+        public string Experience { get; private set; }
+        public string ImageRoute { get; private set; }
+        public string BehaviourTable { get; private set; }
+        public Dictionary<string, float> Competences { get; private set;  }
+        #endregion
+
+
         public void Parse(string filename)
         {
-            throw new NotImplementedException();
+            //abrimos archivo
+            StreamReader reader = new StreamReader(filename + ".pilot");
+
+            //leemos atributos
+            Name = reader.ReadLine();
+
+            //leemos atributos
+            Age = reader.ReadLine();
+
+            //leemos atributos
+            Experience = reader.ReadLine();
+
+            //leemos atributos
+            ImageRoute = reader.ReadLine();
+
+            //leemos atributos
+            BehaviourTable = reader.ReadLine();
+
+            Competences = new Dictionary<string, float>();
+            while (!reader.EndOfStream) {
+                string[] line = reader.ReadLine().Split(':');
+                float competenceHability;
+                if (!float.TryParse(line[1], out competenceHability))
+                    throw new Exception("Error al leer habilidad de la competencia: " + line[0]);
+                Competences[line[0]] = competenceHability;
+            }
+
+            reader.Close();
         }
     }
 }

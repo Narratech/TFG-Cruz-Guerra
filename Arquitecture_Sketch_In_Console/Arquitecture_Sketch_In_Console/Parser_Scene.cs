@@ -21,36 +21,40 @@ using System.IO;
 namespace Arquitecture_Sketch_In_Console
 {
     public enum WeatherTypes { Sunny, Windy, Rainy }
+
     class Parser_Scene : Parser
     {
-        private string _name;
-        private string _destinationAirport;
-        private string _takeOffAirport;
-        private WeatherTypes _weather;
-        private string[] _events;
         #region Properties
-        public string Name { get { return _name; } }
-        public string DestinationAirport { get { return _destinationAirport; } }
-        public string TakeOffAirport { get { return _takeOffAirport; } }
-        public WeatherTypes Weather { get { return _weather; } }
-        public string[] Events { get { return _events; } }
+        public string Name { get; private set; }
+        public string DestinationAirport { get; private set; }
+        public string TakeOffAirport { get; private set; }
+        public WeatherTypes Weather { get; private set; } 
+        public List<string> Events { get; private set; }
         #endregion
+
         public void Parse(string filename)
         {
             //abrimos archivo
             StreamReader reader = new StreamReader(filename + ".scenario");
             //leemos atributos
-            _name = reader.ReadLine();
+            Name = reader.ReadLine();
             
             string[] airports = reader.ReadLine().Split(';');
-            _takeOffAirport = airports[0];
-            _destinationAirport = airports[1];
+            TakeOffAirport = airports[0];
+            DestinationAirport = airports[1];
+
+            WeatherTypes w;
             
-            if (!Enum.TryParse<WeatherTypes>(reader.ReadLine(), out _weather))
+            if (!Enum.TryParse<WeatherTypes>(reader.ReadLine(), out w))
                 throw new Exception("Weather not specified correctly");
-           
-            //? Los eventos debería parsearlos el guion?
-            _events = reader.ReadToEnd().Split('\n');
+
+            Weather = w;
+            Events = new List<string>();
+            while (!reader.EndOfStream) {
+                string line = reader.ReadLine();
+                Events.Add(line);
+            }
+
             reader.Close();
         }
     }
