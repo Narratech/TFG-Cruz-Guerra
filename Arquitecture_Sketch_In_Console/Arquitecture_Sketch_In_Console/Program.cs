@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 /*
  
@@ -51,7 +52,7 @@ namespace Arquitecture_Sketch_In_Console
         static int testScene(string filename)
         {
             Parser_Scene parser_Scene = new Parser_Scene();
-            try 
+            try
             {
                 parser_Scene.Parse(filename);
             }
@@ -64,30 +65,35 @@ namespace Arquitecture_Sketch_In_Console
             Console.WriteLine(parser_Scene.TakeOffAirport);
             Console.WriteLine(parser_Scene.DestinationAirport);
             Console.WriteLine(parser_Scene.Weather);
-            Parser_Event[] events = new Parser_Event[parser_Scene.Events.Length];
+            List<Parser_Event> events = new List<Parser_Event>();
             foreach (string Event in parser_Scene.Events)
             {
-                events[i] = new Parser_Event();
-                events[i].Parse(parser_Scene.Events[i]);
-              
-                for (int j = 0; j < events.Length; j++)
+                Parser_Event my_event = new Parser_Event();
+                events.Add(my_event);
+                try
                 {
-                    Console.WriteLine("---------------------------------------------------");
-                    Console.WriteLine(events[j].TypeOfEvent);
-                    Console.WriteLine(events[j].Difficulty);
-                    foreach (Parser_Event.Competences comp in events[j].EventCompetences)
-                    {
-                        Console.WriteLine(comp);
+                    my_event.Parse(Event);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return -1;
+                }
 
-                    }
-                    Console.WriteLine("---------------------------------------------------");
-                }
-                foreach (string Event in parser_Scene.Events)
-                {
-                    Console.WriteLine(Event);
-                }
             }
-            return 0;     
+            for (int j = 0; j < events.Count; j++)
+            {
+                Console.WriteLine("---------------------------------------------------");
+                Console.WriteLine(events[j].TypeOfEvent);
+                Console.WriteLine(events[j].Difficulty);
+                foreach (Parser_Event.Competences comp in events[j].EventCompetences)
+                {
+                    Console.WriteLine(comp);
+
+                }
+                Console.WriteLine("---------------------------------------------------");
+            }
+            return 0;
         }
 
         static int testPilot(string filename)

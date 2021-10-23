@@ -29,37 +29,42 @@ namespace Arquitecture_Sketch_In_Console
             Situation_Awareness,
             Workload_Management
         }
-        private string _typeOfEvent;
-        private float _difficulty;
-        private Competences[] _competences;
 
+        public Parser_Event()
+        {
+            TypeOfEvent = "";
+            Difficulty = 0;
+            EventCompetences = new List<Competences>();
+
+        }
         #region Properties
-        public string TypeOfEvent { get { return _typeOfEvent; } }
-        public float Difficulty { get { return _difficulty; } }
-        public Competences[] EventCompetences { get { return _competences; } }
+        public string TypeOfEvent { get; private set; }
+        public float Difficulty { get; private set; }
+        public List<Competences> EventCompetences { get; private set; }
         #endregion
         public void Parse(string filename)
         {
             //abrimos archivo
             StreamReader reader = new StreamReader(filename + ".event");
             //leemos atributos
-            _typeOfEvent = reader.ReadLine();
-
-            if (!float.TryParse(reader.ReadLine(), out _difficulty))
+            TypeOfEvent = reader.ReadLine();
+            float d;
+            if (!float.TryParse(reader.ReadLine(), out d))
                 throw new Exception("Difficulty not specified correctly");
+            Difficulty = d;
             //? Aquí deberiamos petar o poner por defecto 1?
-            if (_difficulty < 0 || _difficulty > 1)
+
+            if (Difficulty < 0 || Difficulty > 1)
                 throw new Exception("Difficulty not specified correctly");
-
-            string[] CompentencesText = reader.ReadToEnd().Split('\n');
-            _competences = new Competences[CompentencesText.Length];
-            for (int i = 0; i < CompentencesText.Length; i++)
+            int i = 0;
+            while (!reader.EndOfStream)
             {
-
-                if (!Enum.TryParse<Competences>(reader.ReadLine(), out _competences[i]))
+                Competences c;
+                if (!Enum.TryParse<Competences>(reader.ReadLine(), out c))
                     throw new Exception("Competence " + i + " not specified correctly");
+                EventCompetences.Add(c);
+                i++;
             }
-
             //cerramos el archivo
             reader.Close();
         }
