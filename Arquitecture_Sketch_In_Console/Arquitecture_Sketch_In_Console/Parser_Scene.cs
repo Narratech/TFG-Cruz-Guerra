@@ -26,11 +26,20 @@ namespace Arquitecture_Sketch_In_Console
     {
         #region Properties
         public string Name { get; private set; }
-        public string DestinationAirport { get; private set; }
         public string TakeOffAirport { get; private set; }
+        public string DestinationAirport { get; private set; }
         public WeatherTypes Weather { get; private set; } 
         public List<string> Events { get; private set; }
         #endregion
+
+        public Parser_Scene()
+        {
+            Name = "";
+            TakeOffAirport = "";
+            DestinationAirport = "";
+            Weather = WeatherTypes.Sunny;
+            Events = new List<string>();
+        }
 
         public void Parse(string filename)
         {
@@ -49,7 +58,6 @@ namespace Arquitecture_Sketch_In_Console
                 throw new Exception("Weather not specified correctly");
 
             Weather = w;
-            Events = new List<string>();
             while (!reader.EndOfStream) {
                 string line = reader.ReadLine();
                 Events.Add(line);

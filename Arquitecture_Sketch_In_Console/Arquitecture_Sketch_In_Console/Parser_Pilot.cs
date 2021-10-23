@@ -30,6 +30,15 @@ namespace Arquitecture_Sketch_In_Console
         public Dictionary<string, float> Competences { get; private set;  }
         #endregion
 
+        public Parser_Pilot()
+        {
+            Name = "";
+            Age = "";
+            Experience = "";
+            ImageRoute = "";
+            BehaviourTable = "";
+            Competences = new Dictionary<string, float>();
+        }
 
         public void Parse(string filename)
         {
@@ -51,7 +60,6 @@ namespace Arquitecture_Sketch_In_Console
             //leemos atributos
             BehaviourTable = reader.ReadLine();
 
-            Competences = new Dictionary<string, float>();
             while (!reader.EndOfStream) {
                 string[] line = reader.ReadLine().Split(':');
                 float competenceHability;

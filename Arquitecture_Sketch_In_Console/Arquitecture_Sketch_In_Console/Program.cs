@@ -48,47 +48,51 @@ namespace Arquitecture_Sketch_In_Console
 {
     class Program
     {
-        static void testScene(string filename)
+        static int testScene(string filename)
         {
             Parser_Scene parser_Scene = new Parser_Scene();
             try 
             {
                 parser_Scene.Parse(filename);
-                Console.WriteLine(parser_Scene.Name);
-                Console.WriteLine(parser_Scene.TakeOffAirport);
-                Console.WriteLine(parser_Scene.DestinationAirport);
-                Console.WriteLine(parser_Scene.Weather);
-                foreach (string Event in parser_Scene.Events)
-                {
-                    Console.WriteLine(Event);
-                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return -1;
             }
+            Console.WriteLine(parser_Scene.Name);
+            Console.WriteLine(parser_Scene.TakeOffAirport);
+            Console.WriteLine(parser_Scene.DestinationAirport);
+            Console.WriteLine(parser_Scene.Weather);
+            foreach (string Event in parser_Scene.Events)
+            {
+                Console.WriteLine(Event);
+            }
+            return 0;     
         }
 
-        static void testPilot(string filename)
+        static int testPilot(string filename)
         {
             Parser_Pilot parser_Pilot = new Parser_Pilot();
             try
             {
                 parser_Pilot.Parse(filename);
-                Console.WriteLine(parser_Pilot.Name);
-                Console.WriteLine(parser_Pilot.Age);
-                Console.WriteLine(parser_Pilot.Experience);
-                Console.WriteLine(parser_Pilot.ImageRoute);
-                Console.WriteLine(parser_Pilot.BehaviourTable);
-                foreach (var comp in parser_Pilot.Competences)
-                {
-                    Console.WriteLine(comp.Key + ": " + comp.Value);
-                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return -1;
             }
+            Console.WriteLine(parser_Pilot.Name);
+            Console.WriteLine(parser_Pilot.Age);
+            Console.WriteLine(parser_Pilot.Experience);
+            Console.WriteLine(parser_Pilot.ImageRoute);
+            Console.WriteLine(parser_Pilot.BehaviourTable);
+            foreach (var comp in parser_Pilot.Competences)
+            {
+                Console.WriteLine(comp.Key + ": " + comp.Value);
+            }
+            return 0;
         }
 
         static void Main(string[] args)
