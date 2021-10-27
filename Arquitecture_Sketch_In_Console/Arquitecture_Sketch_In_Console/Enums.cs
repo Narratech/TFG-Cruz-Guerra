@@ -1,0 +1,109 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Arquitecture_Sketch_In_Console
+{
+    public enum Competences
+    {
+        Application_of_Procedures,
+        Communication,
+        Automation,
+        Manual_Control,
+        Leadership_And_Teamwork,
+        Problem_Solving_And_Decision_Making,
+        Situation_Awareness,
+        Workload_Management
+    }
+
+    public enum OB
+    {
+        //Application of Procedures
+        Identifies_source_of_operating_instructions,
+        Follows_SOP_unless_safety_dictates_a_deviation,
+        Identifies_follows_instructions_timely_manner,
+        Correctly_operates_aircraft_systems_and_equipment,
+        Complies_with_applicable_regulations,
+        Applies_relevant_procedural_knowledge,
+
+        //Communication
+        Ensures_recipient_ready_able_to_receive_information,
+        Selects_appropriately_what_when_how_whom_to_communicate,
+        Conveys_messages_clearly_accurately_concisely,
+        Confirms_recipient_understands_information,
+        Listens_demonstrates_understanding_receiving_information,
+        Asks_relevant_effective_questions,
+        Adheres_to_standard_radiotelephone_phraseology_and_procedures,
+        Accurately_reads_and_interprets_company_and_flight_documentation,
+        Accurately_reads_interprets_constructs_and_responds_to_datalink_messages_in_English,
+        Completes_accurate_reports,
+        Correctly_interprets_nonverbal_communication,
+        Uses_eye_contact_body_movement_and_gestures_that_are_consistent,
+
+        ////Aircraft Flight Path Management, automation
+        //Controls_the_aircraft_using_automation_with_accuracy_and_smoothness_as_appropriate_to_the_situation,
+        //Detects_deviations_from_the_desired_aircraft_trajectory_and_takes_appropriate_action,
+        //Contains_the_aircraft_within_the_normal_flight_envelope,
+        //Manages_the_flight_path_to_achieve_optimum_operational_performance,
+        //Maintains_the_desired_flight_path_during_flight_using_automation_whilst_managing_other_tasks_and_distractions,
+        //Selects_appropriate_level_and_mode_of_automation_in_a_timely_manner_considering_phase_of_flight_and_workload,
+        //Effectively_monitors_automation_including_engagement_and_automatic_mode_transitions,
+
+        ////Aircraft_Flight_Path_Management_manual_control
+        //Controls_the_aircraft_manually_with_accuracy_and_smoothness_as_appropriate_to_the_situation,
+        ////Detects_deviations_from_the_desired_aircraft_trajectory_and_takes_appropriate_action,
+        ////Contains_the_aircraft_within_the_normal_flight_envelope,
+        //Controls_the_aircraft_safely_using_only_the_relationship_between_aircraft_attitude_speed_and_thrust,
+        ////Manages_the_flight_path_to_achieve_optimum_operational_performance,
+        //Maintains_the_desired_flight_path_during_manual_flight_whilst_managing_other_tasks_and_distractions,
+        //Selects_appropriate_level_and_mode_of_flight_guidance_systems_in_a_timely_manner_considering_phase_of_flight_and_workload,
+        //Effectively_monitors_flight_guidance_systems_including_engagement_and_automatic_mode_transitions,
+
+        //Leadership_and_Teamwork
+        Understands_and_agrees_with_the_crew_roles_and_objectives,
+        Creates_an_atmosphere_of_open_communication_and_encourages_team_participation,
+        Uses_initiative_and_gives_directions_when_required,
+        Admits_mistakes_and_takes_responsibility,
+        Anticipates_and_responds_appropriately_to_other_crew_members_needs,
+        Carries_out_instructions_when_directed,
+        Communicates_relevant_concerns_and_intentions,
+        Gives_and_receives_feedback_constructively,
+        Confidently_intervenes_when_important_for_safety,
+        Demonstrates_empathy_and_shows_respect_and_tolerance_for_other_people,
+        Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities,
+        Addresses_and_resolves_conflicts_and_disagreements_in_a_constructive_manner,
+        Projects_selfcontrol_in_all_situations,
+
+        //Problem_Solving_and_Decision_Making
+        Seeks_accurate_and_adequate_information_from_appropriate_sources,
+        Identifies_and_verifies_what_and_why_things_have_gone_wrong,
+        Employs_proper_problemsolving_strategies,
+        Perseveres_in_working_through_problems_without_reducing_safety,
+        Uses_appropriate_and_timely_decisionmaking_processes,
+        Sets_priorities_appropriately,
+        Identifies_and_considers_options_effectively,
+        Monitors_reviews_and_adapts_decisions_as_required,
+        Identifies_and_manages_risks_effectively,
+        Improvises_when_faced_with_unforeseeable_circumstances_to_achieve_the_safest_outcome,
+
+        //Situation_Awareness
+        Identifies_and_assesses_accurately_the_state_of_the_aircraft_and_its_systems,
+        Identifies_and_assesses_accurately_the_aircraft_vertical_and_lateral_position_and_its_anticipated_flight_path,
+        Identifies_and_assesses_accurately_the_general_environment_as_it_may_affect_the_operation,
+        Keeps_track_of_time_and_fuel,
+        Maintains_awareness_of_the_people_involved_in_or_affected_by_the_operation_and_their_capacity_to_perform_as_expected,
+        Anticipates_accurately_what_could_happen_plans_and_stays_ahead_of_the_situation,
+        Develops_effective_contingency_plans_based_upon_potential_threats,
+        Identifies_and_manages_threats_to_the_safety_of_the_aircraft_and_people,
+        Recognizes_and_effectively_responds_to_indications_of_reduced_situation_awareness,
+
+        //Workload_Management
+        Maintains_selfcontrol_in_all_situations,
+        Plans_prioritizes_and_schedules_tasks_effectively,
+        Manages_time_efficiently_when_carrying_out_tasks,
+        Offers_and_accepts_assistance_delegates_when_necessary_and_asks_for_help_early,
+        Reviews_monitors_and_crosschecks_actions_conscientiously,
+        Verifies_that_tasks_are_completed_to_the_expected_outcome,
+        Manages_and_recovers_from_interruptions_distractions_variations_and_failures_effectively,    
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Arquitecture_Sketch_In_Console": {
+      "commandName": "Project",
+      "workingDirectory": "$(SolutionDir)Assets/"
+    }
+  }
+}

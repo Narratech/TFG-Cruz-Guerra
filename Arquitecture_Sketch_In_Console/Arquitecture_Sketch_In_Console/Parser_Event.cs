@@ -18,30 +18,17 @@ namespace Arquitecture_Sketch_In_Console
 {
     class Parser_Event : Parser
     {
-        public enum Competences
-        {
-            Application_of_Procedures,
-            Communication,
-            Automation,
-            Manual_Control,
-            Leadership_And_Teamwork,
-            Problem_Solving_And_Decision_Making,
-            Situation_Awareness,
-            Workload_Management
-        }
-
         public Parser_Event()
         {
             TypeOfEvent = "";
             Difficulty = 0;
             EventCompetences = new List<Competences>();
-
         }
-        #region Properties
+
         public string TypeOfEvent { get; private set; }
         public float Difficulty { get; private set; }
         public List<Competences> EventCompetences { get; private set; }
-        #endregion
+
         public void Parse(string filename)
         {
             //abrimos archivo
