@@ -51,33 +51,9 @@ namespace Arquitecture_Sketch_In_Console
     {
         static void Main(string[] args)
         {
-            //testScene("Test");
-            //testPilot("Test");
-            testTableCO();
-        }
-
-        static int testPilot(string filename)
-        {
-            Parser_Pilot parser_Pilot = new Parser_Pilot();
-            try
-            {
-                parser_Pilot.Parse(filename);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return -1;
-            }
-            Console.WriteLine(parser_Pilot.Name);
-            Console.WriteLine(parser_Pilot.Age);
-            Console.WriteLine(parser_Pilot.Experience);
-            Console.WriteLine(parser_Pilot.ImageRoute);
-            Console.WriteLine(parser_Pilot.BehaviourTable);
-            foreach (var comp in parser_Pilot.Competences)
-            {
-                Console.WriteLine(comp.Key + ": " + comp.Value);
-            }
-            return 0;
+            testScene("Test");
+            testPilot("Test");
+            //testTableCO();
         }
 
         static int testScene(string filename)
@@ -126,6 +102,30 @@ namespace Arquitecture_Sketch_In_Console
             return 0;
         }
 
+        static int testPilot(string filename)
+        {
+            Parser_Pilot parser_Pilot = new Parser_Pilot();
+            try
+            {
+                parser_Pilot.Parse(filename);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            Console.WriteLine(parser_Pilot.Name);
+            Console.WriteLine(parser_Pilot.Age);
+            Console.WriteLine(parser_Pilot.Experience);
+            Console.WriteLine(parser_Pilot.ImageRoute);
+            Console.WriteLine(parser_Pilot.BehaviourTable);
+            foreach (var comp in parser_Pilot.Competences)
+            {
+                Console.WriteLine(comp.Key + ": " + comp.Value);
+            }
+            return 0;
+        }
+
         static int testTableCO()
         {
             Parser_Table_CompetencesToOB parser_Table = new Parser_Table_CompetencesToOB();
@@ -139,15 +139,15 @@ namespace Arquitecture_Sketch_In_Console
                 return -1;
             }
             
-            foreach(KeyValuePair<Competences, List<OB>> c in parser_Table.Table)
-            {
-                Console.WriteLine(c.Key);
-                foreach(OB oB in c.Value)
-                {
-                    Console.WriteLine(oB);
-                }
-                Console.WriteLine("---------------------------------------------------");
-            }
+            //foreach(KeyValuePair<Competences, List<OB>> c in parser_Table.Table)
+            //{
+            //    Console.WriteLine(c.Key);
+            //    foreach(OB oB in c.Value)
+            //    {
+            //        Console.WriteLine(oB);
+            //    }
+            //    Console.WriteLine("---------------------------------------------------");
+            //}
             return 0;
         }
     }

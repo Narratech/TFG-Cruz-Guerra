@@ -56,15 +56,15 @@ namespace Arquitecture_Sketch_In_Console
                     if(reader.EndOfStream)
                         throw new Exception("OB(s) missing or N too large from  " + line[0] + " competence");
 
-                    OB o;
-                    string ob = reader.ReadLine();
-                    if (!Enum.TryParse<OB>(ob, out o))
-                        throw new Exception("OB " + ob + " doesn't exist");
+                    //OB o;
+                    //string ob = reader.ReadLine();
+                    //if (!Enum.TryParse<OB>(ob, out o))
+                    //    throw new Exception("OB " + ob + " doesn't exist");
 
-                    if(Table[c].Contains(o))
-                        throw new Exception("OB " + ob + " alredy defined in competence " + line[0]);
+                    //if(Table[c].Contains(o))
+                    //    throw new Exception("OB " + ob + " alredy defined in competence " + line[0]);
 
-                    Table[c].Add(o);
+                    //Table[c].Add(o);
                 }
             }
 
