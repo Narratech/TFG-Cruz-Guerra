@@ -1,0 +1,11 @@
+{
+  "Name": "Test1",
+  "TakeOffAirport": "DBA",
+  "DestinationAirport": "FSC",
+  "Weather": 0,
+  "Events": [
+    "ExplosionMotor",
+    "SerpientesEnElAvion",
+    "ValvulaDespresurizada"
+  ]
+}

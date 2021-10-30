@@ -1,53 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.IO;
+using Newtonsoft.Json;
 /*
- 
- * Escenario: PARSE FROM JSON, EXPORT TO JSON
 
-     * Nombre
-     * Configuracion 
-        - Aeropuerto de salida / llegada
-        - Clima
-        - Etc
-     * Lista de eventos (E1, E2 ... En-1, En) (Ex es una instancia de clase de evento)
- 
- * Eventos: READ FROM JSON, EXPORT TO JSON  
- 
-     * Clase / Tipo de evento (nombre del evento, enum, lo que sea)
-     * Conjunto de OB's relevantes para reaccionar lo MEJOR POSIBLE 
-     * Dificultad (para sacar dificultad por competencia se hace la proporcion de OB's
+* Escenario: PARSE FROM JSON, EXPORT TO JSON
 
- * Pilotos: READ Piloto (Crear piloto sobre plantilla de otro piloto); EXPORT TO FILE
+* Nombre
+* Configuracion 
+- Aeropuerto de salida / llegada
+- Clima
+- Etc
+* Lista de eventos (E1, E2 ... En-1, En) (Ex es una instancia de clase de evento)
 
-    * Nombre y cuestiones estéticas (experiencia, edad, etc)
-    * Habilidades por competencia 0f <-> 1f
-    * El piloto tiene una carpeta donde se guardan los archivos JSON Evento -> pasos
-    * El piloto acierto o falla el evento entero, no por ob. 
-        * El piloto acierta si la media de sus habilidades por competencia 
-        * relacionadas con ese evento sea mayor que la dificultad del evento
- 
- * Guion: READ Escenarios, Eventos, Pilotos; GENERATE Guion; EXPORT TO FILE; EXECUTE FILE
+* Eventos: READ FROM JSON, EXPORT TO JSON  
 
-    * Elegir escenario - piloto (de momento no se hace)
-    * CREATE -> Copia profunda (Cuando se pueda modificar, de momento no se hace y no se deja modificar)
-    * Timeline generado (modificable)
-    * Textos, animaciones, etc (modificable)
-    * Este guion es lo que se ejecuta
+* Clase / Tipo de evento (nombre del evento, enum, lo que sea)
+* Conjunto de OB's relevantes para reaccionar lo MEJOR POSIBLE 
+* Dificultad (para sacar dificultad por competencia se hace la proporcion de OB's
 
- * FOLDER especifica de piloto
+* Pilotos: READ Piloto (Crear piloto sobre plantilla de otro piloto); EXPORT TO FILE
 
-    * Muchos archivos JSON Evento -> pasos
-    
- * Tabla general (OB - Pasos): FILE (las respuestas cutres y sencillas)
-    
-    * Lista de pasos (positivo si se tiene [el OB], negativo si NO se tiene [el OB])
+* Nombre y cuestiones estéticas (experiencia, edad, etc)
+* Habilidades por competencia 0f <-> 1f
+* El piloto tiene una carpeta donde se guardan los archivos JSON Evento -> pasos
+* El piloto acierto o falla el evento entero, no por ob. 
+* El piloto acierta si la media de sus habilidades por competencia 
+* relacionadas con ese evento sea mayor que la dificultad del evento
 
- * JSON competencias - OB (La compañía hace la suya) READ (VER SI LOS PILOTOS SABRÍAN USAR JSON) 
-                                                    * (NOT SURE ABOUT THIS: WRITE desde la aplicacion para meter nuevas competencias)
+* Guion: READ Escenarios, Eventos, Pilotos; GENERATE Guion; EXPORT TO FILE; EXECUTE FILE
 
- * Diccionario en memoria OB - Competencias 
- 
+* Elegir escenario - piloto (de momento no se hace)
+* CREATE -> Copia profunda (Cuando se pueda modificar, de momento no se hace y no se deja modificar)
+* Timeline generado (modificable)
+* Textos, animaciones, etc (modificable)
+* Este guion es lo que se ejecuta
+
+* FOLDER especifica de piloto
+
+* Muchos archivos JSON Evento -> pasos
+
+* Tabla general (OB - Pasos): FILE (las respuestas cutres y sencillas)
+
+* Lista de pasos (positivo si se tiene [el OB], negativo si NO se tiene [el OB])
+
+* JSON competencias - OB (La compañía hace la suya) READ (VER SI LOS PILOTOS SABRÍAN USAR JSON) 
+                    * (NOT SURE ABOUT THIS: WRITE desde la aplicacion para meter nuevas competencias)
+
+* Diccionario en memoria OB - Competencias 
+
 */
 
 /* Arbol de directorios (Se haria en ingles)
@@ -89,75 +90,87 @@ namespace Arquitecture_Sketch_In_Console
     {
         static void Main(string[] args)
         {
-            testScene("Test");
-            testPilot("Test");
+            //Codigo de ejemplo para serializar un piloto
+            Dictionary<string, float> a = new Dictionary<string, float>();
+            a.Add("Com", .5f);
+            a.Add("Plt", .9f);
+            Pilot p = new Pilot("Antonio Jesus", "21", "1543", "none", a);
+            StreamWriter scen = new StreamWriter("Pilots/PilotTest1.json");
+            scen.Write(JsonConvert.SerializeObject(p, Formatting.Indented));
+            scen.Close();
+            testScene("Test1.json");
+            testPilot("Pilots/PilotTest1.json");
             //testTableCO();
         }
 
         static int testScene(string filename)
         {
-            Parser_Scene parser_Scene = new Parser_Scene();
+            Scene myscene=null;
             try
             {
-                parser_Scene.Parse(filename);
+                StreamReader r = new StreamReader(filename);
+                JsonSerializerSettings sett = new JsonSerializerSettings();
+                sett.Formatting = Formatting.Indented;
+                myscene = JsonConvert.DeserializeObject<Scene>(r.ReadToEnd(),sett);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 return -1;
             }
-            Console.WriteLine(parser_Scene.Name);
-            Console.WriteLine(parser_Scene.TakeOffAirport);
-            Console.WriteLine(parser_Scene.DestinationAirport);
-            Console.WriteLine(parser_Scene.Weather);
-            List<Parser_Event> events = new List<Parser_Event>();
-            foreach (string Event in parser_Scene.Events)
-            {
-                Parser_Event my_event = new Parser_Event();
-                events.Add(my_event);
-                try
-                {
-                    my_event.Parse(Event);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    return -1;
-                }
+            Console.WriteLine(myscene.Name);
+            Console.WriteLine(myscene.TakeOffAirport);
+            Console.WriteLine(myscene.DestinationAirport);
+            Console.WriteLine(myscene.Weather);
+            List<Event> events = new List<Event>();
+            //foreach (string EventName in scene.Events)
+            //{
+            //    Event my_event;
+            //    try
+            //    {
+            //        my_event = JsonSerializer.Deserialize<Event>(EventName);
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Console.WriteLine(e.Message);
+            //        return -1;
+            //    }
+            //    events.Add(my_event);
 
-            }
-            for (int j = 0; j < events.Count; j++)
-            {
-                Console.WriteLine("---------------------------------------------------");
-                Console.WriteLine(events[j].TypeOfEvent);
-                Console.WriteLine(events[j].Difficulty);
-                foreach (Competences comp in events[j].EventCompetences)
-                {
-                    Console.WriteLine(comp);
-                }
-            }
+            //}
+            //for (int j = 0; j < events.Count; j++)
+            //{
+            //    Console.WriteLine("---------------------------------------------------");
+            //    Console.WriteLine(events[j].TypeOfEvent);
+            //    Console.WriteLine(events[j].Difficulty);
+            //    foreach (Competences comp in events[j].EventCompetences)
+            //    {
+            //        Console.WriteLine(comp);
+            //    }
+            //}
             Console.WriteLine("---------------------------------------------------");
             return 0;
         }
 
         static int testPilot(string filename)
         {
-            Parser_Pilot parser_Pilot = new Parser_Pilot();
+            Pilot pilot;
             try
             {
-                parser_Pilot.Parse(filename);
+                StreamReader read = new StreamReader(filename);
+                pilot = JsonConvert.DeserializeObject<Pilot>(read.ReadToEnd());
+                read.Close();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 return -1;
             }
-            Console.WriteLine(parser_Pilot.Name);
-            Console.WriteLine(parser_Pilot.Age);
-            Console.WriteLine(parser_Pilot.Experience);
-            Console.WriteLine(parser_Pilot.ImageRoute);
-            Console.WriteLine(parser_Pilot.BehaviourTable);
-            foreach (var comp in parser_Pilot.Competences)
+            Console.WriteLine(pilot.Name);
+            Console.WriteLine(pilot.Age);
+            Console.WriteLine(pilot.Experience);
+            Console.WriteLine(pilot.ImageRoute);
+            foreach (var comp in pilot.Competences)
             {
                 Console.WriteLine(comp.Key + ": " + comp.Value);
             }
@@ -166,17 +179,17 @@ namespace Arquitecture_Sketch_In_Console
 
         static int testTableCO()
         {
-            Parser_Table_CompetencesToOB parser_Table = new Parser_Table_CompetencesToOB();
-            try
-            {
-                parser_Table.Parse("TableCompetenceToOB");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return -1;
-            }
-            
+            //Table_CompetencesToOB parser_Table = new Table_CompetencesToOB();
+            //try
+            //{
+            //    parser_Table.Parse("TableCompetenceToOB");
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //    return -1;
+            //}
+
             //foreach(KeyValuePair<Competences, List<OB>> c in parser_Table.Table)
             //{
             //    Console.WriteLine(c.Key);

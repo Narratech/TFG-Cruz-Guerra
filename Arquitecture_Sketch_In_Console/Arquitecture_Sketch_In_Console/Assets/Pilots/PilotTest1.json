@@ -1,0 +1,10 @@
+{
+  "Name": "Antonio Jesus",
+  "Age": "21",
+  "Experience": "1543",
+  "ImageRoute": "none",
+  "Competences": {
+    "Com": 0.5,
+    "Plt": 0.9
+  }
+}
