@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 
 /*
- * FORMAT
+ * FORMAT JSON
  * 
  * Name 
  * Airport 1; Airport2

@@ -4,12 +4,12 @@ using System.IO;
 using System.Text;
 
 /*
- * FORMAT
+ * FORMAT JSON
  * 
  * Class / Tipe of event 
  * Dificulty of the whole thing
- * Competence 1
- * Competence 2
+ * OB 1
+ * OB 2
  * etc...
  * 
  */

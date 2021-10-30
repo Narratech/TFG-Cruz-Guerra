@@ -18,6 +18,7 @@ namespace Arquitecture_Sketch_In_Console
 
     public enum OB
     {
+        None,
         //Application of Procedures
         Identifies_source_of_operating_instructions,
         Follows_SOP_unless_safety_dictates_a_deviation,
