@@ -17,14 +17,19 @@ using System.Text;
 
 namespace Arquitecture_Sketch_In_Console
 {
-    class Event
+    class Event : JsonManager
     {
-        public string Name { get; private set; }
-        public string TypeOfEvent { get; private set; }
-        public float Difficulty { get; private set; }
-        public List<Competences> EventCompetences { get; private set; }
+        [JsonIgnore]
+        public string Name { get; set; }
 
-        private string fileName;
+        [JsonProperty]
+        public string TypeOfEvent { get; set; }
+
+        [JsonProperty]
+        public float Difficulty { get; set; }
+
+        [JsonProperty]
+        public List<Competences> EventCompetences { get; set; }
 
         public Event()
         {
@@ -32,17 +37,6 @@ namespace Arquitecture_Sketch_In_Console
             TypeOfEvent = "None";
             Difficulty = 0;
             EventCompetences = null;
-            fileName = null;
-        }
-
-        public Event(string name, string typeOfEvent, float difficulty, List<Competences> eventCompetences)
-        {
-            TypeOfEvent = typeOfEvent;
-            Name = name;
-            Difficulty = difficulty;
-            EventCompetences = eventCompetences;
-            TypeOfEvent = TypeOfEvent.ToLower().Replace(' ', '_');
-            fileName = "Events/" + name + ".json";
         }
     }
 }

@@ -91,12 +91,12 @@ namespace Arquitecture_Sketch_In_Console
     {
         static void Main(string[] args)
         {
-            //Event e;
-            //StreamReader read = new StreamReader("Events/SerpientesAvion.json");
-            //e = JsonConvert.DeserializeObject<Event>(read.ReadToEnd());
-            //read.Close();
+            Event e = JsonManager.ImportFromJSON<Event>("Events/SerpientesAvion");
+            e.ExportToJSON("Events/SerpientesAvion");
 
-            //exportToJSON<Event>(e, "Events/SerpientesEnElAvion2.json");
+            Table_CompetencesToOB t = JsonManager.ImportFromJSON<Table_CompetencesToOB>("TableCompetenceToOB");
+            t.ExportToJSON("TableCompetenceToOB");
+
             //Codigo de ejemplo para serializar un piloto
             //Dictionary<string, float> a = new Dictionary<string, float>();
             //a.Add("Com", .5f);
@@ -106,22 +106,11 @@ namespace Arquitecture_Sketch_In_Console
             //scen.Write(JsonConvert.SerializeObject(p, Formatting.Indented));
             //scen.Close();
             //testScene("Test1.json");
-            DirectoryInfo info = new DirectoryInfo("Pilots");
-            foreach (DirectoryInfo dir in info.GetDirectories())
-            {
-                testPilot(dir.Name);
-
-            }
-
-
-
-
-
-
-
-
-
-
+            //DirectoryInfo info = new DirectoryInfo("Pilots");
+            //foreach (DirectoryInfo dir in info.GetDirectories())
+            //{
+            //    testPilot(dir.Name);
+            //}
 
             //testTableCO();
         }
@@ -152,13 +141,13 @@ namespace Arquitecture_Sketch_In_Console
 
         static int testScene(string filename)
         {
-            //Scene myscene=null;
+            //Scene myscene = null;
             //try
             //{
             //    StreamReader r = new StreamReader(filename);
             //    JsonSerializerSettings sett = new JsonSerializerSettings();
             //    sett.Formatting = Formatting.Indented;
-            //    myscene = JsonConvert.DeserializeObject<Scene>(r.ReadToEnd(),sett);
+            //    myscene = JsonConvert.DeserializeObject<Scene>(r.ReadToEnd(), sett);
             //}
             //catch (Exception e)
             //{
@@ -233,60 +222,8 @@ namespace Arquitecture_Sketch_In_Console
 
         static int testTableCO()
         {
-            //Table_CompetencesToOB parser_Table = new Table_CompetencesToOB();
-            //try
-            //{
-            //    parser_Table.Parse("TableCompetenceToOB");
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //    return -1;
-            //}
-
-            //foreach(KeyValuePair<Competences, List<OB>> c in parser_Table.Table)
-            //{
-            //    Console.WriteLine(c.Key);
-            //    foreach(OB oB in c.Value)
-            //    {
-            //        Console.WriteLine(oB);
-            //    }
-            //    Console.WriteLine("---------------------------------------------------");
-            //}
-            return 0;
-        }
-
-        static int exportToJSON<T>(T obj, string route)
-        {
-            try
-            {
-                StreamWriter scen = new StreamWriter(route);
-                scen.Write(JsonConvert.SerializeObject(obj, Formatting.Indented));
-                scen.Close();
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine(e.Message);
-                return -1;
-            }
 
             return 0;
-        }
-
-        static T importFromJSON<T>(string route)
-        {
-            try
-            {
-                StreamReader read = new StreamReader(route);
-                T t = JsonConvert.DeserializeObject<T>(read.ReadToEnd());
-                read.Close();
-                return t;
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine(e.Message);
-                return default(T);
-            }
         }
     }
 }
