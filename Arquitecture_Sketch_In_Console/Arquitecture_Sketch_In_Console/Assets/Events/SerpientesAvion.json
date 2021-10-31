@@ -1,0 +1,10 @@
+{
+  "Name": "SerpientesAvion",
+  "TypeOfEvent": "daños",
+  "Difficulty": 0.5,
+  "EventCompetences": [
+    4,
+    6,
+    7
+  ]
+}

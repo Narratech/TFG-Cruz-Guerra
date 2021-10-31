@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+
 /*
 
 * Escenario: PARSE FROM JSON, EXPORT TO JSON
@@ -90,39 +91,34 @@ namespace Arquitecture_Sketch_In_Console
     {
         static void Main(string[] args)
         {
-            //Codigo de ejemplo para serializar un piloto
-            Dictionary<string, float> a = new Dictionary<string, float>();
-            a.Add("Com", .5f);
-            a.Add("Plt", .9f);
-            Pilot p = new Pilot("Antonio Jesus", "21", "1543", "none", a);
-            StreamWriter scen = new StreamWriter("Pilots/PilotTest1.json");
-            scen.Write(JsonConvert.SerializeObject(p, Formatting.Indented));
-            scen.Close();
-            testScene("Test1.json");
-            testPilot("Pilots/PilotTest1.json");
-            //testTableCO();
+            Event e;
+            StreamReader read = new StreamReader("Events/SerpientesAvion.json");
+            e = JsonConvert.DeserializeObject<Event>(read.ReadToEnd());
+            read.Close();
+
+            exportToJSON<Event>(e, "Events/SerpientesEnElAvion2.json");
         }
 
         static int testScene(string filename)
         {
-            Scene myscene=null;
-            try
-            {
-                StreamReader r = new StreamReader(filename);
-                JsonSerializerSettings sett = new JsonSerializerSettings();
-                sett.Formatting = Formatting.Indented;
-                myscene = JsonConvert.DeserializeObject<Scene>(r.ReadToEnd(),sett);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return -1;
-            }
-            Console.WriteLine(myscene.Name);
-            Console.WriteLine(myscene.TakeOffAirport);
-            Console.WriteLine(myscene.DestinationAirport);
-            Console.WriteLine(myscene.Weather);
-            List<Event> events = new List<Event>();
+            //Scene myscene=null;
+            //try
+            //{
+            //    StreamReader r = new StreamReader(filename);
+            //    JsonSerializerSettings sett = new JsonSerializerSettings();
+            //    sett.Formatting = Formatting.Indented;
+            //    myscene = JsonConvert.DeserializeObject<Scene>(r.ReadToEnd(),sett);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //    return -1;
+            //}
+            //Console.WriteLine(myscene.Name);
+            //Console.WriteLine(myscene.TakeOffAirport);
+            //Console.WriteLine(myscene.DestinationAirport);
+            //Console.WriteLine(myscene.Weather);
+            //List<Event> events = new List<Event>();
             //foreach (string EventName in scene.Events)
             //{
             //    Event my_event;
@@ -148,32 +144,32 @@ namespace Arquitecture_Sketch_In_Console
             //        Console.WriteLine(comp);
             //    }
             //}
-            Console.WriteLine("---------------------------------------------------");
+            //Console.WriteLine("---------------------------------------------------");
             return 0;
         }
 
         static int testPilot(string filename)
         {
-            Pilot pilot;
-            try
-            {
-                StreamReader read = new StreamReader(filename);
-                pilot = JsonConvert.DeserializeObject<Pilot>(read.ReadToEnd());
-                read.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return -1;
-            }
-            Console.WriteLine(pilot.Name);
-            Console.WriteLine(pilot.Age);
-            Console.WriteLine(pilot.Experience);
-            Console.WriteLine(pilot.ImageRoute);
-            foreach (var comp in pilot.Competences)
-            {
-                Console.WriteLine(comp.Key + ": " + comp.Value);
-            }
+            //Pilot pilot;
+            //try
+            //{
+            //    StreamReader read = new StreamReader(filename);
+            //    pilot = JsonConvert.DeserializeObject<Pilot>(read.ReadToEnd());
+            //    read.Close();
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //    return -1;
+            //}
+            //Console.WriteLine(pilot.Name);
+            //Console.WriteLine(pilot.Age);
+            //Console.WriteLine(pilot.Experience);
+            //Console.WriteLine(pilot.ImageRoute);
+            //foreach (var comp in pilot.Competences)
+            //{
+            //    Console.WriteLine(comp.Key + ": " + comp.Value);
+            //}
             return 0;
         }
 
@@ -200,6 +196,37 @@ namespace Arquitecture_Sketch_In_Console
             //    Console.WriteLine("---------------------------------------------------");
             //}
             return 0;
+        }
+      
+        static int exportToJSON<T>(T obj, string route)
+        {
+            try
+            {
+                StreamWriter scen = new StreamWriter(route);
+                scen.Write(JsonConvert.SerializeObject(obj, Formatting.Indented));
+                scen.Close();
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
+                return -1;
+            }
+
+            return 0;
+        }
+
+        static T importFromJSON<T>(string route)
+        {
+            try {
+                StreamReader read = new StreamReader(route);
+                T t = JsonConvert.DeserializeObject<T>(read.ReadToEnd());
+                read.Close();
+                return t;
+            }
+            catch(Exception e) {
+                Console.Error.WriteLine(e.Message);
+                return default(T);
+            }
         }
     }
 }
