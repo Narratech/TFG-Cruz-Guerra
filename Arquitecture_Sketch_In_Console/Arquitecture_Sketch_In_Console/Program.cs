@@ -91,12 +91,63 @@ namespace Arquitecture_Sketch_In_Console
     {
         static void Main(string[] args)
         {
-            Event e;
-            StreamReader read = new StreamReader("Events/SerpientesAvion.json");
-            e = JsonConvert.DeserializeObject<Event>(read.ReadToEnd());
-            read.Close();
+            //Event e;
+            //StreamReader read = new StreamReader("Events/SerpientesAvion.json");
+            //e = JsonConvert.DeserializeObject<Event>(read.ReadToEnd());
+            //read.Close();
 
-            exportToJSON<Event>(e, "Events/SerpientesEnElAvion2.json");
+            //exportToJSON<Event>(e, "Events/SerpientesEnElAvion2.json");
+            //Codigo de ejemplo para serializar un piloto
+            //Dictionary<string, float> a = new Dictionary<string, float>();
+            //a.Add("Com", .5f);
+            //a.Add("Plt", .9f);
+            //Pilot p = new Pilot("Antonio Jesus", "21", "1543", "none", a);
+            //StreamWriter scen = new StreamWriter("Pilots/PilotTest1.json");
+            //scen.Write(JsonConvert.SerializeObject(p, Formatting.Indented));
+            //scen.Close();
+            //testScene("Test1.json");
+            DirectoryInfo info = new DirectoryInfo("Pilots");
+            foreach (DirectoryInfo dir in info.GetDirectories())
+            {
+                testPilot(dir.Name);
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+            //testTableCO();
+        }
+        static void testTableOBSTEPS(string pilot, string Event)
+        {
+            Console.WriteLine(Event);
+            StreamReader read = new StreamReader("Pilots/" + pilot + "/StepsPerEvent/" + Event);
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Formatting = Formatting.Indented;
+            settings.TypeNameHandling = TypeNameHandling.Objects;
+            Table_OB_Steps steps = JsonConvert.DeserializeObject<Table_OB_Steps>(read.ReadToEnd(), settings);
+            List<Step> stepList = steps.Steps[0];
+            Console.WriteLine("----------------BIEN-----------------------");
+            foreach (Step step in stepList)
+            {
+                step.Play();
+            }
+            Console.WriteLine("----------------MAL-----------------------");
+            stepList = steps.Steps[1];
+            foreach (Step step in stepList)
+            {
+                step.Play();
+            }
+            read.Close();
+            Console.WriteLine("\n\n--------------------");
+
         }
 
         static int testScene(string filename)
@@ -150,27 +201,34 @@ namespace Arquitecture_Sketch_In_Console
 
         static int testPilot(string filename)
         {
-            //Pilot pilot;
-            //try
-            //{
-            //    StreamReader read = new StreamReader(filename);
-            //    pilot = JsonConvert.DeserializeObject<Pilot>(read.ReadToEnd());
-            //    read.Close();
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //    return -1;
-            //}
-            //Console.WriteLine(pilot.Name);
-            //Console.WriteLine(pilot.Age);
-            //Console.WriteLine(pilot.Experience);
-            //Console.WriteLine(pilot.ImageRoute);
-            //foreach (var comp in pilot.Competences)
-            //{
-            //    Console.WriteLine(comp.Key + ": " + comp.Value);
-            //}
+            Pilot pilot;
+            StreamReader read = new StreamReader("Pilots/" + filename + "/" + filename + ".json");
+            try
+            {
+                pilot = JsonConvert.DeserializeObject<Pilot>(read.ReadToEnd());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return -1;
+            }
+            read.Close();
+            Console.WriteLine(pilot.Name);
+            Console.WriteLine(pilot.Age);
+            Console.WriteLine(pilot.Experience);
+            Console.WriteLine(pilot.ImageRoute);
+            foreach (var comp in pilot.Competences)
+            {
+                Console.WriteLine(comp.Key + ": " + comp.Value);
+            }
+            Console.WriteLine("-----------------EVENTOS--------------");
+            DirectoryInfo dir = new DirectoryInfo("Pilots/" + filename + "/StepsPerEvent");
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                testTableOBSTEPS(filename, file.Name);
+            }
             return 0;
+
         }
 
         static int testTableCO()
@@ -197,7 +255,7 @@ namespace Arquitecture_Sketch_In_Console
             //}
             return 0;
         }
-      
+
         static int exportToJSON<T>(T obj, string route)
         {
             try
@@ -217,13 +275,15 @@ namespace Arquitecture_Sketch_In_Console
 
         static T importFromJSON<T>(string route)
         {
-            try {
+            try
+            {
                 StreamReader read = new StreamReader(route);
                 T t = JsonConvert.DeserializeObject<T>(read.ReadToEnd());
                 read.Close();
                 return t;
             }
-            catch(Exception e) {
+            catch (Exception e)
+            {
                 Console.Error.WriteLine(e.Message);
                 return default(T);
             }

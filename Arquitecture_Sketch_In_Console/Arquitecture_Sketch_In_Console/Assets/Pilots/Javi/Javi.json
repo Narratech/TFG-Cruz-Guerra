@@ -1,0 +1,10 @@
+{
+  "Name": "Javier",
+  "Age": "21",
+  "Experience": "2323",
+  "ImageRoute": "none",
+  "Competences": {
+    "Com": 0.7,
+    "Plt": 0.2
+  }
+}
