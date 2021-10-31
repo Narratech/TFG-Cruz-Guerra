@@ -1,9 +1,10 @@
 {
-  "TypeOfEvent": "daños",
+  "Name": "SerpientesAvion",
+  "TypeOfEvent": "Animal",
   "Difficulty": 0.5,
-  "EventCompetences": [
-    4,
-    6,
-    7
+  "OBs": [
+    "Asks_relevant_effective_questions",
+    "Carries_out_instructions_when_directed",
+    "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
   ]
 }

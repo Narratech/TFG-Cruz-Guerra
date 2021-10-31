@@ -19,7 +19,7 @@ namespace Arquitecture_Sketch_In_Console
 {
     class Event : JsonManager
     {
-        [JsonIgnore]
+        [JsonProperty]
         public string Name { get; set; }
 
         [JsonProperty]
@@ -29,14 +29,14 @@ namespace Arquitecture_Sketch_In_Console
         public float Difficulty { get; set; }
 
         [JsonProperty]
-        public List<Competences> EventCompetences { get; set; }
+        public List<string> OBs { get; set; }
 
         public Event()
         {
             Name = "None";
             TypeOfEvent = "None";
             Difficulty = 0;
-            EventCompetences = null;
+            OBs = null;
         }
     }
 }
