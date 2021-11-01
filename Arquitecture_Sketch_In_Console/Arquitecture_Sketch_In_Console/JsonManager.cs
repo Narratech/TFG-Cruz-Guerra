@@ -17,7 +17,7 @@ namespace Arquitecture_Sketch_In_Console
             return 0;
         }
 
-        public int ExportToJSON(string route)
+        public int ExportToJSON(string route, bool declareType = false)
         {
             try
             {
@@ -25,7 +25,14 @@ namespace Arquitecture_Sketch_In_Console
                     route = route + ".json";
                 }
                 StreamWriter scen = new StreamWriter(route);
-                scen.Write(JsonConvert.SerializeObject(this, Formatting.Indented));
+
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.Formatting = Formatting.Indented;
+
+                if (declareType)
+                    settings.TypeNameHandling = TypeNameHandling.Objects;
+
+                scen.Write(JsonConvert.SerializeObject(this, settings));
                 scen.Close();
             }
             catch (Exception e)
@@ -37,7 +44,7 @@ namespace Arquitecture_Sketch_In_Console
             return 0;
         }
 
-        public static T ImportFromJSON<T>(string route) where T : JsonManager
+        public static T ImportFromJSON<T>(string route, bool declareType = false) where T : JsonManager
         {
             try
             {
@@ -45,7 +52,14 @@ namespace Arquitecture_Sketch_In_Console
                     route = route + ".json";
                 }
                 StreamReader read = new StreamReader(route);
-                T t = JsonConvert.DeserializeObject<T>(read.ReadToEnd());
+
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.Formatting = Formatting.Indented;
+
+                if(declareType)
+                    settings.TypeNameHandling = TypeNameHandling.Objects; 
+
+                T t = JsonConvert.DeserializeObject<T>(read.ReadToEnd(), settings);
                 read.Close();
                 if (t.Init() < 0) {
                     Console.Error.WriteLine("Error initializing: " + t);

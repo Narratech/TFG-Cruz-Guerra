@@ -18,7 +18,7 @@ using Newtonsoft.Json;
 
 namespace Arquitecture_Sketch_In_Console
 {
-    class Pilot 
+    class Pilot : JsonManager
     {
         public string Name { get; private set; }
         public string Age { get; private set; }

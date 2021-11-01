@@ -24,13 +24,15 @@ namespace Arquitecture_Sketch_In_Console
 {
     public enum WeatherTypes { Sunny, Windy, Rainy }
 
-    class Scene 
+    class Scene
     {
         public string Name { get; private set; }
         public string TakeOffAirport { get; private set; }
         public string DestinationAirport { get; private set; }
         public WeatherTypes Weather { get; private set; }
         public List<string> Events { get; private set; }
+
+        public List<Event> EventsEvents { get; private set; }
 
         //necesario para deserializar, aunque tambien se puede poner [JsonProperty] en las propiedades que queremos deserializar
         public Scene(string name, string takeOffAirport, string destinationAirport, WeatherTypes weather, List<string> e)
