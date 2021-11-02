@@ -5,21 +5,13 @@ using System.Text;
 
 namespace Arquitecture_Sketch_In_Console
 {
-    class Animation : Step
+    class Change : JsonManager, Step
     {
         [JsonProperty]
-        int _id;
-
-        public Animation(int id)
-        {
-            _id = id;
-        }
-
-     
-
+        private Source source_;
         public void Play(Script script)
         {
-            Console.WriteLine("Hola, soy la animación {0}", _id);
+            script.setCurrent(source_);
         }
     }
 }

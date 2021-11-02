@@ -15,7 +15,8 @@ namespace Arquitecture_Sketch_In_Console
             _dialog = dialog;
         }
 
-        public void Play()
+
+        public void Play(Script script)
         {
             Console.WriteLine(_dialog);
         }

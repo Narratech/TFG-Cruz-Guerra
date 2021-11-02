@@ -3,9 +3,9 @@
   "TakeOffAirport": "DBA",
   "DestinationAirport": "FSC",
   "Weather": 0,
-  "Events": [
+  "EventNames": [
     "ExplosionMotor",
-    "SerpientesEnElAvion",
+    "SerpientesAvion",
     "ValvulaDespresurizada"
   ]
 }

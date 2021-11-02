@@ -94,9 +94,9 @@ namespace Arquitecture_Sketch_In_Console
             Event e = JsonManager.ImportFromJSON<Event>("Events/SerpientesAvion");
             e.ExportToJSON("Events/SerpientesAvion");
 
-            Table_CompetencesToOB t = JsonManager.ImportFromJSON<Table_CompetencesToOB>("TableCompetenceToOB");
-            t.ExportToJSON("TableCompetenceToOB");
-
+            Table_CompetencesToOB t = JsonManager.ImportFromJSON<Table_CompetencesToOB>("Tables/TableCompetenceToOB");
+            t.ExportToJSON("Tables/TableCompetenceToOB");
+            testScene("Test1");
             //Codigo de ejemplo para serializar un piloto
             //Dictionary<string, float> a = new Dictionary<string, float>();
             //a.Add("Com", .5f);
@@ -122,17 +122,17 @@ namespace Arquitecture_Sketch_In_Console
             settings.Formatting = Formatting.Indented;
             settings.TypeNameHandling = TypeNameHandling.Objects;
             Table_OB_Steps steps = JsonConvert.DeserializeObject<Table_OB_Steps>(read.ReadToEnd(), settings);
-            List<Step> stepList = steps.Steps[0];
+            List<Step> stepList = null;
             Console.WriteLine("----------------BIEN-----------------------");
             foreach (Step step in stepList)
             {
-                step.Play();
+                step.Play(null);
             }
             Console.WriteLine("----------------MAL-----------------------");
-            stepList = steps.Steps[1];
+            stepList = null;
             foreach (Step step in stepList)
             {
-                step.Play();
+                step.Play(null);
             }
             read.Close();
             Console.WriteLine("\n\n--------------------");
@@ -141,50 +141,23 @@ namespace Arquitecture_Sketch_In_Console
 
         static int testScene(string filename)
         {
-            //Scene myscene = null;
-            //try
-            //{
-            //    StreamReader r = new StreamReader(filename);
-            //    JsonSerializerSettings sett = new JsonSerializerSettings();
-            //    sett.Formatting = Formatting.Indented;
-            //    myscene = JsonConvert.DeserializeObject<Scene>(r.ReadToEnd(), sett);
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.Message);
-            //    return -1;
-            //}
-            //Console.WriteLine(myscene.Name);
-            //Console.WriteLine(myscene.TakeOffAirport);
-            //Console.WriteLine(myscene.DestinationAirport);
-            //Console.WriteLine(myscene.Weather);
-            //List<Event> events = new List<Event>();
-            //foreach (string EventName in scene.Events)
-            //{
-            //    Event my_event;
-            //    try
-            //    {
-            //        my_event = JsonSerializer.Deserialize<Event>(EventName);
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Console.WriteLine(e.Message);
-            //        return -1;
-            //    }
-            //    events.Add(my_event);
+            Scene myscene = JsonManager.ImportFromJSON<Scene>("Scenes/" + filename);
+            Console.WriteLine(myscene.Name);
+            Console.WriteLine(myscene.TakeOffAirport);
+            Console.WriteLine(myscene.DestinationAirport);
+            Console.WriteLine(myscene.Weather);
+            foreach (Event SceneEvent in myscene.Events)
+            {
+                Console.WriteLine("---------------------------------------------------");
+                Console.WriteLine(SceneEvent.TypeOfEvent);
+                Console.WriteLine(SceneEvent.Difficulty);
+                foreach (string comp in SceneEvent.OBs)
+                {
+                    Console.WriteLine(comp);
+                }
+                Console.WriteLine("---------------------------------------------------");
 
-            //}
-            //for (int j = 0; j < events.Count; j++)
-            //{
-            //    Console.WriteLine("---------------------------------------------------");
-            //    Console.WriteLine(events[j].TypeOfEvent);
-            //    Console.WriteLine(events[j].Difficulty);
-            //    foreach (Competences comp in events[j].EventCompetences)
-            //    {
-            //        Console.WriteLine(comp);
-            //    }
-            //}
-            //Console.WriteLine("---------------------------------------------------");
+            }
             return 0;
         }
 

@@ -1,0 +1,25 @@
+{
+  "$type": "Arquitecture_Sketch_In_Console.Table_OB_Steps, Arquitecture_Sketch_In_Console",
+  "Steps": [
+    [
+      {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Procedo a arreglar el motor 12"
+      },
+      {
+        "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
+        "_id": 0
+      }
+    ],
+    [
+      {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Oh, ha explotado el motor. ¿Qué más da?"
+      },
+      {
+        "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
+        "_id": 12
+      }
+    ]
+  ]
+}
