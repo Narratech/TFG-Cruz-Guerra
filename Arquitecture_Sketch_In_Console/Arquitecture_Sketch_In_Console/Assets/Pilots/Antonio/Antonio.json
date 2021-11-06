@@ -1,10 +1,14 @@
 {
-  "Name": "Antonio Jesus",
+  "Name": "Antonio",
   "Age": "21",
   "Experience": "1543",
   "ImageRoute": "none",
   "Competences": {
-    "Com": 0.5,
-    "Plt": 0.9
+    "Application_of_Procedures": 0.7,
+    "Communication": 0.7,
+    "Leadership_and_Teamwork": 0.7,
+    "Problem_Solving_and_Decision_Making": 0.7,
+    "Situation_Awareness": 0.5,
+    "Workload_Management": 0.5
   }
 }

@@ -1,2 +1,6 @@
-﻿public enum Source { Pilot,Copilot,radio}
+﻿public enum Source {
+    Captain, 
+    First_Officer, 
+    Radio
+}
 

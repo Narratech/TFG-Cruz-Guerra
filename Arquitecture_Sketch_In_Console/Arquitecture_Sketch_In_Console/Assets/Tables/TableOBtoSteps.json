@@ -1,34 +1,42 @@
 {
     "stepsIfGood": {
-        "Identifies_source_of_operating_instructions": [
+        "Asks_relevant_effective_questions": [
             {
                 "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
-                "_dialog": "Ha explotado el motor, ¡debemos arreglarlo!"
-            },
+                "_dialog": "Good: Asks_relevant_effective_questions"
+            }
+        ],
+        "Carries_out_instructions_when_directed": [
             {
                 "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
-                "_dialog": "A arreglarlo, pues"
-            },
+                "_dialog": "Good: Carries_out_instructions_when_directed"
+            }
+        ],
+        "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities": [
             {
-                "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
-                "_id": 0
+                "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+                "_dialog": "Good: Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
             }
         ]
     },
 
     "stepsIfBad": {
-        "Identifies_source_of_operating_instructions": [
+        "Asks_relevant_effective_questions": [
             {
-              "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
-              "_dialog": "Ha explotado el motor, ¿Qué cosas, no?"
-            },
+                "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+                "_dialog": "Bad: Asks_relevant_effective_questions"
+            }
+        ],
+        "Carries_out_instructions_when_directed": [
             {
-              "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
-              "_dialog": "Me voy a tomar mi café"
-            },
+                "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+                "_dialog": "Bad: Carries_out_instructions_when_directed"
+            }
+        ],
+        "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities": [
             {
-              "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
-              "_id": 12
+                "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+                "_dialog": "Bad: Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
             }
         ]
     }

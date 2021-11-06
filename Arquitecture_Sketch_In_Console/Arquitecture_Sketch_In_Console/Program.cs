@@ -91,28 +91,7 @@ namespace Arquitecture_Sketch_In_Console
     {
         static void Main(string[] args)
         {
-            Event e = JsonManager.ImportFromJSON<Event>("Events/SerpientesAvion");
-            e.ExportToJSON("Events/SerpientesAvion");
-
-            Table_CompetencesToOB t = JsonManager.ImportFromJSON<Table_CompetencesToOB>("Tables/TableCompetenceToOB");
-            t.ExportToJSON("Tables/TableCompetenceToOB");
-            testScene("Test1");
-            //Codigo de ejemplo para serializar un piloto
-            //Dictionary<string, float> a = new Dictionary<string, float>();
-            //a.Add("Com", .5f);
-            //a.Add("Plt", .9f);
-            //Pilot p = new Pilot("Antonio Jesus", "21", "1543", "none", a);
-            //StreamWriter scen = new StreamWriter("Pilots/PilotTest1.json");
-            //scen.Write(JsonConvert.SerializeObject(p, Formatting.Indented));
-            //scen.Close();
-            //testScene("Test1.json");
-            //DirectoryInfo info = new DirectoryInfo("Pilots");
-            //foreach (DirectoryInfo dir in info.GetDirectories())
-            //{
-            //    testPilot(dir.Name);
-            //}
-
-            //testTableCO();
+            testScript();
         }
         static void testTableOBSTEPS(string pilot, string Event)
         {
@@ -193,10 +172,23 @@ namespace Arquitecture_Sketch_In_Console
 
         }
 
-        static int testTableCO()
+        static void testScript()
         {
+            Scene s = JsonManager.ImportFromJSON<Scene>("Scenes/Test1");
+            Pilot p = JsonManager.ImportFromJSON<Pilot>("Pilots/Javi/Javi");
+            Pilot cp = JsonManager.ImportFromJSON<Pilot>("Pilots/Antonio/Antonio");
+            Table_CompetencesToOB tcob = JsonManager.ImportFromJSON<Table_CompetencesToOB>("Tables/TableCompetenceToOB");
+            Table_OB_Steps obs = JsonManager.ImportFromJSON<Table_OB_Steps>("Tables/TableOBtoSteps", true);
 
-            return 0;
+            Script script = new Script();
+
+            script.Create(s, p, cp, tcob, obs, null, Source.Captain);
+
+            script.ExportToJSON("Script1", true);
+
+            Script sc2 = JsonManager.ImportFromJSON<Script>("Script1", true);
+
+            sc2.ExportToJSON("Scrip2", true);
         }
     }
 }

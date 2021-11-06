@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Arquitecture_Sketch_In_Console
 {
-    class Table_OB_Steps
+    class Table_OB_Steps : JsonManager
     {
         public Table_OB_Steps()
         {

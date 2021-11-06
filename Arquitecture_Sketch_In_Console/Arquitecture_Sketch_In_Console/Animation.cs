@@ -15,8 +15,6 @@ namespace Arquitecture_Sketch_In_Console
             _id = id;
         }
 
-     
-
         public void Play(Script script)
         {
             Console.WriteLine("Hola, soy la animación {0}", _id);

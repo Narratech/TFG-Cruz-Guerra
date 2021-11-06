@@ -1,0 +1,85 @@
+{
+  "$type": "Arquitecture_Sketch_In_Console.Script, Arquitecture_Sketch_In_Console",
+  "steps": [
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Oh, ha explotado el motor. ¿Qué más da?"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
+        "_id": 12
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Oh, ha explotado el motor. ¿Qué más da?"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
+        "_id": 12
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Good: Asks_relevant_effective_questions"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Good: Carries_out_instructions_when_directed"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Good: Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Good: Asks_relevant_effective_questions"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Good: Carries_out_instructions_when_directed"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Good: Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+      }
+    }
+  ]
+}
