@@ -186,9 +186,7 @@ namespace Arquitecture_Sketch_In_Console
 
             script.ExportToJSON("Script1", true);
 
-            Script sc2 = JsonManager.ImportFromJSON<Script>("Script1", true);
-
-            sc2.ExportToJSON("Scrip2", true);
+            script.Play();
         }
     }
 }

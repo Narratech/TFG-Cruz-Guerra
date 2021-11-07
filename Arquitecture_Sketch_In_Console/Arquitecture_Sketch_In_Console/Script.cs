@@ -186,5 +186,14 @@ namespace Arquitecture_Sketch_In_Console
                 foreach (Step s in specificStepsForEvent.StepsIfBad)
                     q.Enqueue(s);
         }
+
+        public void Play()
+        {
+            foreach(Tuple<Source, Step> s in steps)
+            {
+                Console.Write("From " + s.Item1.ToString() + ": ");
+                s.Item2.Play(this);
+            }
+        }
     }
 }
