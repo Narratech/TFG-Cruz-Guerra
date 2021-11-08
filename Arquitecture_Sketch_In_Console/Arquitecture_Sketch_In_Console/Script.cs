@@ -36,6 +36,9 @@ namespace Arquitecture_Sketch_In_Console
         private Source current_;
 
         [JsonProperty]
+        private string sceneName, captainName, firstOfficerName;
+
+        [JsonProperty]
         private List<Tuple<Source, Step>> steps;
 
         public Script()
@@ -46,6 +49,8 @@ namespace Arquitecture_Sketch_In_Console
             firstOfficer_ = null;
             radio_ = null;
             steps = new List<Tuple<Source, Step>>();
+
+            sceneName = captainName = firstOfficerName = "";
         }
 
 
@@ -56,6 +61,10 @@ namespace Arquitecture_Sketch_In_Console
             firstOfficer_ = firstOfficer;
             radio_ = radio;
             current_ = starter;
+
+            sceneName = scene_.Name;
+            captainName = captain_.Name;
+            firstOfficerName = firstOfficer_.Name;
 
             Debug.Assert(scene != null && captain != null && firstOfficer != null && toOB != null && oB_Steps != null);
 
@@ -73,7 +82,7 @@ namespace Arquitecture_Sketch_In_Console
                     fillWithGeneric(e, captain_, oB_Steps, toOB, ref steps_captain);
 
                 if (f_firstOfficer != null)
-                    fillWithPredefined(e, captain_, f_firstOfficer, toOB, ref steps_firstOfficer);
+                    fillWithPredefined(e, firstOfficer_, f_firstOfficer, toOB, ref steps_firstOfficer);
                 else
                     fillWithGeneric(e, firstOfficer_, oB_Steps, toOB, ref steps_firstOfficer);
 
@@ -112,7 +121,7 @@ namespace Arquitecture_Sketch_In_Console
                         case Source.Radio:
                             break;
                     }
-
+                    
                     if (s is Change)
                         s.Play(this);
 

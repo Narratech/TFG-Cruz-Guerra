@@ -184,7 +184,7 @@ namespace Arquitecture_Sketch_In_Console
 
             script.Create(s, p, cp, tcob, obs, null, Source.Captain);
 
-            script.ExportToJSON("Script1", true);
+            script.ExportToJSON("Scripts/Script1", true);
 
             script.Play();
         }

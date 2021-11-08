@@ -2,11 +2,15 @@
   "stepsIfGood": [
     {
       "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
-      "_dialog": "Procedo a arreglar el motor 12"
+      "_dialog": "Tengo que arreglar el motor 12"
     },
     {
       "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
       "_id": 0
+    },
+    {
+      "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+      "_dialog": "Diria que ya esta, pero no se"
     }
   ],
 
@@ -18,6 +22,10 @@
     {
       "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
       "_id": 12
+    }, 
+    {
+      "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+      "_dialog": "Si es que nos caemos, a planear jaajajaj"
     }
   ]
 }

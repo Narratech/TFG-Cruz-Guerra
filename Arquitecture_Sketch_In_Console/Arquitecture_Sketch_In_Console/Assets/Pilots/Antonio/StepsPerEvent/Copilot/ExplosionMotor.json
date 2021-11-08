@@ -2,22 +2,26 @@
   "stepsIfGood": [
     {
       "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
-      "_dialog": "Procedo a arreglar el motor 12"
+      "_dialog": "Procedo a arreglar el motor "
     },
     {
       "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
       "_id": 0
+    },
+    {
+      "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+      "_dialog": "Diria que ya esta todo controlado, pero habra que aterrizar pronto"
     }
   ],
 
   "stepsIfBad": [
     {
       "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
-      "_dialog": "Oh, ha explotado el motor. ¿Qué más da?"
+      "_dialog": "Oh, ha explotado el motor. No pasa nada"
     },
     {
-      "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
-      "_id": 12
+      "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+      "_dialog": "Esto es pan comido seguro, solo hace falta ir recto, ¿no?"
     }
   ]
 }

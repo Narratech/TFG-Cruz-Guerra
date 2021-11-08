@@ -1,5 +1,8 @@
 {
   "$type": "Arquitecture_Sketch_In_Console.Script, Arquitecture_Sketch_In_Console",
+  "sceneName": "Test1",
+  "captainName": "Javi",
+  "firstOfficerName": "Antonio",
   "steps": [
     {
       "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
@@ -19,10 +22,18 @@
     },
     {
       "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Si es que nos caemos, a planear jaajajaj"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
       "Item1": 1,
       "Item2": {
         "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
-        "_dialog": "Oh, ha explotado el motor. ¿Qué más da?"
+        "_dialog": "Procedo a arreglar el motor "
       }
     },
     {
@@ -30,7 +41,15 @@
       "Item1": 1,
       "Item2": {
         "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
-        "_id": 12
+        "_id": 0
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Source, Arquitecture_Sketch_In_Console],[Arquitecture_Sketch_In_Console.Step, Arquitecture_Sketch_In_Console]], System.Private.CoreLib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "Diria que ya esta todo controlado, pero habra que aterrizar pronto"
       }
     },
     {
