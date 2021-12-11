@@ -13,6 +13,7 @@ public class OutlineAnim : MonoBehaviour
     const float deadZone = .07f;
     private void Awake()
     {
+        _secondsPassed = deadZone;
         _edge = GetComponent<EdgeDetect>();
     }
     private void Update()
