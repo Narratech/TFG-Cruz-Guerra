@@ -146,12 +146,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 177393842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5bf41fac670a094e98c1cd978a59e2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 599e46508a40a5b45bfd2fc7c9b46e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _from: {r: 0, g: 0.85055304, b: 1, a: 1}
+  _to: {r: 0.02882719, g: 0, b: 1, a: 1}
   _animSeconds: 0.7
-  _color1: {r: 0.07957268, g: 0, b: 1, a: 1}
-  _color2: {r: 0, g: 0.6691313, b: 1, a: 1}
 --- !u!95 &177393845
 Animator:
   serializedVersion: 3
