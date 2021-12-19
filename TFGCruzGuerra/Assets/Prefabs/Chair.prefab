@@ -11,6 +11,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: chair_mid
       objectReference: {fileID: 0}
+    - target: {fileID: 1174173930472648, guid: 205ef557736d4c945a550949ebe94589, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205239113172074, guid: 205ef557736d4c945a550949ebe94589, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418117352142840, guid: 205ef557736d4c945a550949ebe94589, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490505913785838, guid: 205ef557736d4c945a550949ebe94589, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575905188326474, guid: 205ef557736d4c945a550949ebe94589, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631063382131456, guid: 205ef557736d4c945a550949ebe94589, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1753443873580936, guid: 205ef557736d4c945a550949ebe94589, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794444320345206, guid: 205ef557736d4c945a550949ebe94589, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823670332360722, guid: 205ef557736d4c945a550949ebe94589, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4561316878332224, guid: 205ef557736d4c945a550949ebe94589, type: 3}
       propertyPath: m_RootOrder
       value: 0
