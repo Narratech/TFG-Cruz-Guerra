@@ -281,8 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599e46508a40a5b45bfd2fc7c9b46e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _from: {r: 0, g: 0.85055304, b: 1, a: 1}
-  _to: {r: 0.02882719, g: 0, b: 1, a: 1}
+  _from: {r: 1, g: 0.32372978, b: 0, a: 1}
+  _to: {r: 0.49056602, g: 0.18921831, b: 0, a: 1}
   _animSeconds: 0.7
 --- !u!95 &177393845
 Animator:
