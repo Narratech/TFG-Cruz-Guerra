@@ -1,0 +1,26 @@
+{
+  "$type": "Arquitecture_Sketch_In_Console.Table_OB_Steps, Arquitecture_Sketch_In_Console",
+  "Steps": [
+    [
+      {
+        "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
+        "_id": 3
+      },
+      {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "¡Hay serpientes en el avión! Debemos ocuparnos de todo"
+      }
+      
+    ],
+    [
+      {
+        "$type": "Arquitecture_Sketch_In_Console.Dialog, Arquitecture_Sketch_In_Console",
+        "_dialog": "¡Serpientes!¡Aaaaagh! *Se muere*"
+      },
+      {
+        "$type": "Arquitecture_Sketch_In_Console.Animation, Arquitecture_Sketch_In_Console",
+        "_id": 4
+      }
+    ]
+  ]
+}

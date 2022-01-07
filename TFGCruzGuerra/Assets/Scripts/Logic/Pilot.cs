@@ -16,7 +16,7 @@ using Newtonsoft.Json;
  * 
  */
 
-namespace Arquitecture_Sketch_In_Console
+namespace Logic
 {
     class Pilot : JsonManager
     {

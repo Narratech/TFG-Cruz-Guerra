@@ -85,7 +85,7 @@ using Newtonsoft.Json;
  */
 
 
-namespace Arquitecture_Sketch_In_Console
+namespace Logic
 {
     class Program
     {
@@ -120,7 +120,7 @@ namespace Arquitecture_Sketch_In_Console
 
         static int testScene(string filename)
         {
-            Scene myscene = JsonManager.ImportFromJSON<Scene>("Scenes/" + filename);
+            Stage myscene = JsonManager.ImportFromJSON<Stage>("Scenes/" + filename);
             Console.WriteLine(myscene.Name);
             Console.WriteLine(myscene.TakeOffAirport);
             Console.WriteLine(myscene.DestinationAirport);
@@ -174,7 +174,7 @@ namespace Arquitecture_Sketch_In_Console
 
         static void testScript()
         {
-            Scene s = JsonManager.ImportFromJSON<Scene>("Scenes/Test1");
+            Stage s = JsonManager.ImportFromJSON<Stage>("Stages/Test1");
             Pilot p = JsonManager.ImportFromJSON<Pilot>("Pilots/Javi/Javi");
             Pilot cp = JsonManager.ImportFromJSON<Pilot>("Pilots/Antonio/Antonio");
             Table_CompetencesToOB tcob = JsonManager.ImportFromJSON<Table_CompetencesToOB>("Tables/TableCompetenceToOB");

@@ -21,7 +21,7 @@ using Newtonsoft.Json;
      * OBM
  */
 
-namespace Arquitecture_Sketch_In_Console
+namespace Logic
 {
     class Table_CompetencesToOB : JsonManager
     {

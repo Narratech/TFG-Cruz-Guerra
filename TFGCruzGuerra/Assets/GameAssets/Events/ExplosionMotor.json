@@ -1,0 +1,10 @@
+{
+  "Name": "ExplosionMotor",
+  "TypeOfEvent": "Daños",
+  "Difficulty": 0.6,
+  "OBs": [
+    "Asks_relevant_effective_questions",
+    "Carries_out_instructions_when_directed",
+    "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+  ]
+}

@@ -26,11 +26,11 @@ using System.Text;
  * 
  */
 
-namespace Arquitecture_Sketch_In_Console
+namespace Logic
 {
     class Script : JsonManager
     {
-        private Scene scene_;
+        private Stage scene_;
 
         private Pilot captain_, firstOfficer_, radio_;
         private Source current_;
@@ -54,7 +54,7 @@ namespace Arquitecture_Sketch_In_Console
         }
 
 
-        public int Create(Scene scene, Pilot captain, Pilot firstOfficer, Table_CompetencesToOB toOB, Table_OB_Steps oB_Steps, Pilot radio = null, Source starter = Source.Captain)
+        public int Create(Stage scene, Pilot captain, Pilot firstOfficer, Table_CompetencesToOB toOB, Table_OB_Steps oB_Steps, Pilot radio = null, Source starter = Source.Captain)
         {
             scene_ = scene;
             captain_ = captain;
@@ -150,7 +150,7 @@ namespace Arquitecture_Sketch_In_Console
 
             string name = p.Name;
 
-            string dir = "Pilots/" + name + "/StepsPerEvent/";
+            string dir = "Assets/GameAssets/Pilots/" + name + "/StepsPerEvent/";
 
             if (p.Name == captain_.Name)
                 dir += "Pilot";
@@ -200,7 +200,7 @@ namespace Arquitecture_Sketch_In_Console
         {
             foreach(Tuple<Source, Step> s in steps)
             {
-                Console.Write("From " + s.Item1.ToString() + ": ");
+                UnityEngine.Debug.Log("From " + s.Item1.ToString() + ": ");
                 s.Item2.Play(this);
             }
         }

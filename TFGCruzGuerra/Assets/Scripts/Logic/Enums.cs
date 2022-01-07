@@ -1,6 +1,9 @@
-﻿public enum Source {
-    Captain, 
-    First_Officer, 
-    Radio
+﻿
+namespace Logic
+{
+    public enum Source {
+        Captain, 
+        First_Officer, 
+        Radio
+    }
 }
-

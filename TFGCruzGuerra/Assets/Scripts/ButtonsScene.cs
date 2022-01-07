@@ -1,12 +1,15 @@
 using UnityEngine;
 
-[System.Serializable]
-public enum Scene
+namespace tfg
 {
-    Menu, Options, Encyclopedia, Credits, SelectLevel, Game
-}
+    [System.Serializable]
+    public enum Scene
+    {
+        Menu, Options, Encyclopedia, Credits, SelectLevel, Game
+    }
 
-public class ButtonsScene : MonoBehaviour
-{
-    public Scene scene;
+    public class ButtonsScene : MonoBehaviour
+    {
+        public Scene scene;
+    }
 }

@@ -20,11 +20,11 @@ using System.Runtime.Serialization;
  * 
  */
 
-namespace Arquitecture_Sketch_In_Console
+namespace Logic
 {
     public enum WeatherTypes { Sunny, Windy, Rainy }
 
-    class Scene:JsonManager
+    class Stage:JsonManager
     {
         [JsonProperty]
         public string Name { get; private set; }
@@ -41,7 +41,7 @@ namespace Arquitecture_Sketch_In_Console
 
 
         //necesario para deserializar, aunque tambien se puede poner [JsonProperty] en las propiedades que queremos deserializar
-        public Scene(string name, string takeOffAirport, string destinationAirport, WeatherTypes weather, List<string> e)
+        public Stage(string name, string takeOffAirport, string destinationAirport, WeatherTypes weather, List<string> e)
         {
             Name = name;
             TakeOffAirport = takeOffAirport;
@@ -55,7 +55,7 @@ namespace Arquitecture_Sketch_In_Console
         {
             foreach (string eventName in EventNames)
             {
-                Events.Add(JsonManager.ImportFromJSON<Event>("Events/" + eventName));
+                Events.Add(JsonManager.ImportFromJSON<Event>("Assets/GameAssets/Events/" + eventName));
             }
             return 0;
         }

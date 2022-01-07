@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Arquitecture_Sketch_In_Console
+namespace Logic
 {
     class Dialog : Step
     {

@@ -15,7 +15,7 @@ using System.Text;
  * 
  */
 
-namespace Arquitecture_Sketch_In_Console
+namespace Logic
 {
     class Event : JsonManager
     {

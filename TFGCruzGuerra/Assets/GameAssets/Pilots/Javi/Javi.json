@@ -1,0 +1,14 @@
+{
+  "Name": "Javi",
+  "Age": "21",
+  "Experience": "2323",
+  "ImageRoute": "none",
+  "Competences": {
+    "Application_of_Procedures": 0.7,
+    "Communication": 0.2,
+    "Leadership_and_Teamwork": 0.7,
+    "Problem_Solving_and_Decision_Making": 0.5,
+    "Situation_Awareness": 0.5,
+    "Workload_Management": 0.5
+  }
+}
