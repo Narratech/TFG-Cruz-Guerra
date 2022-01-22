@@ -18,20 +18,23 @@ using Newtonsoft.Json;
 
 namespace Logic
 {
-    class Pilot : JsonManager
+    public class Pilot : JsonManager
     {
-        public string Name { get; private set; }
-        public string Age { get; private set; }
-        public string Experience { get; private set; }
-        public string ImageRoute { get; private set; }
+        public enum GenderEnum:int { None, Male, Female }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public float Experience { get; set; }
+        //realmente queremos que se le pongan imagenes personalizadas?
+        //public string ImageRoute { get; set; }
+        public GenderEnum Gender { get; set; }
         public Dictionary<string, float> Competences { get; private set; }
 
-        public Pilot(string name, string age, string experience, string imageRoute, Dictionary<string, float> competences)
+        public Pilot(string name, int age, float experience, GenderEnum gender, Dictionary<string, float> competences)
         {
             Name = name;
             Age = age;
             Experience = experience;
-            ImageRoute = imageRoute;
+            Gender = gender;
             Competences = competences;
         }
     }

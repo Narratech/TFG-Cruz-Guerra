@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Scriptables;
+using Logic;
+using System;
+
 public class PilotCreator : MonoBehaviour
 {
     Pilot _currentPilot;
     ImageModifier _imgModifier;
+    [SerializeField] MessagePopUpPanel _panel;
     private void Start()
     {
-        _currentPilot = ScriptableObject.CreateInstance<Pilot>();
-        _currentPilot.Age = -1;
-        _currentPilot.Name = "";
-        _currentPilot.Experience = -1;
+        newPilot();
     }
-    public void SetGender(Pilot.GenderEnum gender)
+    public void SetGender(int gender)
     {
-        _currentPilot.Gender = gender;
+        _currentPilot.Gender = (Pilot.GenderEnum)gender;
     }
     public void setName(string name)
     {
@@ -55,5 +55,24 @@ public class PilotCreator : MonoBehaviour
     public void setImgModifier(ImageModifier modi)
     {
         _imgModifier = modi;
+    }
+    public void newPilot()
+    {
+        _currentPilot = new Pilot("",-1,-1,Pilot.GenderEnum.None,new Dictionary<string, float>());
+    }
+    public void save()
+    {
+            _panel.open();
+        if (_currentPilot.Name != "" && _currentPilot.Age > -1 && _currentPilot.Experience > -1
+            && _currentPilot.Gender != Pilot.GenderEnum.None)
+        {
+            //todo revisar ruta
+            _panel.setMessage("Pilot saved.");
+            _currentPilot.ExportToJSON(Application.persistentDataPath + "Pilots/" + _currentPilot.Name + "/" + _currentPilot.Name + ".json");
+        }
+        else
+        {
+            _panel.setMessage("Pilot could not be saved because some fields have incorrect values.");
+        }
     }
 }

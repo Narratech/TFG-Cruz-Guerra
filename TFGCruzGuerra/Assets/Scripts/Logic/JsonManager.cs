@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Logic
 {
-    class JsonManager
+   public class JsonManager
     {
         /// <summary>
         /// Called after importFromJson

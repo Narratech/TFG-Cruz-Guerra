@@ -157,7 +157,7 @@ namespace Logic
             Console.WriteLine(pilot.Name);
             Console.WriteLine(pilot.Age);
             Console.WriteLine(pilot.Experience);
-            Console.WriteLine(pilot.ImageRoute);
+            Console.WriteLine(pilot.Gender);
             foreach (var comp in pilot.Competences)
             {
                 Console.WriteLine(comp.Key + ": " + comp.Value);
