@@ -18,7 +18,7 @@ namespace Logic
 
         public void Play(Script script)
         {
-            Console.WriteLine(_dialog);
+            UnityEngine.Debug.Log(_dialog);
         }
     }
 }

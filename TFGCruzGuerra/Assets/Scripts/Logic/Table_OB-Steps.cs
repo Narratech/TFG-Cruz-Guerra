@@ -22,13 +22,26 @@ namespace Logic
         public List<Step> getStepsForOB(string OB, bool isGood)
         {
             if (OB != null && OB != "") {
-                List<Step> found;
-                if(isGood)
-                    return StepsIfGood.TryGetValue(OB, out found) ? found : null;
-                else
-                    return StepsIfBad.TryGetValue(OB, out found) ? found : null;
+                bool found = isGood ? StepsIfGood.ContainsKey(OB) : StepsIfBad.ContainsKey(OB);
+              
+                if (!found)
+                    addDefaultStep(OB);
+
+                return isGood ? StepsIfGood[OB] : StepsIfBad[OB];
             }
             return null;
+        }
+
+        private void addDefaultStep(string OB)
+        {
+            List<Step> stepsGood = new List<Step>();
+            stepsGood.Add(new Dialog("good:" + OB));
+            StepsIfGood.Add(OB, stepsGood);
+
+            List<Step> stepsBad = new List<Step>();
+            stepsBad.Add(new Dialog("bad:" + OB));
+
+            StepsIfBad.Add(OB, stepsBad);
         }
     }
 }
