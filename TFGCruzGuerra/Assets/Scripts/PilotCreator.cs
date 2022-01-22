@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Logic;
 using System;
+using System.IO;
 
 public class PilotCreator : MonoBehaviour
 {
@@ -58,17 +59,20 @@ public class PilotCreator : MonoBehaviour
     }
     public void newPilot()
     {
-        _currentPilot = new Pilot("",-1,-1,Pilot.GenderEnum.None,new Dictionary<string, float>());
+        _currentPilot = new Pilot("", -1, -1, Pilot.GenderEnum.None, new Dictionary<string, float>());
     }
     public void save()
     {
-            _panel.open();
+        _panel.open();
         if (_currentPilot.Name != "" && _currentPilot.Age > -1 && _currentPilot.Experience > -1
             && _currentPilot.Gender != Pilot.GenderEnum.None)
         {
             //todo revisar ruta
             _panel.setMessage("Pilot saved.");
-            _currentPilot.ExportToJSON(Application.persistentDataPath + "Pilots/" + _currentPilot.Name + "/" + _currentPilot.Name + ".json");
+            string basePath = Application.persistentDataPath + "/Pilots/" + _currentPilot.Name + "/";
+            if (!Directory.Exists(basePath))
+                Directory.CreateDirectory(basePath);
+            _currentPilot.ExportToJSON(basePath + _currentPilot.Name + ".json");
         }
         else
         {

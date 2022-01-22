@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using UnityEngine;
 
 namespace Logic
 {
@@ -37,7 +38,7 @@ namespace Logic
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine(e.Message);
+                Debug.LogError(e.Message);
                 return -1;
             }
 
