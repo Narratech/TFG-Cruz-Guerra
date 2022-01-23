@@ -41,6 +41,8 @@ namespace Logic
         [JsonProperty]
         private List<Tuple<Source, Step>> steps;
 
+        private int stepsIt;
+
         public Script()
         {
             current_ = Source.Captain;
@@ -51,6 +53,8 @@ namespace Logic
             steps = new List<Tuple<Source, Step>>();
 
             sceneName = captainName = firstOfficerName = "";
+
+            stepsIt = 0;
         }
 
 
@@ -69,6 +73,8 @@ namespace Logic
             Debug.Assert(scene != null && captain != null && firstOfficer != null && toOB != null && oB_Steps != null);
 
             Queue<Step> steps_captain = new Queue<Step>(), steps_firstOfficer = new Queue<Step>()/*, steps_radio = new Queue<Step>()*/;
+
+            stepsIt = 0;
 
             foreach (Event e in scene.Events)
             {
@@ -203,6 +209,22 @@ namespace Logic
                 UnityEngine.Debug.Log("From " + s.Item1.ToString() + ": ");
                 s.Item2.Play(this);
             }
+        }
+
+        /// <summary>
+        /// plays the next event
+        /// </summary>
+        /// <returns>true if there are more steps to be played, false otherwise</returns>
+        public bool Next()
+        {
+            if(stepsIt >= steps.Count)
+                return false;
+
+            UnityEngine.Debug.Log("From " + steps[stepsIt].Item1.ToString() + ": ");
+            steps[stepsIt].Item2.Play(this);
+            ++stepsIt;
+
+            return stepsIt < steps.Count;
         }
     }
 }

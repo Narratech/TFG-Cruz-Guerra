@@ -14,8 +14,11 @@ namespace tfg
         [SerializeField] private TextAsset tableCompetencesToOBJson;
         [SerializeField] private TextAsset tableOBStepsJson;
 
+        private Logic.Script script;
+
         private void Awake()
         {
+            script = new Logic.Script();
             testLevel();
         }
 
@@ -27,14 +30,16 @@ namespace tfg
 
             Logic.Table_CompetencesToOB tcob = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(AssetDatabase.GetAssetPath(tableCompetencesToOBJson));
             Logic.Table_OB_Steps obs = Logic.JsonManager.ImportFromJSON<Logic.Table_OB_Steps>(AssetDatabase.GetAssetPath(tableOBStepsJson), true);
-
-            Logic.Script script = new Logic.Script();
-
             script.Create(stage, captain, firstOfficer, tcob, obs, null, Logic.Source.Captain);
 
             script.ExportToJSON("Assets/GameAssets/Scripts/Script1", true);
 
-            script.Play();
+            //script.Play();
+        }
+
+        public void nextStep()
+        {
+            script.Next();
         }
     }
 }
