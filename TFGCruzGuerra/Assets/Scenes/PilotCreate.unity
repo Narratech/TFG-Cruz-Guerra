@@ -2536,6 +2536,7 @@ MonoBehaviour:
   _CompetenceDifficultySelectorPrefab: {fileID: 737550663220911321, guid: fd1b90fa6409c5e4fa59d4b3f878b536, type: 3}
   _parent: {fileID: 283455710}
   _layout: {fileID: 283455711}
+  _creator: {fileID: 302175507}
 --- !u!1 &1356723365
 GameObject:
   m_ObjectHideFlags: 0
