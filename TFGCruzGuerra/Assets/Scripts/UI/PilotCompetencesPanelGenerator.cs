@@ -9,6 +9,7 @@ public class PilotCompetencesPanelGenerator : MonoBehaviour
     private void Start()
     {
         _table = JsonManager.ImportFromJSON<Table_CompetencesToOB>(Application.persistentDataPath + "/Tables/TableCompetenceToOB.json");
+        _creator.setTable(_table);       
         generate();
     }
     void generate()

@@ -2456,6 +2456,7 @@ GameObject:
   - component: {fileID: 1274573807}
   - component: {fileID: 1274573806}
   - component: {fileID: 1274573808}
+  - component: {fileID: 1274573809}
   m_Layer: 5
   m_Name: CompetencesPanel
   m_TagString: Untagged
@@ -2537,6 +2538,19 @@ MonoBehaviour:
   _parent: {fileID: 283455710}
   _layout: {fileID: 283455711}
   _creator: {fileID: 302175507}
+--- !u!114 &1274573809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274573804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1356723365
 GameObject:
   m_ObjectHideFlags: 0
@@ -3393,6 +3407,22 @@ PrefabInstance:
     - target: {fileID: 4236839338066039268, guid: 1a12f61846fc83141bc6ba3d8ea01a86, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236839338066039271, guid: 1a12f61846fc83141bc6ba3d8ea01a86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4236839337504886211}
+    - target: {fileID: 4236839338066039271, guid: 1a12f61846fc83141bc6ba3d8ea01a86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: close
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236839338791328861, guid: 1a12f61846fc83141bc6ba3d8ea01a86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4236839337504886211}
+    - target: {fileID: 4236839338791328861, guid: 1a12f61846fc83141bc6ba3d8ea01a86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: close
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a12f61846fc83141bc6ba3d8ea01a86, type: 3}
