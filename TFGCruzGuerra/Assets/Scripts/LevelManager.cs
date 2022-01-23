@@ -32,7 +32,7 @@ namespace tfg
 
             script.Create(stage, captain, firstOfficer, tcob, obs, null, Logic.Source.Captain);
 
-            script.ExportToJSON("Scripts/Script1", true);
+            script.ExportToJSON("Assets/GameAssets/Scripts/Script1", true);
 
             script.Play();
         }
