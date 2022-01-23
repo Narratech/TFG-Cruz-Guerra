@@ -7,9 +7,7 @@ using System.IO;
 
 public class PilotCreator : MonoBehaviour
 {
-    Pilot _currentPilot;
-    ImageModifier _imgModifier;
-    [SerializeField] MessagePopUpPanel _panel;
+   
     private void Start()
     {
         newPilot();
@@ -21,23 +19,16 @@ public class PilotCreator : MonoBehaviour
     public void setName(string name)
     {
         _currentPilot.Name = name;
-        _imgModifier.ReplaceImage();
 
     }
-    public void setAge(string age)
+    public void setAge(float age)
     {
-        int nAge;
-        if (int.TryParse(age, out nAge))
-            setAge(nAge);
+        setAge((int)age);
     }
 
     public void setAge(int age)
     {
-        if (age > 0)
-        {
             _currentPilot.Age = age;
-            _imgModifier.ReplaceImage();
-        }
     }
     public void setExperience(string exp)
     {
@@ -47,16 +38,9 @@ public class PilotCreator : MonoBehaviour
     }
     public void setExperience(float exp)
     {
-        if (exp >= 0 && exp <= 1)
-        {
             _currentPilot.Experience = exp;
-            _imgModifier.ReplaceImage();
-        }
     }
-    public void setImgModifier(ImageModifier modi)
-    {
-        _imgModifier = modi;
-    }
+   
     public void newPilot()
     {
         _currentPilot = new Pilot("", -1, -1, Pilot.GenderEnum.None, new Dictionary<string, float>());
@@ -68,7 +52,7 @@ public class PilotCreator : MonoBehaviour
             && _currentPilot.Gender != Pilot.GenderEnum.None)
         {
             //todo revisar ruta
-            _panel.setMessage("Pilot saved.");
+            _panelText.setText("Pilot saved.");
             string basePath = Application.persistentDataPath + "/Pilots/" + _currentPilot.Name + "/";
             if (!Directory.Exists(basePath))
                 Directory.CreateDirectory(basePath);
@@ -76,7 +60,14 @@ public class PilotCreator : MonoBehaviour
         }
         else
         {
-            _panel.setMessage("Pilot could not be saved because some fields have incorrect values.");
+            _panelText.setText("Pilot could not be saved because some fields have incorrect values.");
         }
     }
+    public void setCompetence(string comp, float difficulty)
+    {
+        _currentPilot.Competences.Add(comp, difficulty);
+    }
+    Pilot _currentPilot;
+    [SerializeField] PopUpPanel _panel;
+    [SerializeField] TextModifier _panelText;
 }

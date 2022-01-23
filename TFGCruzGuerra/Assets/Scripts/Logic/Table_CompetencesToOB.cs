@@ -23,7 +23,7 @@ using Newtonsoft.Json;
 
 namespace Logic
 {
-    class Table_CompetencesToOB : JsonManager
+    public class Table_CompetencesToOB : JsonManager
     {
         //Dictionary of Competence to a list of OB
         [JsonProperty]
@@ -35,11 +35,16 @@ namespace Logic
         [JsonIgnore]
         private Dictionary<string, HashSet<string>> compToOBHashed;
 
-        Table_CompetencesToOB()
+        public Table_CompetencesToOB()
         {
             Competences = null;
             compToOBHashed = null;
             obToComp = null;
+        }
+        public int getNumCompetences() { return Competences.Count; }
+        public Dictionary<string, List<string>>.KeyCollection getCompetences()
+        {
+            return Competences.Keys;
         }
 
         protected override int Init()
@@ -67,7 +72,7 @@ namespace Logic
             HashSet<string> found;
             return compToOBHashed.TryGetValue(competence, out found) ? found : null;
         }
-        
+
 
         /// <returns>competence of said OB, null OB not found or OB equals "None"</returns>
         public string getCompetenceFromOB(string OB)

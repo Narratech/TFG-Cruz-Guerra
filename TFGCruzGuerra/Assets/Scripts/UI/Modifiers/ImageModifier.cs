@@ -10,14 +10,9 @@ public class ImageModifier : MonoBehaviour
     /// sean necesarios
     /// </summary>
     [SerializeField] Image _img;
-    [SerializeField] Sprite _defaultImage;
     public void ReplaceImage(Sprite image)
     {
         _img.sprite = image;
     }
-    public void ReplaceImage()
-    {
-        if (_defaultImage)
-            _img.sprite = _defaultImage;
-    }
+    
 }
