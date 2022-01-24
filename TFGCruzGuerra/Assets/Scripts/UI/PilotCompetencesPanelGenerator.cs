@@ -9,12 +9,14 @@ public class PilotCompetencesPanelGenerator : MonoBehaviour
     private void Start()
     {
         _table = JsonManager.ImportFromJSON<Table_CompetencesToOB>(Application.persistentDataPath + "/Tables/TableCompetenceToOB.json");
-        _creator.setTable(_table);       
+        _creator.setTable(_table);
+        _selectors = new CompetencesDifficultySelector[_table.getNumCompetences()];
         generate();
     }
     void generate()
     {
         float w = 0;
+        int i = 0;
         foreach (string key in _table.getCompetences())
         {
             TextModifier modifier = Instantiate<TextModifier>(_CompetenceDifficultySelectorPrefab, _parent);
@@ -24,6 +26,8 @@ public class PilotCompetencesPanelGenerator : MonoBehaviour
             CompetencesDifficultySelector selector = modifier.gameObject.GetComponent<CompetencesDifficultySelector>();
             selector.setCompetence(key);
             selector.setCreator(_creator);
+            _selectors[i] = selector;
+            i++;
         }
         _parent.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, w);
     }
@@ -32,5 +36,14 @@ public class PilotCompetencesPanelGenerator : MonoBehaviour
     [SerializeField] HorizontalLayoutGroup _layout;
     [SerializeField] PilotCreator _creator;
     Table_CompetencesToOB _table;
+    CompetencesDifficultySelector[] _selectors;
+
+public void reset()
+{
+        foreach (CompetencesDifficultySelector selector in _selectors)
+        {
+            selector.reset();
+        }
+}
 
 }
