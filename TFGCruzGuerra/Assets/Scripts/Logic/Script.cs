@@ -215,13 +215,16 @@ namespace Logic
         /// plays the next event
         /// </summary>
         /// <returns>true if there are more steps to be played, false otherwise</returns>
-        public bool Next()
+        public bool Next(out Source source, out Step step)
         {
+            source = Source.Captain;
+            step = null;
             if(stepsIt >= steps.Count)
                 return false;
 
-            UnityEngine.Debug.Log("From " + steps[stepsIt].Item1.ToString() + ": ");
-            steps[stepsIt].Item2.Play(this);
+            source = steps[stepsIt].Item1;
+            step = steps[stepsIt].Item2;
+
             ++stepsIt;
 
             return stepsIt < steps.Count;

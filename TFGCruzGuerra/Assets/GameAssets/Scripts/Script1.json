@@ -9,7 +9,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "bad:Asks_relevant_effective_questions"
+        "dialog": "bad:Asks_relevant_effective_questions"
       }
     },
     {
@@ -17,7 +17,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Carries_out_instructions_when_directed"
+        "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
     {
@@ -25,7 +25,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+        "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     },
     {
@@ -33,7 +33,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Asks_relevant_effective_questions"
+        "dialog": "good:Asks_relevant_effective_questions"
       }
     },
     {
@@ -41,7 +41,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Carries_out_instructions_when_directed"
+        "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
     {
@@ -49,7 +49,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+        "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     },
     {
@@ -57,7 +57,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Asks_relevant_effective_questions"
+        "dialog": "good:Asks_relevant_effective_questions"
       }
     },
     {
@@ -65,7 +65,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Carries_out_instructions_when_directed"
+        "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
     {
@@ -73,7 +73,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+        "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     },
     {
@@ -81,7 +81,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Asks_relevant_effective_questions"
+        "dialog": "good:Asks_relevant_effective_questions"
       }
     },
     {
@@ -89,7 +89,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Carries_out_instructions_when_directed"
+        "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
     {
@@ -97,7 +97,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "_dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+        "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     }
   ]

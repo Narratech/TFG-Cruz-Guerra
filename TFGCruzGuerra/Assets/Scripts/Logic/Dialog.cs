@@ -8,17 +8,17 @@ namespace Logic
     class Dialog : Step
     {
         [JsonProperty]
-        private string _dialog;
+        public string dialog { get; private set; }
 
         public Dialog(string dialog)
         {
-            _dialog = dialog;
+            this.dialog = dialog;
         }
 
 
         public void Play(Script script)
         {
-            UnityEngine.Debug.Log(_dialog);
+            //nothing
         }
     }
 }

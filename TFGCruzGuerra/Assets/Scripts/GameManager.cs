@@ -8,12 +8,11 @@ namespace tfg
 {
     public class GameManager : MonoBehaviour
     {
-        [HideInInspector]
-        public GameManager Instance;
+        public static GameManager Instance;
 
         [SerializeField] private Scene scene;
 
-        [SerializeField] private LevelManager levelManager;
+        [SerializeField] public LevelManager levelManager { get; private set; }
 
         private void Awake()
         {

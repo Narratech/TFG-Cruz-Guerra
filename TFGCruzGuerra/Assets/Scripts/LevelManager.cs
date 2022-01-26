@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -12,9 +13,14 @@ namespace tfg
         [SerializeField] private TextAsset firstOfficerJson;
 
         [SerializeField] private TextAsset tableCompetencesToOBJson;
+
         [SerializeField] private TextAsset tableOBStepsJson;
 
         private Logic.Script script;
+
+        //Temporal: ideal hacer objetos que traten esto mejor
+
+        string dialog;
 
         private void Awake()
         {
@@ -39,7 +45,16 @@ namespace tfg
 
         public void nextStep()
         {
-            script.Next();
+            Logic.Source source;
+            Logic.Step step;
+            script.Next(out source, out step);
+
+            switch (step)
+            {
+                case Logic.Dialog d:
+                    Debug.Log("From " + source.ToString() + ": " + d.dialog);
+                    break;
+            }
         }
     }
 }
