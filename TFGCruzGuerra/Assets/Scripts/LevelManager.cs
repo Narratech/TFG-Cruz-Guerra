@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace tfg
 {
@@ -19,8 +20,8 @@ namespace tfg
         private Logic.Script script;
 
         //Temporal: ideal hacer objetos que traten esto mejor
-
-        string dialog;
+        [SerializeField] private Image captainImage, firstOfficerImage;
+        [SerializeField] private Text captainText, firstOfficerText;
 
         private void Awake()
         {
@@ -49,10 +50,30 @@ namespace tfg
             Logic.Step step;
             script.Next(out source, out step);
 
+            captainImage.gameObject.SetActive(false);
+            firstOfficerImage.gameObject.SetActive(false);
+
             switch (step)
             {
                 case Logic.Dialog d:
-                    Debug.Log("From " + source.ToString() + ": " + d.dialog);
+                    putText(source, d.dialog);
+                    break;
+            }
+        }
+
+        private void putText(Logic.Source source, string dialog)
+        {
+            switch (source)
+            {
+                case Logic.Source.Captain:
+                    captainImage.gameObject.SetActive(true);
+                    captainText.text = "captain: " + dialog;
+                    break;
+                case Logic.Source.First_Officer:
+                    firstOfficerImage.gameObject.SetActive(true);
+                    firstOfficerText.text = "first officer: " + dialog;
+                    break;
+                case Logic.Source.Radio:
                     break;
             }
         }
