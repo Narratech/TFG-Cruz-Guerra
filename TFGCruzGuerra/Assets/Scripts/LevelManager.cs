@@ -44,6 +44,52 @@ namespace tfg
             //script.Play();
         }
 
+        public void Play()
+        {
+            StartCoroutine(PlayInCoroutine());
+        }
+
+        private IEnumerator PlayInCoroutine()
+        {
+            float startTime = Time.time;
+
+            Logic.Source sourceNow;
+            Logic.Step stepNow;
+
+            Logic.Source sourceNext;
+            Logic.Step stepNext;
+
+            script.Next(out sourceNext, out stepNext);
+
+            while (true)
+            {
+                if (stepNext.startTime > (Time.time - startTime))
+                {
+                    yield return new WaitForSeconds(0.1f);
+                    continue;
+                }
+
+                sourceNow = sourceNext;
+                stepNow = stepNext;
+
+                captainImage.gameObject.SetActive(false);
+                firstOfficerImage.gameObject.SetActive(false);
+
+                switch (stepNow)
+                {
+                    case Logic.Dialog d:
+                        putText(sourceNow, d.dialog);
+                        break;
+                }
+
+                if(!script.Next(out sourceNext, out stepNext))
+                    break;
+            }
+
+            captainImage.gameObject.SetActive(false);
+            firstOfficerImage.gameObject.SetActive(false);
+        }
+
         public void nextStep()
         {
             Logic.Source source;
@@ -68,10 +114,12 @@ namespace tfg
                 case Logic.Source.Captain:
                     captainImage.gameObject.SetActive(true);
                     captainText.text = "captain: " + dialog;
+                    Debug.Log(captainText.text);
                     break;
                 case Logic.Source.First_Officer:
                     firstOfficerImage.gameObject.SetActive(true);
                     firstOfficerText.text = "first officer: " + dialog;
+                    Debug.Log(firstOfficerText.text);
                     break;
                 case Logic.Source.Radio:
                     break;

@@ -5,8 +5,9 @@ using System.Text;
 namespace Logic
 {
     //Esta interfaz la implementarán los diálogos, animaciones, pulsaciones de botón, etc.
-    interface Step
+    abstract class Step
     {
-        void Play(Script script);
+        public float startTime, duration;
+        public abstract void Play(Script script);
     }
 }

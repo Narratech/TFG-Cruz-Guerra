@@ -185,8 +185,6 @@ namespace Logic
             script.Create(s, p, cp, tcob, obs, null, Source.Captain);
 
             script.ExportToJSON("Scripts/Script1", true);
-
-            script.Play();
         }
     }
 }

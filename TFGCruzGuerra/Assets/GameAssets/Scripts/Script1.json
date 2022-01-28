@@ -9,6 +9,8 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 0.0,
+        "duration": 1.0,
         "dialog": "bad:Asks_relevant_effective_questions"
       }
     },
@@ -17,6 +19,8 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 1.0,
+        "duration": 1.0,
         "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
@@ -25,6 +29,8 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 2.0,
+        "duration": 1.0,
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     },
@@ -33,6 +39,8 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 3.0,
+        "duration": 1.0,
         "dialog": "good:Asks_relevant_effective_questions"
       }
     },
@@ -41,6 +49,8 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 4.0,
+        "duration": 1.0,
         "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
@@ -49,6 +59,8 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 5.0,
+        "duration": 1.0,
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     },
@@ -57,6 +69,8 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 6.0,
+        "duration": 1.0,
         "dialog": "good:Asks_relevant_effective_questions"
       }
     },
@@ -65,6 +79,8 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 7.0,
+        "duration": 1.0,
         "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
@@ -73,6 +89,8 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 8.0,
+        "duration": 1.0,
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     },
@@ -81,6 +99,8 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 9.0,
+        "duration": 1.0,
         "dialog": "good:Asks_relevant_effective_questions"
       }
     },
@@ -89,6 +109,8 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 10.0,
+        "duration": 1.0,
         "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
@@ -97,6 +119,8 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 11.0,
+        "duration": 1.0,
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     }

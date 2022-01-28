@@ -23,11 +23,12 @@ namespace Logic
         {
             if (OB != null && OB != "") {
                 bool found = isGood ? StepsIfGood.ContainsKey(OB) : StepsIfBad.ContainsKey(OB);
-              
+                
                 if (!found)
                     addDefaultStep(OB);
 
-                return isGood ? StepsIfGood[OB] : StepsIfBad[OB];
+                List<Step> steps = isGood ? new List<Step>(StepsIfGood[OB]) : new List<Step>(StepsIfBad[OB]);
+                return stepsCloned(steps);
             }
             return null;
         }
@@ -40,8 +41,21 @@ namespace Logic
 
             List<Step> stepsBad = new List<Step>();
             stepsBad.Add(new Dialog("bad:" + OB));
-
             StepsIfBad.Add(OB, stepsBad);
+        }
+
+        private List<Step> stepsCloned(List<Step> steps)
+        {
+            for(int i = 0; i < steps.Count; i++)
+            {
+                switch (steps[i])
+                {
+                    case Dialog d:
+                        steps[i] = new Dialog(d.dialog);
+                        break;
+                }
+            }
+            return steps;
         }
     }
 }

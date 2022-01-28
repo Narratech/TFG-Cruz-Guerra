@@ -76,26 +76,46 @@ namespace Logic
 
             stepsIt = 0;
 
+            float time = 0.0f;
+            float defaultDuration = 1.0f; //in seconds
+
             foreach (Event e in scene.Events)
             {
                 FileInfo f_captain = hasPredefined(e, captain_);
                 FileInfo f_firstOfficer = hasPredefined(e, firstOfficer_);
                 //FileInfo f_radio = hasPredefined(e, radio_);
 
-                if (f_captain != null)
-                    fillWithPredefined(e, captain_, f_captain, toOB, ref steps_captain);
-                else
-                    fillWithGeneric(e, captain_, oB_Steps, toOB, ref steps_captain);
+                if(current_ == Source.Captain)
+                {
+                    if (f_captain != null)
+                        fillWithPredefined(e, captain_, f_captain, toOB, ref steps_captain, ref time);
+                    else
+                        fillWithGeneric(e, captain_, oB_Steps, toOB, ref steps_captain, ref time, defaultDuration);
 
-                if (f_firstOfficer != null)
-                    fillWithPredefined(e, firstOfficer_, f_firstOfficer, toOB, ref steps_firstOfficer);
-                else
-                    fillWithGeneric(e, firstOfficer_, oB_Steps, toOB, ref steps_firstOfficer);
+                    if (f_firstOfficer != null)
+                        fillWithPredefined(e, firstOfficer_, f_firstOfficer, toOB, ref steps_firstOfficer, ref time);
+                    else
+                        fillWithGeneric(e, firstOfficer_, oB_Steps, toOB, ref steps_firstOfficer, ref time, defaultDuration);
+                    //if (f_radio != null)
+                    //    fillWithPredefined(f_radio, ref steps_radio);
+                    //else
+                    //    fillWithGeneric(e, ref steps_radio);
+                }
+                else if (current_ == Source.First_Officer) {
 
-                //if (f_radio != null)
-                //    fillWithPredefined(f_radio, ref steps_radio);
-                //else
-                //    fillWithGeneric(e, ref steps_radio);
+                    if (f_firstOfficer != null)
+                        fillWithPredefined(e, firstOfficer_, f_firstOfficer, toOB, ref steps_firstOfficer, ref time);
+                    else
+                        fillWithGeneric(e, firstOfficer_, oB_Steps, toOB, ref steps_firstOfficer, ref time, defaultDuration);
+                    if (f_captain != null)
+                        fillWithPredefined(e, captain_, f_captain, toOB, ref steps_captain, ref time);
+                    else
+                        fillWithGeneric(e, captain_, oB_Steps, toOB, ref steps_captain, ref time, defaultDuration);
+                    //if (f_radio != null)
+                    //    fillWithPredefined(f_radio, ref steps_radio);
+                    //else
+                    //    fillWithGeneric(e, ref steps_radio);
+                }
 
                 while (steps_captain.Count > 0 || steps_firstOfficer.Count > 0)
                 {
@@ -171,18 +191,23 @@ namespace Logic
             return null;
         }
 
-        private void fillWithGeneric(Event e, Pilot p, Table_OB_Steps oB_Steps, Table_CompetencesToOB toOB, ref Queue<Step> q)
+        private void fillWithGeneric(Event e, Pilot p, Table_OB_Steps oB_Steps, Table_CompetencesToOB toOB, ref Queue<Step> q, ref float time, float defaultDuration)
         {
             foreach (string OB in e.OBs) {
                 float hability = p.Competences[toOB.getCompetenceFromOB(OB)];
                 List <Step> steps = oB_Steps.getStepsForOB(OB, hability > e.Difficulty);
                 if(steps != null)
                     foreach (Step s in steps)
+                    {
+                        s.startTime = time;
+                        s.duration = defaultDuration;
+                        time += defaultDuration;
                         q.Enqueue(s);
+                    }
             }
         }
         
-        private void fillWithPredefined(Event e, Pilot p, FileInfo f, Table_CompetencesToOB toOB, ref Queue<Step> q)
+        private void fillWithPredefined(Event e, Pilot p, FileInfo f, Table_CompetencesToOB toOB, ref Queue<Step> q, ref float time)
         {
             SpecificStepsForEvent specificStepsForEvent = JsonManager.ImportFromJSON<SpecificStepsForEvent>(f.FullName, true);
 
@@ -196,19 +221,16 @@ namespace Logic
          
             if(hability > e.Difficulty)
                 foreach (Step s in specificStepsForEvent.StepsIfGood)
+                {
                     q.Enqueue(s);
+                    time += s.duration;
+                }
             else
                 foreach (Step s in specificStepsForEvent.StepsIfBad)
+                {
                     q.Enqueue(s);
-        }
-
-        public void Play()
-        {
-            foreach(Tuple<Source, Step> s in steps)
-            {
-                UnityEngine.Debug.Log("From " + s.Item1.ToString() + ": ");
-                s.Item2.Play(this);
-            }
+                    time += s.duration;
+                }
         }
 
         /// <summary>

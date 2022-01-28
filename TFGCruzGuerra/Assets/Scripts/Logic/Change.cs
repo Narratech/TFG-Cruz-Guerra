@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Logic
 {
-    class Change : JsonManager, Step
+    class Change : Step
     {
         [JsonProperty]
         private Source source_;
-        public void Play(Script script)
+        public override void Play(Script script)
         {
             script.setCurrent(source_);
         }

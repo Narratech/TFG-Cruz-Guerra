@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Logic
 {
-    class EntryPoint : JsonManager, Step
+    class EntryPoint : Step
     {
         [JsonProperty]
         Source starter_;
-        public void Play(Script script)
+        public override void Play(Script script)
         {
             throw new NotImplementedException();
         }

@@ -16,7 +16,7 @@ namespace Logic
         }
 
 
-        public void Play(Script script)
+        public override void Play(Script script)
         {
             //nothing
         }
