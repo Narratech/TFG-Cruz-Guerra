@@ -208,12 +208,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1483610955}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: tfg.GameManager, Assembly-CSharp
         m_MethodName: goToScene
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 66537793}
-          m_ObjectArgumentAssemblyTypeName: ButtonsScene, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: tfg.ButtonsScene, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -355,12 +355,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1483610955}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: tfg.GameManager, Assembly-CSharp
         m_MethodName: goToScene
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 328680015}
-          m_ObjectArgumentAssemblyTypeName: ButtonsScene, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: tfg.ButtonsScene, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1449,12 +1449,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1483610955}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: tfg.GameManager, Assembly-CSharp
         m_MethodName: goToScene
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1657038128}
-          m_ObjectArgumentAssemblyTypeName: ButtonsScene, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: tfg.ButtonsScene, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1596,12 +1596,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1483610955}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: tfg.GameManager, Assembly-CSharp
         m_MethodName: goToScene
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1712336089}
-          m_ObjectArgumentAssemblyTypeName: ButtonsScene, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: tfg.ButtonsScene, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1905,12 +1905,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1483610955}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: tfg.GameManager, Assembly-CSharp
         m_MethodName: goToScene
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1917447496}
-          m_ObjectArgumentAssemblyTypeName: ButtonsScene, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: tfg.ButtonsScene, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

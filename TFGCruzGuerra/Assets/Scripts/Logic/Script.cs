@@ -195,10 +195,13 @@ namespace Logic
         {
             foreach (string OB in e.OBs) {
                 float hability = p.Competences[toOB.getCompetenceFromOB(OB)];
-                List <Step> steps = oB_Steps.getStepsForOB(OB, hability > e.Difficulty);
+                bool isGood = hability > e.Difficulty;
+                List <Step> steps = oB_Steps.getStepsForOB(OB, isGood);
                 if(steps != null)
                     foreach (Step s in steps)
                     {
+                        s.OB = OB;
+                        s.result = isGood ? Step.Result.Good : Step.Result.Bad;
                         s.startTime = time;
                         s.duration = defaultDuration;
                         time += defaultDuration;

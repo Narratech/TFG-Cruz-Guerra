@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 1799986088}
   - component: {fileID: 1799986087}
   - component: {fileID: 3204232500515849192}
+  - component: {fileID: 5646191349823369507}
   m_Layer: 5
   m_Name: OBSelector
   m_TagString: Untagged
@@ -357,9 +358,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3307043, y: 0.45851496}
   m_AnchorMax: {x: 0.69536024, y: 0.5298119}
-  m_AnchoredPosition: {x: 9.835693, y: 4.5}
+  m_AnchoredPosition: {x: 9.835693, y: -30.13321}
   m_SizeDelta: {x: -79.49524, y: 9.895203}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: -3}
 --- !u!222 &1799986088
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -411,3 +412,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 117906603322071002}
+--- !u!114 &5646191349823369507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289014225816026500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b0af189b0630d4ab84796b70181448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 21

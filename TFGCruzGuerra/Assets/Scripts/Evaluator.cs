@@ -1,13 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Evaluator : MonoBehaviour
+namespace tfg
 {
-    public void setPos(int index)
+
+    public class Evaluator : MonoBehaviour
     {
-        if (index < positions.Length && index >= 0)
-            transform.position = positions[index].position;
+        public void setPos(int index)
+        {
+            if (index < positions.Length && index >= 0)
+                transform.position = positions[index].position;
+        }
+        public void setRandomOBs()
+        {
+
+        }
+        [SerializeField] Transform[] positions;
+        [SerializeField] LevelManager levelManager;
+        [SerializeField] TextModifier[] OB;
     }
-    [SerializeField] Transform[] positions;
 }
