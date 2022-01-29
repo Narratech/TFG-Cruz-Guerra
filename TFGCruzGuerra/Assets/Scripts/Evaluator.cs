@@ -7,7 +7,7 @@ namespace tfg
 
     public class Evaluator : MonoBehaviour
     {
-        private void Start()
+        private void Awake()
         {
             _CompetencesToOB = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(Application.persistentDataPath + "/Tables/TableCompetenceToOB.json");
         }
@@ -21,38 +21,61 @@ namespace tfg
             //todo cambiar esto. Las tablas van en el gameManager
             string myOB = _levelManager.getCurrentStep().OB;
             string comp = _CompetencesToOB.getCompetenceFromOB(myOB);
-            HashSet<string> myCompetences = _CompetencesToOB.GetOBsFromCompetence(comp);
+            HashSet<string> OBSet = _CompetencesToOB.GetOBsFromCompetence(comp);
+            int fin = Math.Min(_OB.Length, OBSet.Count);
             //quitamos del set el ob que no nos interesa
             LinkedList<string> OBToRemove = new LinkedList<string>();
             OBToRemove.AddFirst(new LinkedListNode<string>(myOB));
-            myCompetences.ExceptWith(OBToRemove);
-
-            _correct = UnityEngine.Random.Range(0, _OB.Length);
+            OBSet.ExceptWith(OBToRemove);
+            string[] allOBs = new string[OBSet.Count];
+           //Copia profunda
+            OBSet.CopyTo(allOBs);
+            _correct = UnityEngine.Random.Range(0, fin);
             OBToRemove.RemoveFirst();
-            for (int i = 0; i < _correct; i++)
+            int firstElement = 0;
+            //cogemos uno al azar del array entre nuestro "primero" y el final
+            //tras elegir el OB, ponemos nuestro "primero" en el índice del OB
+            //y finalmente nuestro "primero" pasa a ser el siguiente. De esta forma
+            //evitamos repeticiones y todos los OB tienen posibilidad de salir.
+            //Repetimos este proceso hasta el correcto
+            int i = 0;
+            for (; i < _correct; i++)
             {
-                string randOB = /*myCompetences.get()*/"2";
+                int index = UnityEngine.Random.Range(firstElement, allOBs.Length);
+                string randOB = allOBs[index];
+                allOBs[index] = allOBs[firstElement];
+                firstElement++;
                 _OB[i].setOB(randOB);
-                OBToRemove.AddFirst(new LinkedListNode<string>(randOB));
-                myCompetences.ExceptWith(OBToRemove);
-                OBToRemove.RemoveFirst();
+                _OB[i].gameObject.SetActive(true);
             }
+            //colocamos el correcto
             _OB[_correct].setOB(myOB);
-            for (int i = _correct + 1; i < _OB.Length; i++)
+            _OB[_correct].gameObject.SetActive(true);
+            i++;
+            //proseguimos el proceso anterior hasta el final de las opciones
+            for (; i < fin; i++)
             {
-                string randOB = /*myCompetences.get()*/"1";
+                int index = UnityEngine.Random.Range(firstElement, allOBs.Length);
+                string randOB = allOBs[index];
+                allOBs[index] = allOBs[firstElement];
+                firstElement++;
                 _OB[i].setOB(randOB);
-                OBToRemove.AddFirst(new LinkedListNode<string>(randOB));
-                myCompetences.ExceptWith(OBToRemove);
-                OBToRemove.RemoveFirst();
+                _OB[i].gameObject.SetActive(true);
             }
+            //por si hay no hay suficientes OB
+            for (; i < _OB.Length;i++)
+            {
+                _OB[i].gameObject.SetActive(false);
+            }
+            
+            
         }
         public void evaluate(string oB, bool isPositive,Vector2 position)
         {
             Logic.Step.Result r = _levelManager.getCurrentStep().result;
             //todo supongo que aquí habría que hacer algo relacionado con el score pero no se muy bien como llevarlo
             if (oB == _OB[_correct].getOB() &&
-                (isPositive && r == Logic.Step.Result.Good) || (!isPositive && r == Logic.Step.Result.Bad))
+                ((isPositive && r == Logic.Step.Result.Good) || (!isPositive && r == Logic.Step.Result.Bad)))
             {
                 _resultText.setText("+1");
                 _resultText.setColor(Color.green);

@@ -30,6 +30,9 @@ namespace tfg
                 print(_angle);
                 bool accept = _angle < 0;
                 _evaluator.evaluate(_OB, accept,eventData.position);
+                transform.localEulerAngles = Vector3.zero;
+                _angle = 0;
+                _myPanel.close();
 
             }
         }
@@ -46,6 +49,7 @@ namespace tfg
         float _angle;
         [SerializeField] TextModifier _modifier;
         [SerializeField] Evaluator _evaluator;
+        [SerializeField] PopUpPanel _myPanel;
         [SerializeField] float _maxAngle = 21;
         [SerializeField] float _acceptAngle = 12;
         [SerializeField] float _dragDivisor = 2;
