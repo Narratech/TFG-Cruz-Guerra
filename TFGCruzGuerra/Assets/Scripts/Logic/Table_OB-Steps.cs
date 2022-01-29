@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Logic
 {
-    class Table_OB_Steps : JsonManager
+  public  class Table_OB_Steps : JsonManager
     {
         public Table_OB_Steps()
         {

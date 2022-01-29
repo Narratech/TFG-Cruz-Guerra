@@ -28,7 +28,7 @@ using System.Text;
 
 namespace Logic
 {
-    class Script : JsonManager
+    public class Script : JsonManager
     {
         private Stage scene_;
 
@@ -85,7 +85,7 @@ namespace Logic
                 FileInfo f_firstOfficer = hasPredefined(e, firstOfficer_);
                 //FileInfo f_radio = hasPredefined(e, radio_);
 
-                if(current_ == Source.Captain)
+                if (current_ == Source.Captain)
                 {
                     if (f_captain != null)
                         fillWithPredefined(e, captain_, f_captain, toOB, ref steps_captain, ref time);
@@ -101,7 +101,8 @@ namespace Logic
                     //else
                     //    fillWithGeneric(e, ref steps_radio);
                 }
-                else if (current_ == Source.First_Officer) {
+                else if (current_ == Source.First_Officer)
+                {
 
                     if (f_firstOfficer != null)
                         fillWithPredefined(e, firstOfficer_, f_firstOfficer, toOB, ref steps_firstOfficer, ref time);
@@ -119,14 +120,16 @@ namespace Logic
 
                 while (steps_captain.Count > 0 || steps_firstOfficer.Count > 0)
                 {
-                    if (current_ == Source.Captain && steps_captain.Count == 0) {  //Si al captain no le quedan steps
+                    if (current_ == Source.Captain && steps_captain.Count == 0)
+                    {  //Si al captain no le quedan steps
                         //Si al first officer si le quedan hay que seguir. Si tampoco le quedan, se pasa de evento
                         if (steps_firstOfficer.Count > 0)
                             current_ = Source.First_Officer;
                         else
                             break;
                     }
-                    else if (current_ == Source.First_Officer && steps_firstOfficer.Count == 0) { //Si al first officer no le quedan steps
+                    else if (current_ == Source.First_Officer && steps_firstOfficer.Count == 0)
+                    { //Si al first officer no le quedan steps
                         //Si al captain si le quedan hay que seguir. Si tampoco le quedan, se pasa de evento
                         if (steps_captain.Count > 0)
                             current_ = Source.Captain;
@@ -147,12 +150,12 @@ namespace Logic
                         case Source.Radio:
                             break;
                     }
-                    
+
                     if (s is Change)
                         s.Play(this);
 
                     steps.Add(new Tuple<Source, Step>(current_, s));
-                }   
+                }
             }
             return 0;
         }
@@ -193,11 +196,12 @@ namespace Logic
 
         private void fillWithGeneric(Event e, Pilot p, Table_OB_Steps oB_Steps, Table_CompetencesToOB toOB, ref Queue<Step> q, ref float time, float defaultDuration)
         {
-            foreach (string OB in e.OBs) {
+            foreach (string OB in e.OBs)
+            {
                 float hability = p.Competences[toOB.getCompetenceFromOB(OB)];
                 bool isGood = hability > e.Difficulty;
-                List <Step> steps = oB_Steps.getStepsForOB(OB, isGood);
-                if(steps != null)
+                List<Step> steps = oB_Steps.getStepsForOB(OB, isGood);
+                if (steps != null)
                     foreach (Step s in steps)
                     {
                         s.OB = OB;
@@ -209,7 +213,7 @@ namespace Logic
                     }
             }
         }
-        
+
         private void fillWithPredefined(Event e, Pilot p, FileInfo f, Table_CompetencesToOB toOB, ref Queue<Step> q, ref float time)
         {
             SpecificStepsForEvent specificStepsForEvent = JsonManager.ImportFromJSON<SpecificStepsForEvent>(f.FullName, true);
@@ -221,8 +225,8 @@ namespace Logic
                 aux = p.Competences[toOB.getCompetenceFromOB(OB)];
                 hability += aux / e.OBs.Count;
             }
-         
-            if(hability > e.Difficulty)
+
+            if (hability > e.Difficulty)
                 foreach (Step s in specificStepsForEvent.StepsIfGood)
                 {
                     q.Enqueue(s);
@@ -244,7 +248,7 @@ namespace Logic
         {
             source = Source.Captain;
             step = null;
-            if(stepsIt >= steps.Count)
+            if (stepsIt >= steps.Count)
                 return false;
 
             source = steps[stepsIt].Item1;
@@ -254,5 +258,6 @@ namespace Logic
 
             return stepsIt < steps.Count;
         }
+        
     }
 }

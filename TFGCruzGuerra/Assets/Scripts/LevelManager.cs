@@ -22,6 +22,7 @@ namespace tfg
         //Temporal: ideal hacer objetos que traten esto mejor
         [SerializeField] private Image captainImage, firstOfficerImage;
         [SerializeField] private Text captainText, firstOfficerText;
+        Logic.Step _currentStep;
 
         private void Awake()
         {
@@ -31,15 +32,15 @@ namespace tfg
 
         public void testLevel()
         {
-            //Logic.Stage stage = Logic.JsonManager.ImportFromJSON<Logic.Stage>(AssetDatabase.GetAssetPath(stageJson));
-            //Logic.Pilot captain = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(captainJson));
-            //Logic.Pilot firstOfficer = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(firstOfficerJson));
+            Logic.Stage stage = Logic.JsonManager.ImportFromJSON<Logic.Stage>(AssetDatabase.GetAssetPath(stageJson));
+            Logic.Pilot captain = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(captainJson));
+            Logic.Pilot firstOfficer = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(firstOfficerJson));
 
-            //Logic.Table_CompetencesToOB tcob = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(AssetDatabase.GetAssetPath(tableCompetencesToOBJson));
-            //Logic.Table_OB_Steps obs = Logic.JsonManager.ImportFromJSON<Logic.Table_OB_Steps>(AssetDatabase.GetAssetPath(tableOBStepsJson), true);
-            //script.Create(stage, captain, firstOfficer, tcob, obs, null, Logic.Source.Captain);
+            Logic.Table_CompetencesToOB tcob = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(AssetDatabase.GetAssetPath(tableCompetencesToOBJson));
+            Logic.Table_OB_Steps obs = Logic.JsonManager.ImportFromJSON<Logic.Table_OB_Steps>(AssetDatabase.GetAssetPath(tableOBStepsJson), true);
+            script.Create(stage, captain, firstOfficer, tcob, obs, null, Logic.Source.Captain);
 
-            //script.ExportToJSON("Assets/GameAssets/Scripts/Script1", true);
+            script.ExportToJSON("Assets/GameAssets/Scripts/Script1", true);
 
             //script.Play();
         }
@@ -60,7 +61,6 @@ namespace tfg
             Logic.Step stepNext;
 
             script.Next(out sourceNext, out stepNext);
-
             while (true)
             {
                 if (stepNext.startTime > (Time.time - startTime))
@@ -81,8 +81,9 @@ namespace tfg
                         putText(sourceNow, d.dialog);
                         break;
                 }
+                _currentStep = stepNext;
 
-                if(!script.Next(out sourceNext, out stepNext))
+                if (!script.Next(out sourceNext, out stepNext))
                     break;
             }
 
@@ -105,6 +106,7 @@ namespace tfg
                     putText(source, d.dialog);
                     break;
             }
+            _currentStep = step;
         }
 
         private void putText(Logic.Source source, string dialog)
@@ -125,5 +127,6 @@ namespace tfg
                     break;
             }
         }
+        public Logic.Step getCurrentStep() { return _currentStep; }
     }
 }

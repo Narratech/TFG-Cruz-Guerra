@@ -17,7 +17,7 @@ using System.Text;
 
 namespace Logic
 {
-    class Event : JsonManager
+    public class Event : JsonManager
     {
         [JsonProperty]
         public string Name { get; set; }

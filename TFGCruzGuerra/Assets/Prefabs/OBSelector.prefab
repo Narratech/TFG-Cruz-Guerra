@@ -424,4 +424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b0af189b0630d4ab84796b70181448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAngle: 21
+  _modifier: {fileID: 3204232500515849192}
+  _maxAngle: 21
+  _dragDivisor: 2

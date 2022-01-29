@@ -5,7 +5,7 @@ using System.Text;
 namespace Logic
 {
     //Esta interfaz la implementarán los diálogos, animaciones, pulsaciones de botón, etc.
-    abstract class Step
+    public abstract class Step
     {
         public enum Result { Good = 0, Bad = 1 }
         public float startTime, duration;

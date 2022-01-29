@@ -24,7 +24,7 @@ namespace Logic
 {
     public enum WeatherTypes { Sunny, Windy, Rainy }
 
-    class Stage:JsonManager
+   public class Stage:JsonManager
     {
         [JsonProperty]
         public string Name { get; private set; }
