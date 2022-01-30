@@ -9,6 +9,25 @@ public class PopUpPanel : MonoBehaviour
     /// de este con la nueva funcionalidad
     /// </summary>
     [SerializeField] GameObject _panel;
-    public virtual void close() { _panel.SetActive(false); }
-    public virtual void open() { _panel.SetActive(true); }
+
+    Animator anim;
+
+    [SerializeField] AnimationClip openClip, closeClip;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    public virtual void close() {
+        if (anim && closeClip)
+        {
+            anim.Play(closeClip.name);
+        }
+    }
+
+    public virtual void open() {
+        if(anim && openClip)
+            anim.Play(openClip.name);
+    }
 }
