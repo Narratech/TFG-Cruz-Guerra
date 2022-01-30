@@ -14,15 +14,25 @@ namespace tfg
 
         [SerializeField] public LevelManager levelManager { get; private set; }
 
+        public Logic.Table_CompetencesToOB competencesToOB { get; private set; }
+        public Logic.Table_OB_Steps OBToSteps { get; private set; }
         private void Awake()
         {
-            if(Instance != null)
+            if (Instance != null)
             {
                 Instance.scene = scene;
 
                 Instance.levelManager = levelManager;
 
+                Instance.competencesToOB = competencesToOB;
+                
+                Instance.OBToSteps = OBToSteps;
                 Destroy(gameObject);
+            }
+            else
+            {
+                OBToSteps = Logic.JsonManager.ImportFromJSON<Logic.Table_OB_Steps>(Application.persistentDataPath + "/Tables/TableOBtoSteps.json");
+                competencesToOB = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(Application.persistentDataPath + "/Tables/TableCompetenceToOB.json");
             }
 
             Instance = this;
@@ -36,11 +46,11 @@ namespace tfg
 
         public void exit()
         {
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#else
             Application.Quit();
-    #endif
+#endif
         }
     }
 }

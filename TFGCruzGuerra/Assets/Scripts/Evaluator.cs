@@ -7,10 +7,17 @@ namespace tfg
 
     public class Evaluator : MonoBehaviour
     {
+        int _correct;
+        [SerializeField] TextModifier _resultText;
+        [SerializeField] Animator _resultAnimator;
+        [SerializeField] Transform[] _positions;
+        [SerializeField] LevelManager _levelManager;
+        [SerializeField] OBSelector[] _OB;
+        Logic.Table_CompetencesToOB _CompetencesToOB;
         private void Awake()
         {
-            _CompetencesToOB = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(Application.persistentDataPath + "/Tables/TableCompetenceToOB.json");
-            _resultAnimator.Play("Fade Up", 0, 1);
+            _CompetencesToOB = GameManager.Instance.competencesToOB;
+
         }
         public void setPos(int index)
         {
@@ -19,7 +26,6 @@ namespace tfg
         }
         public void setRandomOBs()
         {
-            //todo cambiar esto. Las tablas van en el gameManager
             string myOB = _levelManager.getCurrentStep().OB;
             string comp = _CompetencesToOB.getCompetenceFromOB(myOB);
             HashSet<string> OBSet = _CompetencesToOB.GetOBsFromCompetence(comp);
@@ -29,7 +35,7 @@ namespace tfg
             OBToRemove.AddFirst(new LinkedListNode<string>(myOB));
             OBSet.ExceptWith(OBToRemove);
             string[] allOBs = new string[OBSet.Count];
-           //Copia profunda
+            //Copia profunda
             OBSet.CopyTo(allOBs);
             _correct = UnityEngine.Random.Range(0, fin);
             OBToRemove.RemoveFirst();
@@ -64,14 +70,14 @@ namespace tfg
                 _OB[i].gameObject.SetActive(true);
             }
             //por si hay no hay suficientes OB
-            for (; i < _OB.Length;i++)
+            for (; i < _OB.Length; i++)
             {
                 _OB[i].gameObject.SetActive(false);
             }
-            
-            
+
+
         }
-        public void evaluate(string oB, bool isPositive,Vector2 position)
+        public void evaluate(string oB, bool isPositive, Vector2 position)
         {
             Logic.Step.Result r = _levelManager.getCurrentStep().result;
             //todo supongo que aquí habría que hacer algo relacionado con el score pero no se muy bien como llevarlo
@@ -89,15 +95,8 @@ namespace tfg
             }
             _resultText.setPos(position);
 
-            _resultAnimator.Play("Fade Up", 0,0);
+            _resultAnimator.Play("Fade Up", 0, 0);
         }
-        int _correct;
-        [SerializeField] TextModifier _resultText;
-        [SerializeField] Animator _resultAnimator;
-        [SerializeField] Transform[] _positions;
-        [SerializeField] LevelManager _levelManager;
-        [SerializeField] OBSelector[] _OB;
-        Logic.Table_CompetencesToOB _CompetencesToOB;
 
     }
 }

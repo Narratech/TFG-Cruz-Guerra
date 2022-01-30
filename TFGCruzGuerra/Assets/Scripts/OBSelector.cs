@@ -10,6 +10,16 @@ namespace tfg
     public class OBSelector : MonoBehaviour, IDragHandler, IEndDragHandler
     {
 
+        string _OB;
+        float _angle;
+        bool _animate;
+        [SerializeField] TextModifier _modifier;
+        [SerializeField] Evaluator _evaluator;
+        [SerializeField] PopUpPanel _myPanel;
+        [SerializeField] float _maxAngle = 21;
+        [SerializeField] float _rotVel;
+        [SerializeField] float _acceptAngle = 12;
+        [SerializeField] float _dragDivisor = 2;
         public void OnDrag(PointerEventData eventData)
         {
             _animate = false;
@@ -28,7 +38,6 @@ namespace tfg
             //sabemos que es positivo si el ángulo es negativo y solo evaluamos si el jugador no ha deshecho la eleccion
             if (Mathf.Abs(_angle) > _acceptAngle)
             {
-                print(_angle);
                 bool accept = _angle < 0;
                 _evaluator.evaluate(_OB, accept, eventData.position);
                 transform.localEulerAngles = Vector3.zero;
@@ -62,16 +71,6 @@ namespace tfg
         {
             return _OB;
         }
-        string _OB;
-        float _angle;
-        bool _animate;
-        [SerializeField] TextModifier _modifier;
-        [SerializeField] Evaluator _evaluator;
-        [SerializeField] PopUpPanel _myPanel;
-        [SerializeField] float _maxAngle = 21;
-        [SerializeField] float _rotVel;
-        [SerializeField] float _acceptAngle = 12;
-        [SerializeField] float _dragDivisor = 2;
 
     }
 

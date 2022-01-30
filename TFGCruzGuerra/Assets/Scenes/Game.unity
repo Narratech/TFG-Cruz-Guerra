@@ -236,7 +236,7 @@ RectTransform:
   - {fileID: 382120798}
   - {fileID: 1658410368}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -542,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3919772526075093209, guid: 1164518ad3df07e47a4aa17495f38f7c, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3919772526075093209, guid: 1164518ad3df07e47a4aa17495f38f7c, type: 3}
       propertyPath: m_LocalScale.x
@@ -916,7 +916,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &749486197
 GameObject:
@@ -950,8 +950,6 @@ MonoBehaviour:
   stageJson: {fileID: 4900000, guid: 4679da4ab2f9dfb43a0eda0788342ed6, type: 3}
   captainJson: {fileID: 4900000, guid: 7e252a45b3b2d414e96bea6342063393, type: 3}
   firstOfficerJson: {fileID: 4900000, guid: bcfa93f6c8b0d34409b7fc9de16ba4be, type: 3}
-  tableCompetencesToOBJson: {fileID: 4900000, guid: 366d71992f3ee4d4f98e2fb1102ff2cf, type: 3}
-  tableOBStepsJson: {fileID: 4900000, guid: c0dc5c93c4c05cc47ac272db6a88d19c, type: 3}
   captainImage: {fileID: 1060686848}
   firstOfficerImage: {fileID: 1077421910}
   captainText: {fileID: 658259415}
@@ -1058,7 +1056,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6222631403810918563, guid: 9ef5f59c124c68345a73029b13e0e214, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222631403810918563, guid: 9ef5f59c124c68345a73029b13e0e214, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2104,7 +2102,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1978408468
 GameObject:
@@ -2277,7 +2275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4076891100568910, guid: 639ac7944bb681a42b4c77d9e38087af, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4076891100568910, guid: 639ac7944bb681a42b4c77d9e38087af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2370,7 +2368,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8f521142331eeff40984c8fd14bc822b, type: 2}
     - target: {fileID: 309172527179981202, guid: adc1e514cbe173645ae464d0ae339354, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 309172527179981202, guid: adc1e514cbe173645ae464d0ae339354, type: 3}
       propertyPath: m_LocalScale.x
@@ -2668,7 +2666,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8f521142331eeff40984c8fd14bc822b, type: 2}
     - target: {fileID: 309172527179981202, guid: adc1e514cbe173645ae464d0ae339354, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 309172527179981202, guid: adc1e514cbe173645ae464d0ae339354, type: 3}
       propertyPath: m_LocalScale.x
@@ -2921,7 +2919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3919772526075093209, guid: 1164518ad3df07e47a4aa17495f38f7c, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3919772526075093209, guid: 1164518ad3df07e47a4aa17495f38f7c, type: 3}
       propertyPath: m_LocalScale.x

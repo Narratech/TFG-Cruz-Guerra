@@ -13,9 +13,7 @@ namespace tfg
         [SerializeField] private TextAsset captainJson;
         [SerializeField] private TextAsset firstOfficerJson;
 
-        [SerializeField] private TextAsset tableCompetencesToOBJson;
 
-        [SerializeField] private TextAsset tableOBStepsJson;
 
         private Logic.Script script;
 
@@ -36,9 +34,7 @@ namespace tfg
             Logic.Pilot captain = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(captainJson));
             Logic.Pilot firstOfficer = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(firstOfficerJson));
 
-            Logic.Table_CompetencesToOB tcob = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(AssetDatabase.GetAssetPath(tableCompetencesToOBJson));
-            Logic.Table_OB_Steps obs = Logic.JsonManager.ImportFromJSON<Logic.Table_OB_Steps>(AssetDatabase.GetAssetPath(tableOBStepsJson), true);
-            script.Create(stage, captain, firstOfficer, tcob, obs, null, Logic.Source.Captain);
+            script.Create(stage, captain, firstOfficer, GameManager.Instance.competencesToOB, GameManager.Instance.OBToSteps, null, Logic.Source.Captain);
 
             script.ExportToJSON("Assets/GameAssets/Scripts/Script1", true);
 
