@@ -10,6 +10,7 @@ namespace tfg
         private void Awake()
         {
             _CompetencesToOB = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(Application.persistentDataPath + "/Tables/TableCompetenceToOB.json");
+            _resultAnimator.Play("Fade Up", 0, 1);
         }
         public void setPos(int index)
         {
@@ -87,8 +88,8 @@ namespace tfg
                 _resultText.setColor(Color.red);
             }
             _resultText.setPos(position);
-            //_resultAnimator.Play("Fade Up");
 
+            _resultAnimator.Play("Fade Up", 0,0);
         }
         int _correct;
         [SerializeField] TextModifier _resultText;
