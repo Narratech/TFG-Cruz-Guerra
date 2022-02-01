@@ -10,7 +10,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 0.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 1,
         "OB": "Asks_relevant_effective_questions",
         "dialog": "bad:Asks_relevant_effective_questions"
@@ -22,7 +22,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 1.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Carries_out_instructions_when_directed",
         "dialog": "good:Carries_out_instructions_when_directed"
@@ -34,7 +34,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 2.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
@@ -46,7 +46,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 3.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Asks_relevant_effective_questions",
         "dialog": "good:Asks_relevant_effective_questions"
@@ -58,7 +58,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 4.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Carries_out_instructions_when_directed",
         "dialog": "good:Carries_out_instructions_when_directed"
@@ -70,7 +70,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 5.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
@@ -82,7 +82,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 6.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Asks_relevant_effective_questions",
         "dialog": "good:Asks_relevant_effective_questions"
@@ -94,7 +94,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 7.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Carries_out_instructions_when_directed",
         "dialog": "good:Carries_out_instructions_when_directed"
@@ -106,7 +106,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 8.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
@@ -118,7 +118,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 9.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Asks_relevant_effective_questions",
         "dialog": "good:Asks_relevant_effective_questions"
@@ -130,7 +130,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 10.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Carries_out_instructions_when_directed",
         "dialog": "good:Carries_out_instructions_when_directed"
@@ -142,7 +142,7 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 11.0,
-        "duration": 1.0,
+        "duration": 2.0,
         "result": 0,
         "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"

@@ -15,7 +15,6 @@ namespace tfg
         [SerializeField] OBSelector[] _OB;
         Logic.Table_CompetencesToOB _CompetencesToOB;
 
-
         public void setPos(int index)
         {
             if (index < _positions.Length && index >= 0)

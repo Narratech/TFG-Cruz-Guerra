@@ -13,8 +13,6 @@ namespace tfg
         [SerializeField] private TextAsset captainJson;
         [SerializeField] private TextAsset firstOfficerJson;
 
-
-
         private Logic.Script script;
 
         //Temporal: ideal hacer objetos que traten esto mejor
@@ -45,46 +43,83 @@ namespace tfg
         {
             StartCoroutine(PlayInCoroutine());
         }
-
+        
         private IEnumerator PlayInCoroutine()
         {
             float startTime = Time.time;
 
+            //Nunca debe haber un nodo en ambas colas a la vez
+            Utils.ColaPrioridad colaStarts = new Utils.ColaPrioridad(script.NumberOfSteps(), Utils.Nodo.CompareStartTime);
+            Utils.ColaPrioridad colaEnds = new Utils.ColaPrioridad(script.NumberOfSteps(), Utils.Nodo.CompareEndTime);
+
             Logic.Source sourceNow;
             Logic.Step stepNow;
 
-            Logic.Source sourceNext;
-            Logic.Step stepNext;
+            while(script.Next(out sourceNow, out stepNow))
+            {
+                colaStarts.Introducir(new Utils.Nodo(sourceNow, stepNow));
+            }
 
-            script.Next(out sourceNext, out stepNext);
+            Utils.Nodo nodoSiguiente = colaStarts.ObservarPrimero();
             while (true)
             {
-                if (stepNext.startTime > (Time.time - startTime))
+                float timeElapsed = Time.time - startTime;
+
+                //Check si hay algun paso ha acabado
+                if(colaEnds.NumeroElementos() > 0 && timeElapsed > colaEnds.ObservarPrimero().endTime)
                 {
-                    yield return new WaitForSeconds(0.1f);
+                    Utils.Nodo nodoAcaba = colaEnds.EliminarPrimero();
+
+                    switch (nodoAcaba.step)
+                    {
+                        //Solo quito el texto si no hay nadie usandolo
+                        case Logic.Dialog d:
+                            bool usandose = false;
+                            for(int i = 0; i < colaEnds.NumeroElementos(); ++i)
+                            {
+                                //Si alguien lo usa
+                                if(colaEnds.Array()[i].step is Logic.Dialog && colaEnds.Array()[i].source == nodoAcaba.source)
+                                {
+                                    usandose = true;
+                                    break;
+                                }
+                            }
+                            if(!usandose)
+                                removeText(nodoAcaba.source);
+                            break;
+                    }
+
+                    //Si no quedan pasos que meter ni pasos que acaben, acabo el play
+                    if (nodoSiguiente == null && colaEnds.NumeroElementos() == 0)
+                        break;
+                }
+
+                // tiempo pasado < tiempo de inicio -> hay que esperar mas
+                if(nodoSiguiente == null || timeElapsed < nodoSiguiente.startTime)
+                {
+                    //Esperar 
+                    yield return new WaitForSeconds(0.10f);
                     continue;
                 }
 
-                sourceNow = sourceNext;
-                stepNow = stepNext;
+                //Un nuevo evento que hay que poner
+                Utils.Nodo nodoActual = colaStarts.EliminarPrimero();
+                colaEnds.Introducir(nodoActual);
 
-                captainImage.gameObject.SetActive(false);
-                firstOfficerImage.gameObject.SetActive(false);
-
-                switch (stepNow)
+                switch (nodoActual.step)
                 {
                     case Logic.Dialog d:
-                        putText(sourceNow, d.dialog);
+                        putText(nodoActual.source, d.dialog);
                         break;
                 }
-                _currentStep = stepNext;
 
-                if (!script.Next(out sourceNext, out stepNext))
-                    break;
+                if (colaStarts.NumeroElementos() > 0)
+                    nodoSiguiente = colaStarts.ObservarPrimero();
+                else
+                    nodoSiguiente = null;
             }
 
-            captainImage.gameObject.SetActive(false);
-            firstOfficerImage.gameObject.SetActive(false);
+            yield return null;
         }
 
         public void nextStep()
@@ -123,6 +158,24 @@ namespace tfg
                     break;
             }
         }
+
+        private void removeText(Logic.Source source)
+        {
+            switch (source)
+            {
+                case Logic.Source.Captain:
+                    captainImage.gameObject.SetActive(false);
+                    Debug.Log("removed captain text image");
+                    break;
+                case Logic.Source.First_Officer:
+                    firstOfficerImage.gameObject.SetActive(false);
+                    Debug.Log("removed first officer text image");
+                    break;
+                case Logic.Source.Radio:
+                    break;
+            }
+        }
+
         public Logic.Step getCurrentStep() { return _currentStep; }
     }
 }

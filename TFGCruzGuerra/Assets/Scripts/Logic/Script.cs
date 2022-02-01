@@ -77,7 +77,7 @@ namespace Logic
             stepsIt = 0;
 
             float time = 0.0f;
-            float defaultDuration = 1.0f; //in seconds
+            float defaultDuration = 1.5f; //in seconds
 
             foreach (Event e in scene.Events)
             {
@@ -258,6 +258,8 @@ namespace Logic
 
             return stepsIt < steps.Count;
         }
+
+        public int NumberOfSteps() { return steps.Count; }
         
     }
 }
