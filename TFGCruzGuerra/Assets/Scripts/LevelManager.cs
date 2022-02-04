@@ -97,7 +97,6 @@ namespace tfg
                             }
                             if (!usandose)
                             {
-                                //todo hacer esta llamada solo si el ob se ha acabado de verdad
                                 //todo si en el resto de tipos tenemos que gestionar el uso de forma especial tambien hay que añadir este foreach a cada uno
                                 foreach (Interfaces.IEndStepHandler handler in endStepHandlers)
                                 {
@@ -131,7 +130,6 @@ namespace tfg
                         putText(nodoActual.source, d.dialog);
                         break;
                 }
-                //todo hacer esta llamada solo si el ob es realmente nuevo
                 foreach (Interfaces.INewStepHandler handler in newStepHandlers)
                 {
                     handler.NewStep(nodoActual.step);

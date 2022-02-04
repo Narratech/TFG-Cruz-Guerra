@@ -11,6 +11,8 @@ namespace Logic
         public float startTime, duration;
         public Result result;
         public string OB;
+        public int posInList;
+        public int numStepsInList;
         public abstract void Play(Script script);
     }
 }
