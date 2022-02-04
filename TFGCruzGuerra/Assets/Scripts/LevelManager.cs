@@ -15,17 +15,28 @@ namespace tfg
 
         private Logic.Script script;
 
-        //Temporal: ideal hacer objetos que traten esto mejor
+        //todo Cambiar esto por los objetos que ya hay Temporal: ideal hacer objetos que traten esto mejor
         [SerializeField] private Image captainImage, firstOfficerImage;
         [SerializeField] private Text captainText, firstOfficerText;
         Logic.Step _currentStep;
+        static List<Interfaces.INewStepHandler> newStepHandlers;
+        static List<Interfaces.IEndStepHandler> endStepHandlers;
 
         private void Awake()
         {
+            if (newStepHandlers == null)
+                newStepHandlers = new List<Interfaces.INewStepHandler>();
+            if (endStepHandlers == null)
+                endStepHandlers = new List<Interfaces.IEndStepHandler>();
+
             script = new Logic.Script();
             testLevel();
         }
 
+        public static void AddNewStepHandler(Interfaces.INewStepHandler h) { newStepHandlers.Add(h); }
+        public static void RemoveNewStepHandler(Interfaces.INewStepHandler h) { newStepHandlers.Remove(h); }
+        public static void AddEndStepHandler(Interfaces.IEndStepHandler h) { endStepHandlers.Add(h); }
+        public static void RemoveEndStepHandler(Interfaces.IEndStepHandler h) { endStepHandlers.Remove(h); }
         public void testLevel()
         {
             Logic.Stage stage = Logic.JsonManager.ImportFromJSON<Logic.Stage>(AssetDatabase.GetAssetPath(stageJson));
@@ -84,8 +95,16 @@ namespace tfg
                                     break;
                                 }
                             }
-                            if(!usandose)
+                            if (!usandose)
+                            {
+                                //todo hacer esta llamada solo si el ob se ha acabado de verdad
+                                //todo si en el resto de tipos tenemos que gestionar el uso de forma especial tambien hay que añadir este foreach a cada uno
+                                foreach (Interfaces.IEndStepHandler handler in endStepHandlers)
+                                {
+                                    handler.EndStep(nodoAcaba.step);
+                                }
                                 removeText(nodoAcaba.source);
+                            }
                             break;
                     }
 
@@ -112,7 +131,11 @@ namespace tfg
                         putText(nodoActual.source, d.dialog);
                         break;
                 }
-
+                //todo hacer esta llamada solo si el ob es realmente nuevo
+                foreach (Interfaces.INewStepHandler handler in newStepHandlers)
+                {
+                    handler.NewStep(nodoActual.step);
+                }
                 if (colaStarts.NumeroElementos() > 0)
                     nodoSiguiente = colaStarts.ObservarPrimero();
                 else

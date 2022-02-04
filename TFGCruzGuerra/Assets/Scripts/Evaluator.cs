@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using tfg.Interfaces;
+using Logic;
 
 namespace tfg
 {
-    public class Evaluator : MonoBehaviour
+    public class Evaluator : MonoBehaviour, INewStepHandler, IEndStepHandler
     {
         int _correct;
         [SerializeField] TextModifier _resultText;
@@ -13,8 +15,25 @@ namespace tfg
         [SerializeField] Transform[] _positions;
         [SerializeField] LevelManager _levelManager;
         [SerializeField] OBSelector[] _OB;
-        Logic.Table_CompetencesToOB _CompetencesToOB;
+        List<Logic.Step> _happeningSteps;
 
+        Logic.Table_CompetencesToOB _CompetencesToOB;
+        //queremos que los cambios se den mientras el evaluator no se vea
+        private void OnDisable()
+        {
+            LevelManager.AddEndStepHandler(this);
+            LevelManager.AddNewStepHandler(this);
+        }
+        private void OnEnable()
+        {
+            LevelManager.RemoveEndStepHandler(this);
+            LevelManager.RemoveNewStepHandler(this);
+        }
+        private void Start()
+        {
+            _happeningSteps = new List<string>();
+
+        }
         public void setPos(int index)
         {
             if (index < _positions.Length && index >= 0)
@@ -23,6 +42,7 @@ namespace tfg
 
         public void setRandomOBs()
         {
+
             _CompetencesToOB = GameManager.Instance.competencesToOB;
 
             string myOB = _levelManager.getCurrentStep().OB;
@@ -103,5 +123,17 @@ namespace tfg
             _resultAnimator.Play("Fade Up", 0, 0);
         }
 
+        //precondición: el paso es completamente nuevo, es decir, no es la continuación de un paso anterior (p. ej. si
+        //para representar un OB x el personaje tiene que hablar y animarse aquí viene o el dialogo o la animacion, pero nunca los dos)
+        public void NewStep(Step step)
+        {
+            _happeningSteps.Add(step);
+
+        }
+
+        public void EndStep(Step step)
+        {
+            _happeningSteps.Remove(step);
+        }
     }
 }
