@@ -8,10 +8,6 @@ namespace Logic
     class Change : Step
     {
         [JsonProperty]
-        private Source source_;
-        public override void Play(Script script)
-        {
-            script.setCurrent(source_);
-        }
+        public Source source_;
     }
 }

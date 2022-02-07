@@ -105,13 +105,13 @@ namespace Logic
             Console.WriteLine("----------------BIEN-----------------------");
             foreach (Step step in stepList)
             {
-                step.Play(null);
+                //step.Play(null);
             }
             Console.WriteLine("----------------MAL-----------------------");
             stepList = null;
             foreach (Step step in stepList)
             {
-                step.Play(null);
+                //step.Play(null);
             }
             read.Close();
             Console.WriteLine("\n\n--------------------");

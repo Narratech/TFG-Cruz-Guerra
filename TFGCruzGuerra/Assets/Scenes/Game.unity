@@ -333,6 +333,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d01c4a4d9f7f040afc11f79acbfeb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &425951171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 425951173}
+  - component: {fileID: 425951172}
+  m_Layer: 0
+  m_Name: StepDisplayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &425951172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425951171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618495b1df1f201498e58d0506858ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  captainImage: {fileID: 1060686848}
+  firstOfficerImage: {fileID: 1077421910}
+  captainText: {fileID: 658259415}
+  firstOfficerText: {fileID: 2007541444}
+  captainAnimator: {fileID: 919132149608431105}
+  firstOfficerAnimator: {fileID: 1555576597}
+--- !u!4 &425951173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425951171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &537852719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -906,10 +955,6 @@ MonoBehaviour:
   stageJson: {fileID: 4900000, guid: 4679da4ab2f9dfb43a0eda0788342ed6, type: 3}
   captainJson: {fileID: 4900000, guid: 7e252a45b3b2d414e96bea6342063393, type: 3}
   firstOfficerJson: {fileID: 4900000, guid: bcfa93f6c8b0d34409b7fc9de16ba4be, type: 3}
-  captainImage: {fileID: 1060686848}
-  firstOfficerImage: {fileID: 1077421910}
-  captainText: {fileID: 658259415}
-  firstOfficerText: {fileID: 2007541444}
 --- !u!4 &749486199
 Transform:
   m_ObjectHideFlags: 0
@@ -1711,6 +1756,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515604674}
   m_CullTransparentMesh: 1
+--- !u!1 &1555576596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4408466534007765603, guid: 1164518ad3df07e47a4aa17495f38f7c, type: 3}
+  m_PrefabInstance: {fileID: 537852719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1555576597
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555576596}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ca2631bf3bd61cd4291501d7e2022095, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1650486912
 GameObject:
   m_ObjectHideFlags: 0

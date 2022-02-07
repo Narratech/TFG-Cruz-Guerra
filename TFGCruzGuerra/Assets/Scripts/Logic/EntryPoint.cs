@@ -9,9 +9,5 @@ namespace Logic
     {
         [JsonProperty]
         Source starter_;
-        public override void Play(Script script)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

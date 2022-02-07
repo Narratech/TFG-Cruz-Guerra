@@ -5,14 +5,14 @@ using Newtonsoft.Json;
 
 namespace Logic
 {
-    class Dialog : Step
+    class Anim : Step
     {
         [JsonProperty]
-        public string dialog { get; private set; }
+        public string animName { get; private set; }
 
-        public Dialog(string dialog)
+        public Anim(string dialog)
         {
-            this.dialog = dialog;
+            this.animName = dialog;
         }
     }
 }

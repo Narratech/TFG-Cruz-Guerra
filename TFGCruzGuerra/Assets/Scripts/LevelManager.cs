@@ -15,9 +15,6 @@ namespace tfg
 
         private Logic.Script script;
 
-        //todo Cambiar esto por los objetos que ya hay Temporal: ideal hacer objetos que traten esto mejor
-        [SerializeField] private Image captainImage, firstOfficerImage;
-        [SerializeField] private Text captainText, firstOfficerText;
         Logic.Step _currentStep;
         static List<Interfaces.INewStepHandler> newStepHandlers;
         static List<Interfaces.IEndStepHandler> endStepHandlers;
@@ -100,9 +97,8 @@ namespace tfg
                                 //todo si en el resto de tipos tenemos que gestionar el uso de forma especial tambien hay que añadir este foreach a cada uno
                                 foreach (Interfaces.IEndStepHandler handler in endStepHandlers)
                                 {
-                                    handler.EndStep(nodoAcaba.step);
+                                    handler.EndStep(nodoAcaba.step, nodoAcaba.source);
                                 }
-                                removeText(nodoAcaba.source);
                             }
                             break;
                     }
@@ -123,16 +119,9 @@ namespace tfg
                 //Un nuevo evento que hay que poner
                 Utils.Nodo nodoActual = colaStarts.EliminarPrimero();
                 colaEnds.Introducir(nodoActual);
-
-                switch (nodoActual.step)
-                {
-                    case Logic.Dialog d:
-                        putText(nodoActual.source, d.dialog);
-                        break;
-                }
                 foreach (Interfaces.INewStepHandler handler in newStepHandlers)
                 {
-                    handler.NewStep(nodoActual.step);
+                    handler.NewStep(nodoActual.step, nodoActual.source);
                 }
                 if (colaStarts.NumeroElementos() > 0)
                     nodoSiguiente = colaStarts.ObservarPrimero();
@@ -149,52 +138,16 @@ namespace tfg
             Logic.Step step;
             script.Next(out source, out step);
 
-            captainImage.gameObject.SetActive(false);
-            firstOfficerImage.gameObject.SetActive(false);
+            //captainImage.gameObject.SetActive(false);
+            //firstOfficerImage.gameObject.SetActive(false);
 
             switch (step)
             {
                 case Logic.Dialog d:
-                    putText(source, d.dialog);
+                    //putText(source, d.dialog);
                     break;
             }
             _currentStep = step;
-        }
-
-        private void putText(Logic.Source source, string dialog)
-        {
-            switch (source)
-            {
-                case Logic.Source.Captain:
-                    captainImage.gameObject.SetActive(true);
-                    captainText.text = "captain: " + dialog;
-                    Debug.Log(captainText.text);
-                    break;
-                case Logic.Source.First_Officer:
-                    firstOfficerImage.gameObject.SetActive(true);
-                    firstOfficerText.text = "first officer: " + dialog;
-                    Debug.Log(firstOfficerText.text);
-                    break;
-                case Logic.Source.Radio:
-                    break;
-            }
-        }
-
-        private void removeText(Logic.Source source)
-        {
-            switch (source)
-            {
-                case Logic.Source.Captain:
-                    captainImage.gameObject.SetActive(false);
-                    Debug.Log("removed captain text image");
-                    break;
-                case Logic.Source.First_Officer:
-                    firstOfficerImage.gameObject.SetActive(false);
-                    Debug.Log("removed first officer text image");
-                    break;
-                case Logic.Source.Radio:
-                    break;
-            }
         }
 
         public Logic.Step getCurrentStep() { return _currentStep; }

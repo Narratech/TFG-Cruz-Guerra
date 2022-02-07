@@ -13,6 +13,5 @@ namespace Logic
         public string OB;
         public int posInList;
         public int numStepsInList;
-        public abstract void Play(Script script);
     }
 }

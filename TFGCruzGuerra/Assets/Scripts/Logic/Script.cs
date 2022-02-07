@@ -152,7 +152,7 @@ namespace Logic
                     }
 
                     if (s is Change)
-                        s.Play(this);
+                       setCurrent(((Change)s).source_);
 
                     steps.Add(new Tuple<Source, Step>(current_, s));
                 }

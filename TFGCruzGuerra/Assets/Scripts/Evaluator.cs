@@ -149,7 +149,7 @@ namespace tfg
 
         //precondición: el paso es completamente nuevo, es decir, no es la continuación de un paso anterior (p. ej. si
         //para representar un OB x el personaje tiene que hablar y animarse aquí viene o el dialogo o la animacion, pero nunca los dos)
-        public void NewStep(Step step)
+        public void NewStep(Step step, Source source)
         {
             if (step.posInList == 0)
             {
@@ -159,7 +159,7 @@ namespace tfg
 
         }
 
-        public void EndStep(Step step)
+        public void EndStep(Step step, Source source)
         {
             if (step.posInList == step.numStepsInList - 1)
                 _happeningSteps.Remove(step);
