@@ -52,9 +52,8 @@ namespace tfg
                 case Anim a:
                     playAnim(source, a.animName);
                     break;
-                    //todo poner nombre del video o lo que sea que vaya aqui
                 case PressButton pb:
-                    playAnim(source, "PONER NOMBRE DEL VIDEO AQUI");
+                    playInterruptButton(source, pb.interruptName, pb.pressType);
                     break;
             }
         }

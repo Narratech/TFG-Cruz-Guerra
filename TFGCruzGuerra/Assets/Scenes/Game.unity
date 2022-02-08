@@ -173,7 +173,7 @@ VideoPlayer:
   m_RenderMode: 2
   m_AspectRatio: 2
   m_DataSource: 0
-  m_PlaybackSpeed: 1
+  m_PlaybackSpeed: 5
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
@@ -509,7 +509,7 @@ VideoPlayer:
   m_RenderMode: 2
   m_AspectRatio: 2
   m_DataSource: 0
-  m_PlaybackSpeed: 1
+  m_PlaybackSpeed: 5
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
@@ -574,8 +574,8 @@ MonoBehaviour:
   firstOfficerText: {fileID: 2007541444}
   captainAnimator: {fileID: 919132149608431105}
   firstOfficerAnimator: {fileID: 1555576597}
-  captainInterrupt: {fileID: 0}
-  firstOfficerInterrupt: {fileID: 0}
+  captainInterrupt: {fileID: 543130227}
+  firstOfficerInterrupt: {fileID: 1459144827}
 --- !u!4 &425951173
 Transform:
   m_ObjectHideFlags: 0
@@ -976,7 +976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &543130226
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2043,6 +2043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1459144825}
   - component: {fileID: 1459144826}
+  - component: {fileID: 1459144827}
   m_Layer: 5
   m_Name: InterruptFirstOfficer
   m_TagString: Untagged
@@ -2081,6 +2082,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459144824}
   m_CullTransparentMesh: 1
+--- !u!114 &1459144827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459144824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bc867498880904a83542ee1dc590ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interruptName: {fileID: 687806411}
+  renderImage: {fileID: 37427726}
+  videoOffToOn: {fileID: 343624579}
+  videoOnToOff: {fileID: 1502298720}
 --- !u!1 &1502298718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2131,7 +2148,7 @@ VideoPlayer:
   m_RenderMode: 2
   m_AspectRatio: 2
   m_DataSource: 0
-  m_PlaybackSpeed: 1
+  m_PlaybackSpeed: 5
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
@@ -2139,7 +2156,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1
@@ -2958,7 +2975,7 @@ VideoPlayer:
   m_RenderMode: 2
   m_AspectRatio: 2
   m_DataSource: 0
-  m_PlaybackSpeed: 3.89
+  m_PlaybackSpeed: 5
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
@@ -2966,7 +2983,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1
