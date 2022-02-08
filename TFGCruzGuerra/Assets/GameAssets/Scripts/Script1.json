@@ -13,8 +13,6 @@
         "duration": 1.5,
         "result": 1,
         "OB": "Asks_relevant_effective_questions",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "bad:Asks_relevant_effective_questions"
       }
     },
@@ -27,8 +25,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Carries_out_instructions_when_directed",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
@@ -41,8 +37,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     },
@@ -55,8 +49,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Asks_relevant_effective_questions",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Asks_relevant_effective_questions"
       }
     },
@@ -69,8 +61,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Carries_out_instructions_when_directed",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
@@ -83,8 +73,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     },
@@ -97,8 +85,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Asks_relevant_effective_questions",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Asks_relevant_effective_questions"
       }
     },
@@ -111,8 +97,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Carries_out_instructions_when_directed",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
@@ -125,8 +109,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     },
@@ -139,8 +121,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Asks_relevant_effective_questions",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Asks_relevant_effective_questions"
       }
     },
@@ -153,8 +133,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Carries_out_instructions_when_directed",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Carries_out_instructions_when_directed"
       }
     },
@@ -167,8 +145,6 @@
         "duration": 1.5,
         "result": 0,
         "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
-        "posInList": 0,
-        "numStepsInList": 0,
         "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
       }
     }

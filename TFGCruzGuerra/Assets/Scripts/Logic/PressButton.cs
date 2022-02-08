@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Logic
 {
-    class PressButton : Step
+    public class PressButton : Step
     {
         public enum PressType
         {
