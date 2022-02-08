@@ -15,12 +15,16 @@ namespace tfg
         //Animations
         [SerializeField] private Animator captainAnimator, firstOfficerAnimator;
 
+        //Interrupts
+        [SerializeField] private InterruptManager captainInterrupt, firstOfficerInterrupt;
+
         void Start()
         {
 #if UNITY_EDITOR
             if(captainImage == null || firstOfficerImage == null || 
                 captainText == null || firstOfficerText == null || 
-                captainAnimator == null || firstOfficerAnimator == null)
+                captainAnimator == null || firstOfficerAnimator == null ||
+                captainInterrupt == null || firstOfficerInterrupt == null)
             {
                 Debug.LogError("StepDisplayer Serialized field not setted");
             }
@@ -28,7 +32,6 @@ namespace tfg
 
             LevelManager.AddNewStepHandler(this);
             LevelManager.AddEndStepHandler(this);
-
         }
 
 
@@ -49,6 +52,9 @@ namespace tfg
                 case Anim a:
                     playAnim(source, a.animName);
                     break;
+                case PressButton pb:
+                    playAnim(source, a.animName);
+                    break;
             }
         }
 
@@ -61,6 +67,9 @@ namespace tfg
                     removeText(source);
                     break;
                 case Anim a:
+                    stopAnim(source);
+                    break;
+                case PressButton pb:
                     stopAnim(source);
                     break;
             }
@@ -121,6 +130,19 @@ namespace tfg
                     break;
                 case Source.First_Officer:
                     firstOfficerAnimator.Play("Idle");
+                    break;
+            }
+        }
+
+        private void playInterruptButton(Source source, string buttonName, PressButton.PressType pressType)
+        {
+            switch (source)
+            {
+                case Source.Captain:
+                    captainInterrupt.playVideo(buttonName, pressType);
+                    break;
+                case Source.First_Officer:
+                    firstOfficerInterrupt.playVideo(buttonName, pressType);
                     break;
             }
         }

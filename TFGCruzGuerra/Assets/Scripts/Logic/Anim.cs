@@ -10,9 +10,9 @@ namespace Logic
         [JsonProperty]
         public string animName { get; private set; }
 
-        public Anim(string dialog)
+        public Anim(string name)
         {
-            this.animName = dialog;
+            this.animName = name;
         }
     }
 }

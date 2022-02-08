@@ -53,6 +53,12 @@ namespace Logic
                     case Dialog d:
                         steps[i] = new Dialog(d.dialog);
                         break;
+                    case Anim a:
+                        steps[i] = new Anim(a.animName);
+                        break;
+                    case PressButton pb:
+                        steps[i] = new PressButton(pb.interruptName, pb.pressType);
+                        break;
                 }
             }
             return steps;
