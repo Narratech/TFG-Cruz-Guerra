@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using tfg.Interfaces;
 using Logic;
-
+using System.Linq;
 namespace tfg
 {
     public class Evaluator : MonoBehaviour, INewStepHandler, IEndStepHandler
@@ -13,23 +13,28 @@ namespace tfg
         {
             public string OB;
             public Step.Result result;
-            public Logic.Source source;
         }
         [SerializeField] TextModifier _resultText;
         [SerializeField] Animator _resultAnimator;
         [SerializeField] Transform[] _positions;
         [SerializeField] OBSelector[] _OB;
         Dictionary<KeyValuePair<string, Logic.Source>, int> _happeningOBs;
-        bool _changedOB = true;
-        //esto puede ser incluso de pair string y source con result por si queremos evaluar el source tambien o bien un hashset de steps
-        HashSet<EvaluableInfo> _correctEvaluation;
-
+        //todo esto hay que comprobarlo dependiendo del source
+        Dictionary<Source, bool> _changedOB;
+        //usamos HashSet porque queremos que saber si está o no sea O(1)
+        Dictionary<Logic.Source, HashSet<EvaluableInfo>> _correctEvaluation;
+        Logic.Source _currentSource;
         Logic.Table_CompetencesToOB _CompetencesToOB;
         private void Start()
         {
+            _changedOB = new Dictionary<Source, bool>();
+            _changedOB[Source.Captain] = true;
+            _changedOB[Source.First_Officer] = true;
             _happeningOBs = new Dictionary<KeyValuePair<string, Source>, int>();
             _CompetencesToOB = GameManager.Instance.competencesToOB;
-            _correctEvaluation = new HashSet<EvaluableInfo>();
+            _correctEvaluation = new Dictionary<Source, HashSet<EvaluableInfo>>();
+            _correctEvaluation[Source.Captain] = new HashSet<EvaluableInfo>();
+            _correctEvaluation[Source.First_Officer] = new HashSet<EvaluableInfo>();
             LevelManager.AddEndStepHandler(this);
             LevelManager.AddNewStepHandler(this);
         }
@@ -41,163 +46,79 @@ namespace tfg
 
         public void setRandomOBs(int Source)
         {
+            transform.GetChild(0).gameObject.SetActive(true);
+            //! Precondicion: Hay como maximo 3 obs buenos del source adecuado
             //Si los ob son exactamente los mismos que cuando clickó no hacemos nada y nos quedamos con los mismos
             //todo sabemos de antemano cuantos ob distintos estan pasando, por lo que podemos poner para cada uno el correcto y los x incorrectos
             //todo que le toquen. X sería ob.length/n de obs pasando
-            if (_changedOB)
+            Logic.Source parsedSource = (Logic.Source)(Source);
+            if (_changedOB[parsedSource])
             {
+                _currentSource = parsedSource;
                 //nos quitamos los de la evaluación anterior
-                _correctEvaluation.Clear();
-                //todo como los arrays tienen los valores por referencia (básicamente son arrays dinámicos, con punteros, se puede hacer un diccionario de competencias a array de obs y un
-                //todo diccionario de competencias a primer índice y sacar el random de ahí
-                Dictionary<string, string[]> competenceToFakeOptions = new Dictionary<string, string[]>();
-                Dictionary<string, int> competenceToFirstIndex = new Dictionary<string, int>();
+                _correctEvaluation[_currentSource].Clear();
 
-                foreach (var OBandSource in _happeningOBs.Keys)
+
+                prepareFakeOptions(out Dictionary<string, string[]> competenceToFakeOptions, out Dictionary<string, int> competenceToFirstIndex, Source);
+
+
+                int totalOBs = 0;
+
+                //contamos los OB malos
+                foreach (var comp in competenceToFakeOptions)
                 {
-                    if (((int)OBandSource.Value) == Source)
-                    {
-                        string comp = _CompetencesToOB.getCompetenceFromOB(OBandSource.Key);
-                        //si el ob es de una competencia que ya ha salido debemos "quitarlo de la lista de opciones falsas" poniendolo al principio
-                        if (competenceToFakeOptions.ContainsKey(comp)){
-                            int index = Utils.ArrayUtils.getIndex(competenceToFakeOptions[comp], OBandSource.Key, competenceToFirstIndex[comp]);
-                            if (index != -1)
-                            {
-                                int first = competenceToFirstIndex[comp];
-                                competenceToFakeOptions[comp][index] = competenceToFakeOptions[comp][first];
-                                competenceToFirstIndex[comp]++;
-                            }
-                        }
-                        else
-                        {
-                            //HashSet<>
-                            //competenceToFirstIndex[comp] = 1;
-                        }
-                    }
+                    totalOBs += (comp.Value.Length - competenceToFirstIndex[comp.Key]);
                 }
 
+                //le añadimos los OB buenos
+                int correctOB = 0;
+                foreach (var ob in _happeningOBs.Keys)
+                {
+                    if (ob.Value == _currentSource)
+                        correctOB++;
+                }
+                totalOBs += correctOB;
 
-                //LinkedListNode<Logic.Step> currentNode = _happeningSteps.First;
-                //List<string> happeningOB = new List<string>();
-                //Dictionary<string, HashSet<string>> competencesToFakeOptions = new Dictionary<string, HashSet<string>>();
-                ////nos guardamos en un conjunto de respuestas falsas todos los OB de las competencias que están ocurriendo ahora mismo
-                ////y luego quitamos los OB que están ocurriendo de ese conjunto
-                //for (int i = 0; i < _happeningSteps.Count; i++)
-                //{
-                //    string competence = _CompetencesToOB.getCompetenceFromOB(currentNode.Value.OB);
-                //    if (!competencesToFakeOptions.ContainsKey(competence))
-                //    {
-                //        //ExceptWith es O(n) en el número de elementos a quitar, por lo que sería O(1) en estos casos
-                //        HashSet<string> auxComp = _CompetencesToOB.GetOBsFromCompetence(competence);
-                //        auxComp.ExceptWith(new string[] { currentNode.Value.OB });
-                //        competencesToFakeOptions.Add(competence, auxComp);
+                int maxObsToSelect = Math.Min(_OB.Length, totalOBs);
+                int OBGroups = correctOB == 0 ? _OB.Length : _OB.Length / correctOB;
 
-                //    }
-                //    else
-                //    {
-                //        competencesToFakeOptions[competence].ExceptWith(new string[] { currentNode.Value.OB });
-                //    }
-                //    happeningOB.Add(currentNode.Value.OB);
-                //    currentNode = currentNode.Next;
-                //}
+                int[] indexes = new int[maxObsToSelect];
+                for (int j = 0; j < maxObsToSelect; j++)
+                {
+                    indexes[j] = j;
+                }
 
-                //currentNode = _happeningSteps.First;
-                ////obtenemos de esta forma una serie de respuestas incorrectas de las que sacar de forma aleatoria y sin repeticiones
-                ////fakeOptions.CopyTo(fakeOptionsArray);
-                //int fakeOptionsFirst = 0;
+                int firstIndex = 0;
 
+                foreach (var obs in _happeningOBs)
+                {
+                    //si el ob no es de nuestro source lo ignoramos
+                    if (((int)obs.Key.Value) != Source)
+                        continue;
 
-                //hay una pequenia posibilidad de que entre respuestas correctas e incorrectas sumen menos que las opciones que damos
-                //por lo que hay que rellenar el mínimo entre estos dos valores
-                //int maxOptions = Math.Min(fakeOptionsNum + _happeningSteps.Count, _OB.Length);
-                //int[] possibleIndexes = new int[maxOptions];
-                //for (int i = 0; i < possibleIndexes.Length; i++)
-                //{
-                //    possibleIndexes[i] = i;
-                //}
-                //int possiBleIndexesFirst = 0;
-                //int falseOBPerCompetence = (maxOptions - _happeningSteps.Count) / _happeningSteps.Count;
+                    //colocamos el correcto
+                    EvaluableInfo info = new EvaluableInfo();
+                    info.OB = obs.Key.Key;
+                    info.result = obs.Value > 0 ? Step.Result.Good : Step.Result.Bad;
+                    _correctEvaluation[_currentSource].Add(info);
+                    putOBinRandomIndex(info.OB, indexes, ref firstIndex);
 
-                //while (currentNode != null)
-                //{
-
-                //EvaluableInfo eval = new EvaluableInfo();
-                //eval.OB = currentNode.Value.OB;
-                //eval.result = currentNode.Value.result;
-                //_correctEvaluation.Add(eval);
-                //currentNode = currentNode.Next;
-                ////lo quitamos para que si vuelve a evaluar y este paso aún no ha acabado no le salga
-                //_happeningSteps.RemoveFirst();
-                //int rand = UnityEngine.Random.Range(possiBleIndexesFirst, possibleIndexes.Length);
-                //_OB[rand].setOB(eval.OB);
-                //possibleIndexes[rand] = possibleIndexes[possiBleIndexesFirst];
-                //possiBleIndexesFirst++;
+                    //rellenamos con obs de pega y empezamos por 1 porque contamos el correcto
+                    string competence = _CompetencesToOB.getCompetenceFromOB(info.OB);
+                    for (int i = 1; i < OBGroups; i++)
+                    {
+                        //? Que hacemos si no hay suficientes ob en la competencia? (aunque por como dividimos esto deberian seleccionarse max 3 obs)
+                        int first = competenceToFirstIndex[competence];
+                        int rand = UnityEngine.Random.Range(first, competenceToFakeOptions[competence].Length);
+                        putOBinRandomIndex(competenceToFakeOptions[competence][rand], indexes, ref firstIndex);
+                        competenceToFakeOptions[competence][rand] = competenceToFakeOptions[competence][first];
+                        competenceToFirstIndex[competence]++;
+                    }
 
 
-                //for (int j = 0; j < falseOBPerCompetence; j++)
-                //{
-                //    rand = UnityEngine.Random.Range(possiBleIndexesFirst, possibleIndexes.Length);
-                //    eval.OB =
-                //    //_OB[rand].setOB(eval.OB);
-                //    possibleIndexes[rand] = possibleIndexes[possiBleIndexesFirst];
-                //    possiBleIndexesFirst++;
+                }
 
-                //}
-                //}
-
-                //string comp = _CompetencesToOB.getCompetenceFromOB(myOB);
-                //HashSet<string> OBSet = _CompetencesToOB.GetOBsFromCompetence(comp);
-                //int fin = Math.Min(_OB.Length, OBSet.Count);
-
-                ////quitamos del set el ob que no nos interesa
-                //LinkedList<string> OBToRemove = new LinkedList<string>();
-                //OBToRemove.AddFirst(new LinkedListNode<string>(myOB));
-                //OBSet.ExceptWith(OBToRemove);
-                //string[] allOBs = new string[OBSet.Count];
-
-                ////Copia profunda
-                //OBSet.CopyTo(allOBs);
-                //OBToRemove.RemoveFirst();
-                //int firstElement = 0;
-
-                //cogemos uno al azar del array entre nuestro "primero" y el final
-                //tras elegir el OB, ponemos nuestro "primero" en el índice del OB
-                //y finalmente nuestro "primero" pasa a ser el siguiente. De esta forma
-                //evitamos repeticiones y todos los OB tienen posibilidad de salir.
-                //Repetimos este proceso hasta el correcto
-                //int i = 0;
-                //for (; i < _correct; i++)
-                //{
-                //    int index = UnityEngine.Random.Range(firstElement, allOBs.Length);
-                //    string randOB = allOBs[index];
-                //    allOBs[index] = allOBs[firstElement];
-                //    firstElement++;
-                //    _OB[i].setOB(randOB);
-                //    _OB[i].gameObject.SetActive(true);
-                //}
-
-                ////colocamos el correcto
-                //_OB[_correct].setOB(myOB);
-                //_OB[_correct].gameObject.SetActive(true);
-                //i++;
-
-                ////proseguimos el proceso anterior hasta el final de las opciones
-                //for (; i < fin; i++)
-                //{
-                //    int index = UnityEngine.Random.Range(firstElement, allOBs.Length);
-                //    string randOB = allOBs[index];
-                //    allOBs[index] = allOBs[firstElement];
-                //    firstElement++;
-                //    _OB[i].setOB(randOB);
-                //    _OB[i].gameObject.SetActive(true);
-                //}
-
-                ////por si hay no hay suficientes OB
-                //for (; i < _OB.Length; i++)
-                //{
-                //    _OB[i].gameObject.SetActive(false);
-                //}
-                _changedOB = false;
+                _changedOB[_currentSource] = false;
             }
 
         }
@@ -235,7 +156,7 @@ namespace tfg
                 if (!_happeningOBs.ContainsKey(pair))
                 {
                     _happeningOBs[pair] = sum;
-                    _changedOB = true;
+                    _changedOB[source] = true;
                 }
                 else _happeningOBs[pair] += sum;
             }
@@ -255,6 +176,67 @@ namespace tfg
                         _happeningOBs.Remove(pair);
                 }
             }
+        }
+        void prepareFakeOptions(out Dictionary<string, string[]> competenceToFakeOptions, out Dictionary<string, int> competenceToFirstIndex, int Source)
+        {
+            competenceToFakeOptions = new Dictionary<string, string[]>();
+            competenceToFirstIndex = new Dictionary<string, int>();
+
+            foreach (var OBandSource in _happeningOBs.Keys)
+            {
+                if (((int)OBandSource.Value) == Source)
+                {
+                    string comp = _CompetencesToOB.getCompetenceFromOB(OBandSource.Key);
+                    //si el ob es de una competencia que ya ha salido debemos "quitarlo de la lista de opciones falsas" poniendolo al principio
+                    if (competenceToFakeOptions.ContainsKey(comp))
+                    {
+                        int index = Utils.ArrayUtils.getIndex(competenceToFakeOptions[comp], OBandSource.Key, competenceToFirstIndex[comp]);
+                        if (index != -1)
+                        {
+                            int first = competenceToFirstIndex[comp];
+                            competenceToFakeOptions[comp][index] = competenceToFakeOptions[comp][first];
+                            competenceToFirstIndex[comp]++;
+                        }
+                    }
+                    //si no se le quita del todo el ob, ya que no queremos cogerlo por error en las falsas y metemos la lista
+                    //Aqui no buscamos ya que exceptWith es O(n) en Other, que en este caso siempre es 1, mientras que hacer la busqueda
+                    //y colocar al principio es O(n) en la propia lista, por lo cual el exceptWith va a ser mas rapido
+                    else
+                    {
+                        HashSet<string> obs = _CompetencesToOB.GetOBsFromCompetence(comp);
+                        obs.ExceptWith(new string[] { OBandSource.Key });
+                        competenceToFakeOptions[comp] = new string[obs.Count];
+                        obs.CopyTo(competenceToFakeOptions[comp]);
+                        competenceToFirstIndex[comp] = 0;
+                    }
+                }
+            }
+            //si solo hay una competencia metemos otra para despistar
+            if (competenceToFakeOptions.Keys.Count <= 1)
+            {
+                var competences = _CompetencesToOB.getCompetences();
+                string[] competencesArray = new string[competences.Count];
+                competences.CopyTo(competencesArray, 0);
+                string myComp = competenceToFakeOptions.Keys.Count == 0 ? "" : competenceToFakeOptions.ElementAt(0).Key;
+                string randComp = myComp;
+                do
+                {
+                    randComp = competencesArray[UnityEngine.Random.Range(0, competencesArray.Length)];
+                } while (randComp == myComp && competenceToFakeOptions.Keys.Count == 1);
+                HashSet<string> randOBs = _CompetencesToOB.GetOBsFromCompetence(randComp);
+                competenceToFakeOptions[randComp] = new string[randOBs.Count];
+                randOBs.CopyTo(competenceToFakeOptions[randComp]);
+                competenceToFirstIndex[randComp] = 0;
+            }
+
+        }
+        void putOBinRandomIndex(string ob, int[] indexes, ref int firstIndex)
+        {
+            int rand = UnityEngine.Random.Range(firstIndex, indexes.Length);
+            int myIndex = indexes[rand];
+            indexes[rand] = indexes[firstIndex];
+            firstIndex++;
+            _OB[myIndex].setOB(ob);
         }
     }
 }
