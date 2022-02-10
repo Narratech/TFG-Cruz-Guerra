@@ -1,0 +1,190 @@
+{
+  "$type": "Logic.Script, Assembly-CSharp",
+  "sceneName": "Test1",
+  "captainName": "Javi",
+  "firstOfficerName": "Antonio",
+  "steps": [
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 0.0,
+        "duration": 1.5,
+        "result": 1,
+        "OB": "Asks_relevant_effective_questions",
+        "dialog": "bad:Asks_relevant_effective_questions"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Anim, Assembly-CSharp",
+        "startTime": 2,
+        "duration": 3,
+        "result": 0,
+        "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
+        "animName": "Point"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.PressButton, Assembly-CSharp",
+        "startTime": 3,
+        "duration": 3,
+        "result": 0,
+        "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
+        "interruptName": "Air pump",
+        "pressType": 0
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.PressButton, Assembly-CSharp",
+        "startTime": 4.5,
+        "duration": 3,
+        "result": 0,
+        "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
+        "interruptName": "Air Valve",
+        "pressType": 0
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 1.5,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Carries_out_instructions_when_directed",
+        "dialog": "good:Carries_out_instructions_when_directed"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 3.0,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
+        "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 4.5,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Asks_relevant_effective_questions",
+        "dialog": "good:Asks_relevant_effective_questions"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 6.0,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Carries_out_instructions_when_directed",
+        "dialog": "good:Carries_out_instructions_when_directed"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 7.5,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
+        "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 9.0,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Asks_relevant_effective_questions",
+        "dialog": "good:Asks_relevant_effective_questions"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 10.5,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Carries_out_instructions_when_directed",
+        "dialog": "good:Carries_out_instructions_when_directed"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 12.0,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
+        "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 13.5,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Asks_relevant_effective_questions",
+        "dialog": "good:Asks_relevant_effective_questions"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 15.0,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Carries_out_instructions_when_directed",
+        "dialog": "good:Carries_out_instructions_when_directed"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 16.5,
+        "duration": 1.5,
+        "result": 0,
+        "OB": "Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities",
+        "dialog": "good:Engages_others_in_planning_and_allocates_activities_fairly_and_appropriately_according_to_abilities"
+      }
+    }
+  ]
+}

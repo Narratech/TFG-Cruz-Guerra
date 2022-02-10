@@ -69,9 +69,6 @@ namespace tfg
                 case Anim a:
                     stopAnim(source);
                     break;
-                case PressButton pb:
-                    stopAnim(source);
-                    break;
             }
         }
 

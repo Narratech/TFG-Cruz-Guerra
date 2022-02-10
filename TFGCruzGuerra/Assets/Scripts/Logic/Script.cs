@@ -56,6 +56,12 @@ namespace Logic
 
             stepsIt = 0;
         }
+        
+        public void addExamples()
+        {
+            steps.Add(new Tuple<Source, Step>(current_, new Anim("Point")));
+            steps.Add(new Tuple<Source, Step>(current_, new PressButton("Air pump", PressButton.PressType.OffToOn)));
+        }
 
 
         public int Create(Stage scene, Pilot captain, Pilot firstOfficer, Table_CompetencesToOB toOB, Table_OB_Steps oB_Steps, Pilot radio = null, Source starter = Source.Captain)
