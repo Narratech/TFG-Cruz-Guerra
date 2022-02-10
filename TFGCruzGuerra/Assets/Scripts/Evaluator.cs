@@ -89,33 +89,51 @@ namespace tfg
                 }
 
                 int firstIndex = 0;
-
-                foreach (var obs in _happeningOBs)
+                //si solo hay uno significa que no había nada que evaluar y se han metido todas falsas.
+                //En caso de que solo hubiera una competencia para evaluar habría dos elementos porque se habría metido otra random
+                //para despistar
+                if (competenceToFakeOptions.Keys.Count == 1)
                 {
-                    //si el ob no es de nuestro source lo ignoramos
-                    if (((int)obs.Key.Value) != Source)
-                        continue;
-
-                    //colocamos el correcto
-                    EvaluableInfo info = new EvaluableInfo();
-                    info.OB = obs.Key.Key;
-                    info.result = obs.Value > 0 ? Step.Result.Good : Step.Result.Bad;
-                    _correctEvaluation[_currentSource].Add(info);
-                    putOBinRandomIndex(info.OB, indexes, ref firstIndex);
-
-                    //rellenamos con obs de pega y empezamos por 1 porque contamos el correcto
-                    string competence = _CompetencesToOB.getCompetenceFromOB(info.OB);
-                    for (int i = 1; i < OBGroups; i++)
+                    int fakesFirst = 0;
+                    string[] fakes = competenceToFakeOptions.ElementAt(0).Value;
+                    for (int i = 0; i < _OB.Length; i++)
                     {
-                        //? Que hacemos si no hay suficientes ob en la competencia? (aunque por como dividimos esto deberian seleccionarse max 3 obs)
-                        int first = competenceToFirstIndex[competence];
-                        int rand = UnityEngine.Random.Range(first, competenceToFakeOptions[competence].Length);
-                        putOBinRandomIndex(competenceToFakeOptions[competence][rand], indexes, ref firstIndex);
-                        competenceToFakeOptions[competence][rand] = competenceToFakeOptions[competence][first];
-                        competenceToFirstIndex[competence]++;
+                        int rand = UnityEngine.Random.Range(firstIndex, fakes.Length);
+                        string falseOb = fakes[rand];
+                        putOBinRandomIndex(falseOb, indexes, ref firstIndex);
+                        fakes[rand] = fakes[fakesFirst];
+                        fakesFirst++;
                     }
+                }
+                else
+                {
+                    foreach (var obs in _happeningOBs)
+                    {
+                        //si el ob no es de nuestro source lo ignoramos
+                        if (((int)obs.Key.Value) != Source)
+                            continue;
+
+                        //colocamos el correcto
+                        EvaluableInfo info = new EvaluableInfo();
+                        info.OB = obs.Key.Key;
+                        info.result = obs.Value > 0 ? Step.Result.Good : Step.Result.Bad;
+                        _correctEvaluation[_currentSource].Add(info);
+                        putOBinRandomIndex(info.OB, indexes, ref firstIndex);
+
+                        //rellenamos con obs de pega y empezamos por 1 porque contamos el correcto
+                        string competence = _CompetencesToOB.getCompetenceFromOB(info.OB);
+                        for (int i = 1; i < OBGroups; i++)
+                        {
+                            //? Que hacemos si no hay suficientes ob en la competencia? (aunque por como dividimos esto deberian seleccionarse max 3 obs)
+                            int first = competenceToFirstIndex[competence];
+                            int rand = UnityEngine.Random.Range(first, competenceToFakeOptions[competence].Length);
+                            putOBinRandomIndex(competenceToFakeOptions[competence][rand], indexes, ref firstIndex);
+                            competenceToFakeOptions[competence][rand] = competenceToFakeOptions[competence][first];
+                            competenceToFirstIndex[competence]++;
+                        }
 
 
+                    }
                 }
 
                 _changedOB[_currentSource] = false;
@@ -124,27 +142,27 @@ namespace tfg
         }
         public void evaluate(string oB, bool isPositive, Vector2 position)
         {
-            //Logic.Step.Result r = _levelManager.getCurrentStep().result;
-            ////todo supongo que aquí habría que hacer algo relacionado con el score pero no se muy bien como llevarlo
-            //if (oB == _OB[_correct].getOB() &&
-            //    ((isPositive && r == Logic.Step.Result.Good) || (!isPositive && r == Logic.Step.Result.Bad)))
-            //{
-            //    _resultText.setText("+1");
-            //    _resultText.setColor(Color.green);
+            EvaluableInfo info = new EvaluableInfo();
+            info.OB = oB;
+            info.result = isPositive ? Step.Result.Good : Step.Result.Bad;
+            if (_correctEvaluation[_currentSource].Contains(info))
+            {
+                //si ha acertado lo quitamos para la próxima de las buenas (aunque seguira apareciendo como opción)
+                _correctEvaluation[_currentSource].ExceptWith(new EvaluableInfo[] { info });
+                _resultText.setText("+1");
+                _resultText.setColor(Color.green);
+            }
+            else
+            {
+                _resultText.setText("-1");
+                _resultText.setColor(Color.red);
+            }
+            _resultText.setPos(position);
 
-            //}
-            //else
-            //{
-            //    _resultText.setText("-1");
-            //    _resultText.setColor(Color.red);
-            //}
-            //_resultText.setPos(position);
+            _resultAnimator.Play("Fade Up", 0, 0);
 
-            //_resultAnimator.Play("Fade Up", 0, 0);
         }
 
-        //precondición: el paso es completamente nuevo, es decir, no es la continuación de un paso anterior (p. ej. si
-        //para representar un OB x el personaje tiene que hablar y animarse aquí viene o el dialogo o la animacion, pero nunca los dos)
         public void NewStep(Step step, Source source)
         {
             //? ESTO SIGUE TENIENDO EL PROBLEMA DE QUE SI NOS PONEN UN OB POSITIVO Y EL MISMO OB NEGATIVO A LA VEZ NO VA A IR BIEN
