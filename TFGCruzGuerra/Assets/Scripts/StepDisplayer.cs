@@ -1,4 +1,5 @@
 using Logic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,9 @@ namespace tfg
 
         //Interrupts
         [SerializeField] private InterruptManager captainInterrupt, firstOfficerInterrupt;
+
+        //Flight Stage
+        [SerializeField] private Text flightStateText;
 
         void Start()
         {
@@ -55,9 +59,16 @@ namespace tfg
                 case PressButton pb:
                     playInterruptButton(source, pb.interruptName, pb.pressType);
                     break;
+                case FlightStageChange fSC:
+                    playEnteredFlightStage(fSC.flightSection);
+                    break;
             }
         }
 
+        private void playEnteredFlightStage(FlightSections flightSection)
+        {
+            flightStateText.text = flightSection.ToString();
+        }
 
         public void EndStep(Step step, Source source)
         {

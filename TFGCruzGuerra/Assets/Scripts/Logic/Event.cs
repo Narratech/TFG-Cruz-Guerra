@@ -31,12 +31,16 @@ namespace Logic
         [JsonProperty]
         public List<string> OBs { get; set; }
 
+        [JsonIgnore]
+        public int flightSection { get; set; }
+
         public Event()
         {
             Name = "None";
             TypeOfEvent = "None";
             Difficulty = 0;
             OBs = null;
+            flightSection = -1;
         }
     }
 }

@@ -4,7 +4,9 @@
   "DestinationAirport": "FSC",
   "Weather": 0,
   "EventNames": [
+    "Takeoff",
     "ExplosionMotor",
+    "Landing",
     "ValvulaDespresurizada"
   ]
 }

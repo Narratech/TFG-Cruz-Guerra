@@ -78,7 +78,7 @@ namespace Logic
 
             Debug.Assert(scene != null && captain != null && firstOfficer != null && toOB != null && oB_Steps != null);
 
-            Queue<Step> steps_captain = new Queue<Step>(), steps_firstOfficer = new Queue<Step>()/*, steps_radio = new Queue<Step>()*/;
+            Queue<Step> steps_captain = new Queue<Step>(), steps_firstOfficer = new Queue<Step>(), steps_radio = new Queue<Step>();
 
             stepsIt = 0;
 
@@ -87,81 +87,93 @@ namespace Logic
 
             foreach (Event e in scene.Events)
             {
-                FileInfo f_captain = hasPredefined(e, captain_);
-                FileInfo f_firstOfficer = hasPredefined(e, firstOfficer_);
-                //FileInfo f_radio = hasPredefined(e, radio_);
-
-                if (current_ == Source.Captain)
+                if (e.flightSection >= 0)
                 {
-                    if (f_captain != null)
-                        fillWithPredefined(e, captain_, f_captain, toOB, ref steps_captain, ref time);
-                    else
-                        fillWithGeneric(e, captain_, oB_Steps, toOB, ref steps_captain, ref time, defaultDuration);
-
-                    if (f_firstOfficer != null)
-                        fillWithPredefined(e, firstOfficer_, f_firstOfficer, toOB, ref steps_firstOfficer, ref time);
-                    else
-                        fillWithGeneric(e, firstOfficer_, oB_Steps, toOB, ref steps_firstOfficer, ref time, defaultDuration);
-                    //if (f_radio != null)
-                    //    fillWithPredefined(f_radio, ref steps_radio);
-                    //else
-                    //    fillWithGeneric(e, ref steps_radio);
+                    FlightStageChange fSC = new FlightStageChange();
+                    fSC.flightSection = (FlightSections)e.flightSection;
+                    fSC.startTime = time;
+                    fSC.duration = 1;
+                    steps.Add(new Tuple<Source, Step>(Source.FlightStage, fSC));
                 }
-                else if (current_ == Source.First_Officer)
+                else
                 {
+                    FileInfo f_captain = hasPredefined(e, captain_);
+                    FileInfo f_firstOfficer = hasPredefined(e, firstOfficer_);
+                    //FileInfo f_radio = hasPredefined(e, radio_);
 
-                    if (f_firstOfficer != null)
-                        fillWithPredefined(e, firstOfficer_, f_firstOfficer, toOB, ref steps_firstOfficer, ref time);
-                    else
-                        fillWithGeneric(e, firstOfficer_, oB_Steps, toOB, ref steps_firstOfficer, ref time, defaultDuration);
-                    if (f_captain != null)
-                        fillWithPredefined(e, captain_, f_captain, toOB, ref steps_captain, ref time);
-                    else
-                        fillWithGeneric(e, captain_, oB_Steps, toOB, ref steps_captain, ref time, defaultDuration);
-                    //if (f_radio != null)
-                    //    fillWithPredefined(f_radio, ref steps_radio);
-                    //else
-                    //    fillWithGeneric(e, ref steps_radio);
-                }
-
-                while (steps_captain.Count > 0 || steps_firstOfficer.Count > 0)
-                {
-                    if (current_ == Source.Captain && steps_captain.Count == 0)
-                    {  //Si al captain no le quedan steps
-                        //Si al first officer si le quedan hay que seguir. Si tampoco le quedan, se pasa de evento
-                        if (steps_firstOfficer.Count > 0)
-                            current_ = Source.First_Officer;
-                        else
-                            break;
-                    }
-                    else if (current_ == Source.First_Officer && steps_firstOfficer.Count == 0)
-                    { //Si al first officer no le quedan steps
-                        //Si al captain si le quedan hay que seguir. Si tampoco le quedan, se pasa de evento
-                        if (steps_captain.Count > 0)
-                            current_ = Source.Captain;
-                        else
-                            break;
-                    }
-
-                    Step s = null;
-
-                    switch (current_)
+                    if (current_ == Source.Captain)
                     {
-                        case Source.Captain:
-                            s = steps_captain.Dequeue();
-                            break;
-                        case Source.First_Officer:
-                            s = steps_firstOfficer.Dequeue();
-                            break;
-                        case Source.Radio:
-                            break;
+                        if (f_captain != null)
+                            fillWithPredefined(e, captain_, f_captain, toOB, ref steps_captain, ref time);
+                        else
+                            fillWithGeneric(e, captain_, oB_Steps, toOB, ref steps_captain, ref time, defaultDuration);
+
+                        if (f_firstOfficer != null)
+                            fillWithPredefined(e, firstOfficer_, f_firstOfficer, toOB, ref steps_firstOfficer, ref time);
+                        else
+                            fillWithGeneric(e, firstOfficer_, oB_Steps, toOB, ref steps_firstOfficer, ref time, defaultDuration);
+                        //if (f_radio != null)
+                        //    fillWithPredefined(f_radio, ref steps_radio);
+                        //else
+                        //    fillWithGeneric(e, ref steps_radio);
+                    }
+                    else if (current_ == Source.First_Officer)
+                    {
+
+                        if (f_firstOfficer != null)
+                            fillWithPredefined(e, firstOfficer_, f_firstOfficer, toOB, ref steps_firstOfficer, ref time);
+                        else
+                            fillWithGeneric(e, firstOfficer_, oB_Steps, toOB, ref steps_firstOfficer, ref time, defaultDuration);
+                        if (f_captain != null)
+                            fillWithPredefined(e, captain_, f_captain, toOB, ref steps_captain, ref time);
+                        else
+                            fillWithGeneric(e, captain_, oB_Steps, toOB, ref steps_captain, ref time, defaultDuration);
+                        //if (f_radio != null)
+                        //    fillWithPredefined(f_radio, ref steps_radio);
+                        //else
+                        //    fillWithGeneric(e, ref steps_radio);
                     }
 
-                    if (s is Change)
-                       setCurrent(((Change)s).source_);
+                    while (steps_captain.Count > 0 || steps_firstOfficer.Count > 0)
+                    {
+                        if (current_ == Source.Captain && steps_captain.Count == 0)
+                        {  //Si al captain no le quedan steps
+                           //Si al first officer si le quedan hay que seguir. Si tampoco le quedan, se pasa de evento
+                            if (steps_firstOfficer.Count > 0)
+                                current_ = Source.First_Officer;
+                            else
+                                break;
+                        }
+                        else if (current_ == Source.First_Officer && steps_firstOfficer.Count == 0)
+                        { //Si al first officer no le quedan steps
+                          //Si al captain si le quedan hay que seguir. Si tampoco le quedan, se pasa de evento
+                            if (steps_captain.Count > 0)
+                                current_ = Source.Captain;
+                            else
+                                break;
+                        }
 
-                    steps.Add(new Tuple<Source, Step>(current_, s));
+                        Step s = null;
+
+                        switch (current_)
+                        {
+                            case Source.Captain:
+                                s = steps_captain.Dequeue();
+                                break;
+                            case Source.First_Officer:
+                                s = steps_firstOfficer.Dequeue();
+                                break;
+                            case Source.Radio:
+                                break;
+                        }
+
+                        if (s is Change)
+                            setCurrent(((Change)s).source_);
+
+                        steps.Add(new Tuple<Source, Step>(current_, s));
+                    }
                 }
+              
             }
             return 0;
         }

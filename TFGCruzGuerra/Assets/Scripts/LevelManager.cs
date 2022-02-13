@@ -36,13 +36,13 @@ namespace tfg
         public static void RemoveEndStepHandler(Interfaces.IEndStepHandler h) { endStepHandlers.Remove(h); }
         public void testLevel()
         {
-            //Logic.Stage stage = Logic.JsonManager.ImportFromJSON<Logic.Stage>(AssetDatabase.GetAssetPath(stageJson));
-            //Logic.Pilot captain = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(captainJson));
-            //Logic.Pilot firstOfficer = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(firstOfficerJson));
+            Logic.Stage stage = Logic.JsonManager.ImportFromJSON<Logic.Stage>(AssetDatabase.GetAssetPath(stageJson));
+            Logic.Pilot captain = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(captainJson));
+            Logic.Pilot firstOfficer = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(firstOfficerJson));
 
-            //script.Create(stage, captain, firstOfficer, GameManager.Instance.competencesToOB, GameManager.Instance.OBToSteps, null, Logic.Source.Captain);
+            script.Create(stage, captain, firstOfficer, GameManager.Instance.competencesToOB, GameManager.Instance.OBToSteps, null, Logic.Source.Captain);
 
-            script = Logic.JsonManager.ImportFromJSON<Logic.Script>("Assets/GameAssets/Scripts/Script2", true);
+            //script = Logic.JsonManager.ImportFromJSON<Logic.Script>("Assets/GameAssets/Scripts/Script2", true);
         }
 
         public void Play()
