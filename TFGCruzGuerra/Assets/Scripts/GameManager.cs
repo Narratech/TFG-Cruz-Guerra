@@ -31,8 +31,8 @@ namespace tfg
             }
             else
             {
-                OBToSteps = Logic.JsonManager.ImportFromJSON<Logic.Table_OB_Steps>(/*Application.persistentDataPath*/"Resources" + "/Tables/TableOBtoSteps.json");
-                competencesToOB = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(/*Application.persistentDataPath*/"Resources" + "/Tables/TableCompetenceToOB.json");
+                OBToSteps = Logic.JsonManager.ImportFromJSON<Logic.Table_OB_Steps>(/*Application.persistentDataPath*/"Assets/GameAssets/Tables/TableOBtoSteps.json");
+                competencesToOB = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(/*Application.persistentDataPath*/"Assets/GameAssets/Tables/TableCompetenceToOB.json");
             }
 
             Instance = this;

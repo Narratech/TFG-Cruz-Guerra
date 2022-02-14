@@ -3,8 +3,8 @@
   "TypeOfEvent": "Animal",
   "Difficulty": 0.5,
   "OBs": [
-    "Asks_relevant_effective_questions",
-    "Carries_out_instructions_when_directed",
-    "Ensures_the_recipient_is_ready_and_able_to_receive_the_information"
+    "Asks relevant and effective questions",
+    "Identifies and follows all operating instructions in a timely manner",
+    "Confirms that the recipient correctly understands important information"
   ]
 }
