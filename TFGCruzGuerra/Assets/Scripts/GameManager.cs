@@ -12,7 +12,7 @@ namespace tfg
 
         [SerializeField] private Scene scene;
 
-        [SerializeField] public LevelManager levelManager { get; private set; }
+        [SerializeField] public LevelManager levelManager;
 
         public Logic.Table_CompetencesToOB competencesToOB { get; private set; }
         public Logic.Table_OB_Steps OBToSteps { get; private set; }

@@ -13,6 +13,8 @@ namespace tfg
         [SerializeField] private TextAsset captainJson;
         [SerializeField] private TextAsset firstOfficerJson;
 
+        [SerializeField] private Image stoppedTimePanel;
+
         private Logic.Script script;
 
         Logic.Step _currentStep;
@@ -146,6 +148,16 @@ namespace tfg
                     break;
             }
             _currentStep = step;
+        }
+
+        //Called from button
+        public void setScaleTime(float t)
+        {
+            Time.timeScale = t;
+            if (t <= 0.01) 
+                stoppedTimePanel.enabled = true;
+            else 
+                stoppedTimePanel.enabled = false;
         }
 
         public Logic.Step getCurrentStep() { return _currentStep; }

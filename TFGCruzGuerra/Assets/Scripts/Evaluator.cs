@@ -161,6 +161,7 @@ namespace tfg
 
             _resultAnimator.Play("Fade Up", 0, 0);
 
+            GameManager.Instance.levelManager.setScaleTime(1);
         }
 
         public void NewStep(Step step, Source source)
