@@ -19,15 +19,19 @@ public class PopUpPanel : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public virtual void close() {
+    public virtual void close()
+    {
         if (anim && closeClip)
         {
             anim.Play(closeClip.name);
         }
+        else _panel.SetActive(false);
     }
 
-    public virtual void open() {
-        if(anim && openClip)
+    public virtual void open()
+    {
+        if (anim && openClip)
             anim.Play(openClip.name);
+        else _panel.SetActive(true);
     }
 }
