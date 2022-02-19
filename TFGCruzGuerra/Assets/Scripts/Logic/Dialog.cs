@@ -13,6 +13,8 @@ namespace Logic
         public Dialog(string dialog)
         {
             this.dialog = dialog;
+            startTime = -1;
+            duration = -1;
         }
     }
 }

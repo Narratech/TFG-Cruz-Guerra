@@ -13,21 +13,29 @@ public class PopUpPanel : MonoBehaviour
     Animator anim;
 
     [SerializeField] AnimationClip openClip, closeClip;
+    [SerializeField] UnityEngine.Events.UnityEvent onClose;
+    [SerializeField] UnityEngine.Events.UnityEvent onOpen;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
     }
 
-    public virtual void close() {
+    public virtual void close()
+    {
         if (anim && closeClip)
         {
             anim.Play(closeClip.name);
         }
+        else _panel.SetActive(false);
+        onClose?.Invoke();
     }
 
-    public virtual void open() {
-        if(anim && openClip)
+    public virtual void open()
+    {
+        if (anim && openClip)
             anim.Play(openClip.name);
+        else _panel.SetActive(true);
+        onOpen?.Invoke();
     }
 }

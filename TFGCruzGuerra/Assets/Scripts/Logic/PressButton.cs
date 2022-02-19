@@ -7,9 +7,9 @@ namespace Logic
 {
     public class PressButton : Step
     {
-        public enum PressType
+        public enum PressType : byte
         {
-            OffToOn, OnToOff
+            OffToOn, OnToOff,Default
         }
 
         [JsonProperty]
@@ -22,6 +22,8 @@ namespace Logic
         {
             this.interruptName = name;
             this.pressType = pressType;
+            startTime = -1;
+            duration = -1;
         }
     }
 }
