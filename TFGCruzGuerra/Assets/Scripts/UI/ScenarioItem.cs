@@ -8,7 +8,4 @@ public abstract class ScenarioItem : MonoBehaviour
     public float endTime;
 
 }
-public class EventItem : ScenarioItem
-{
-    public Logic.Event eventInfo;
-}
+

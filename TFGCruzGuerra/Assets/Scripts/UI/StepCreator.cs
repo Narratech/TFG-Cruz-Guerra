@@ -31,20 +31,20 @@ public class StepCreator : MonoBehaviour
         _editingItem = item;
 
     }
-    void setScenarioItemHandler(ScenarioItemHandler handler) { _scenarioItemHandler = handler; }
+    public void setScenarioItemHandler(ScenarioItemHandler handler)
+    {
+        _scenarioItemHandler = handler;
+    }
 
     public void accept()
     {
         if (_scenarioItemHandler && _myStep != null && _myStep.OB != ""
             && _myStep.result != Logic.Step.Result.Neutral && _myStep.startTime > -1 && _myStep.duration > -1)
         {
-            _scenarioItemHandler.Add(_myStep,this);
+            _scenarioItemHandler.Add(_myStep, this);
             _myStep = null;
-            if (_editingItem)
-            {
-                GameObject.Destroy(_editingItem.gameObject);
-                _editingItem = null;
-            }
+            //si estamos editando hay que borrar el antiguo. Lo comprueba la propia funcion
+            delete();
         }
         else Debug.LogError("Some values weren't filled, so the step won't be created");
 
@@ -146,5 +146,13 @@ public class StepCreator : MonoBehaviour
                     _myStep.startTime = m_time;
                 else Debug.LogError("Bad format");
 
+    }
+    public void delete()
+    {
+        if (_editingItem)
+        {
+            GameObject.Destroy(_editingItem.gameObject);
+            _editingItem = null;
+        }
     }
 }

@@ -11,6 +11,7 @@ public class ScenarioItemHandler : MonoBehaviour
     float _furthestLimit = 0;
     const float treshold = 10;
     const float unitSize = 20;
+    public List<StepItem> getItems() { return _items; }
     private void Start()
     {
         _items = new List<StepItem>();

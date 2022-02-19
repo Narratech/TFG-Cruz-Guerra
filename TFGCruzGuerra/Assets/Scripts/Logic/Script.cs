@@ -56,14 +56,28 @@ namespace Logic
 
             stepsIt = 0;
         }
-        
+        public void addStep(Source source, Step step)
+        {
+            steps.Add(Tuple.Create<Source, Step>(source, step));
+        }
         public void addExamples()
         {
             steps.Add(new Tuple<Source, Step>(current_, new Anim("Point")));
             steps.Add(new Tuple<Source, Step>(current_, new PressButton("Air pump", PressButton.PressType.OffToOn)));
         }
 
-
+        public void setCaptainName(string pilot)
+        {
+            captainName = pilot;
+        }
+        public void setFirstOfficerName(string copilot)
+        {
+            firstOfficerName = copilot;
+        }
+        public void setSceneName(string scene)
+        {
+            sceneName = scene;
+        }
         public int Create(Stage scene, Pilot captain, Pilot firstOfficer, Table_CompetencesToOB toOB, Table_OB_Steps oB_Steps, Pilot radio = null, Source starter = Source.Captain)
         {
             scene_ = scene;
@@ -173,7 +187,7 @@ namespace Logic
                         steps.Add(new Tuple<Source, Step>(current_, s));
                     }
                 }
-              
+
             }
             return 0;
         }
@@ -278,6 +292,6 @@ namespace Logic
         }
 
         public int NumberOfSteps() { return steps.Count; }
-        
+
     }
 }
