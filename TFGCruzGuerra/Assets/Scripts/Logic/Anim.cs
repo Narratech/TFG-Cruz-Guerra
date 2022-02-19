@@ -13,6 +13,8 @@ namespace Logic
         public Anim(string name)
         {
             this.animName = name;
+            startTime = -1;
+            duration = -1;
         }
     }
 }

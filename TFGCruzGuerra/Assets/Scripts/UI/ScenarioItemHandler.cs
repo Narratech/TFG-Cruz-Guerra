@@ -7,26 +7,44 @@ public class ScenarioItemHandler : MonoBehaviour
     List<StepItem> _items;
     [SerializeField] StepItem _prefab;
     [SerializeField] PopUpPanel _panel;
-    [SerializeField] Transform _parent;
+    [SerializeField] RectTransform _scrollContent;
+    float _furthestLimit = 0;
     const float treshold = 10;
+    const float unitSize = 20;
     private void Start()
     {
         _items = new List<StepItem>();
     }
-    
-    public void Add(Logic.Step step)
+
+    public void Add(Logic.Step step,StepCreator creator)
     {
-        StepItem item = Instantiate<StepItem>(_prefab, _parent);
+        StepItem item = Instantiate<StepItem>(_prefab, _scrollContent);
         item.stepInfo = step;
         item.initTime = step.startTime;
         item.endTime = item.initTime + step.duration;
         item.Panel = _panel;
+        item.Creator = creator;
+        float translate = item.initTime * unitSize;
+        item.transform.Translate(Vector3.right * translate);
+        RectTransform tr = item.transform as RectTransform;
+        float size = unitSize * (item.endTime - item.initTime);
+        tr.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size);
+        float limit = translate + size;
+        if (limit > _furthestLimit) {
+            _furthestLimit = limit;
+            _scrollContent.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, /*_scrollContent.rect.width + */_furthestLimit);
+        
+        }
         _items.Add(item);
         item.gameObject.GetComponent<TextModifier>().setText(step.OB);
 
         int overlaps = howManyOverlaps(item.initTime, item.endTime);
         if (overlaps > 0)
+        {
             item.transform.Translate(Vector3.down * overlaps * (((RectTransform)item.transform).rect.height + treshold));
+            _scrollContent.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, _scrollContent.rect.height
+                + (item.transform as RectTransform).rect.height * overlaps);
+        }
 
     }
     public void changeTime(int index, float newInit, float dur)

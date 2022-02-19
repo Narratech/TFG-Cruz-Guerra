@@ -22,6 +22,8 @@ namespace Logic
         {
             this.interruptName = name;
             this.pressType = pressType;
+            startTime = -1;
+            duration = -1;
         }
     }
 }
