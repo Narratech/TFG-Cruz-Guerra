@@ -8,13 +8,18 @@ namespace Logic
     class Anim : Step
     {
         [JsonProperty]
-        public string animName { get; private set; }
+        public string animName { get; set; }
 
         public Anim(string name)
         {
             this.animName = name;
             startTime = -1;
             duration = -1;
+        }
+
+        public Anim()
+        {
+            
         }
     }
 }

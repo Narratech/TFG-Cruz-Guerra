@@ -25,6 +25,7 @@ namespace tfg
         Dictionary<Logic.Source, HashSet<EvaluableInfo>> _correctEvaluation;
         Logic.Source _currentSource;
         Logic.Table_CompetencesToOB _CompetencesToOB;
+
         private void Start()
         {
             _changedOB = new Dictionary<Source, bool>();
@@ -167,9 +168,8 @@ namespace tfg
         public void NewStep(Step step, Source source)
         {
             //? ESTO SIGUE TENIENDO EL PROBLEMA DE QUE SI NOS PONEN UN OB POSITIVO Y EL MISMO OB NEGATIVO A LA VEZ NO VA A IR BIEN
-            if (step.result != Step.Result.Neutral)
+            if (step.result != Step.Result.Neutral && step.OB != null)
             {
-
                 KeyValuePair<string, Logic.Source> pair = new KeyValuePair<string, Source>(step.OB, source);
                 int sum = step.result == Step.Result.Good ? 1 : -1;
                 if (!_happeningOBs.ContainsKey(pair))
@@ -184,7 +184,7 @@ namespace tfg
 
         public void EndStep(Step step, Source source)
         {
-            if (step.result != Step.Result.Neutral)
+            if (step.result != Step.Result.Neutral && step.OB != null)
             {
                 KeyValuePair<string, Source> pair = new KeyValuePair<string, Source>(step.OB, source);
                 if (_happeningOBs.ContainsKey(pair))

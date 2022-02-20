@@ -13,10 +13,10 @@ namespace Logic
         }
 
         [JsonProperty]
-        public string interruptName { get; private set; }
+        public string interruptName { get; set; }
 
         [JsonProperty]
-        public PressType pressType { get; private set; }
+        public PressType pressType { get; set; }
 
         public PressButton(string name, PressType pressType)
         {
@@ -24,6 +24,11 @@ namespace Logic
             this.pressType = pressType;
             startTime = -1;
             duration = -1;
+        }
+
+        public PressButton()
+        {
+
         }
     }
 }

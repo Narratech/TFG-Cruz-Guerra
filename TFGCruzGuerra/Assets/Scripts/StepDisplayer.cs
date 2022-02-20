@@ -52,12 +52,15 @@ namespace tfg
             {
                 case Dialog d:
                     putText(source, d.dialog);
+                    Debug.Log("dialogo");
                     break;
                 case Anim a:
                     playAnim(source, a.animName);
+                    Debug.Log("anim");
                     break;
                 case PressButton pb:
                     playInterruptButton(source, pb.interruptName, pb.pressType);
+                    Debug.Log("boton");
                     break;
                 case FlightStageChange fSC:
                     playEnteredFlightStage(fSC.flightSection);
@@ -79,6 +82,9 @@ namespace tfg
                     break;
                 case Anim a:
                     stopAnim(source);
+                    break;
+                case PressButton pb:
+                    stopInterruptButton(source, pb.interruptName, pb.pressType);
                     break;
             }
         }
@@ -151,6 +157,19 @@ namespace tfg
                     break;
                 case Source.First_Officer:
                     firstOfficerInterrupt.playVideo(buttonName, pressType);
+                    break;
+            }
+        }
+
+        private void stopInterruptButton(Source source, string buttonName, PressButton.PressType pressType)
+        {
+            switch (source)
+            {
+                case Source.Captain:
+                    captainInterrupt.stopVideo();
+                    break;
+                case Source.First_Officer:
+                    firstOfficerInterrupt.stopVideo();
                     break;
             }
         }

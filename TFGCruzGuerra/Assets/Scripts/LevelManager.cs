@@ -42,9 +42,9 @@ namespace tfg
             Logic.Pilot captain = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(captainJson));
             Logic.Pilot firstOfficer = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(firstOfficerJson));
 
-            script.Create(stage, captain, firstOfficer, GameManager.Instance.competencesToOB, GameManager.Instance.OBToSteps, null, Logic.Source.Captain);
+            //script.Create(stage, captain, firstOfficer, GameManager.Instance.competencesToOB, GameManager.Instance.OBToSteps, null, Logic.Source.Captain);
 
-            //script = Logic.JsonManager.ImportFromJSON<Logic.Script>("Assets/GameAssets/Scripts/Script2", true);
+            script = Logic.JsonManager.ImportFromJSON<Logic.Script>("Assets/GameAssets/Scripts/Testmio2JavierAntonio", true);
         }
 
         public void Play()
@@ -78,29 +78,27 @@ namespace tfg
                 {
                     Utils.Nodo nodoAcaba = colaEnds.EliminarPrimero();
 
-                    switch (nodoAcaba.step)
+                    //Solo quito el texto si no hay nadie usandolo
+                    bool usandose = false;
+                    if (nodoAcaba.step is Logic.Dialog)
+                    { 
+                        for(int i = 0; i < colaEnds.NumeroElementos(); ++i)
+                        {
+                            //Si alguien lo usa
+                            if(colaEnds.Array()[i].step is Logic.Dialog && colaEnds.Array()[i].source == nodoAcaba.source)
+                            {
+                                usandose = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!usandose)
                     {
-                        //Solo quito el texto si no hay nadie usandolo
-                        case Logic.Dialog d:
-                            bool usandose = false;
-                            for(int i = 0; i < colaEnds.NumeroElementos(); ++i)
-                            {
-                                //Si alguien lo usa
-                                if(colaEnds.Array()[i].step is Logic.Dialog && colaEnds.Array()[i].source == nodoAcaba.source)
-                                {
-                                    usandose = true;
-                                    break;
-                                }
-                            }
-                            if (!usandose)
-                            {
-                                //todo si en el resto de tipos tenemos que gestionar el uso de forma especial tambien hay que añadir este foreach a cada uno
-                                foreach (Interfaces.IEndStepHandler handler in endStepHandlers)
-                                {
-                                    handler.EndStep(nodoAcaba.step, nodoAcaba.source);
-                                }
-                            }
-                            break;
+                        //todo si en el resto de tipos tenemos que gestionar el uso de forma especial tambien hay que añadir este foreach a cada uno
+                        foreach (Interfaces.IEndStepHandler handler in endStepHandlers)
+                        {
+                            handler.EndStep(nodoAcaba.step, nodoAcaba.source);
+                        }
                     }
 
                     //Si no quedan pasos que meter ni pasos que acaben, acabo el play

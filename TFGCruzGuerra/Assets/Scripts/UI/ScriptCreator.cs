@@ -43,9 +43,9 @@ public class ScriptCreator : MonoBehaviour
             {
                 s.addStep(Logic.Source.Radio, item.stepInfo);
             }
-            string directory = Application.persistentDataPath + "/Scripts/";
+            string directory = "Assets/GameAssets/Scripts/";
             if (!Directory.Exists(directory))
-                Directory.CreateDirectory(Application.persistentDataPath + "/Scripts/");
+                Directory.CreateDirectory("Assets/GameAssets/Scripts/");
             s.ExportToJSON(directory + _sceneName + _pilotName + _copilotName + ".json",true);
         }
         else Debug.LogError("Some Names weren't given");

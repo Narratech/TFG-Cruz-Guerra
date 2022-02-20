@@ -5,30 +5,54 @@ using UnityEngine;
 public class StepCreator : MonoBehaviour
 {
     //hago una clase en lugar de un struct porque los structs son tipos valor, por lo que no son nullable
-    private class buttonData
+    private class GeneralData
     {
-        public string name;
-        public Logic.PressButton.PressType type;
-        public buttonData()
-        {
-            name = "";
-            type = Logic.PressButton.PressType.Default;
+        public string string1;
 
+        public Logic.PressButton.PressType type;
+
+        public GeneralData()
+        {
+            string1 = "";
+            type = Logic.PressButton.PressType.Default;
         }
     }
+
     ScenarioItemHandler _scenarioItemHandler;
-    Logic.Step _myStep;
     PopUpPanel _currentPanel;
+
     StepItem _editingItem;
-    buttonData _currentButton = null;
+    Logic.Step _myStep;
+    GeneralData _currentData;
+
+    private void Start()
+    {
+        _currentData = new GeneralData();
+    }
+
     bool _closed;
     public void setClosed(bool v)
     {
         _closed = v;
     }
+
     public void setEdit(StepItem item)
     {
         _editingItem = item;
+
+        switch (_editingItem.stepInfo)
+        {
+            case Logic.Dialog d:
+                _currentData.string1 = d.dialog;
+                break;
+            case Logic.Anim a:
+                _currentData.string1 = a.animName;
+                break;
+            case Logic.PressButton p:
+                _currentData.string1 = p.interruptName;
+                _currentData.type = p.pressType;
+                break;
+        }
 
     }
     public void setScenarioItemHandler(ScenarioItemHandler handler)
@@ -38,9 +62,9 @@ public class StepCreator : MonoBehaviour
 
     public void accept()
     {
-        if (_scenarioItemHandler && _myStep != null && _myStep.OB != ""
-            && _myStep.result != Logic.Step.Result.Neutral && _myStep.startTime > -1 && _myStep.duration > -1)
+        if (_scenarioItemHandler && _myStep != null && _myStep.startTime > -1 && _myStep.duration > -1)
         {
+            fillStep();
             _scenarioItemHandler.Add(_myStep, this);
             _myStep = null;
             //si estamos editando hay que borrar el antiguo. Lo comprueba la propia funcion
@@ -49,87 +73,81 @@ public class StepCreator : MonoBehaviour
         else Debug.LogError("Some values weren't filled, so the step won't be created");
 
     }
+
+    private void fillStep()
+    {
+        switch (_myStep)
+        {
+            case Logic.Dialog d:
+                d.dialog = _currentData.string1;
+                break;
+            case Logic.Anim a:
+                a.animName = _currentData.string1;
+                break;
+            case Logic.PressButton p:
+                p.interruptName = _currentData.string1;
+                p.pressType = _currentData.type;
+                break;
+        }
+    }
+
     public void closeCurrent()
     {
         if (_currentPanel)
             _currentPanel.close();
     }
+
     public void changePanel(PopUpPanel pan)
     {
         _currentPanel = pan;
         _currentPanel.open();
     }
-    public void CreateAnimation(string name)
-    {
-        if (!_closed)
-            _myStep = new Logic.Anim(name);
-    }
-    public void CreateDialog(string d)
-    {
-        if (!_closed)
-            _myStep = new Logic.Dialog(d);
-    }
-    public void setButtonPressName(string name)
-    {
-        if (!_closed)
-        {
 
-            _myStep = null;
-            if (_currentButton == null)
-            {
-
-                _currentButton = new buttonData();
-                _currentButton.name = name;
-            }
-            else
-            {
-                //si hemos cambiado el nombre no hacemos un nuevo boton. Por el contrario, si ya habia algo en el tipo hay que crear el boton
-                _currentButton.name = name;
-                if (_currentButton.type != Logic.PressButton.PressType.Default)
-                {
-                    _myStep = new Logic.PressButton(_currentButton.name, _currentButton.type);
-                    _currentButton = null;
-                }
-            }
-        }
+    public void CreateAnimation()
+    {
+        if (!_closed)
+            _myStep = new Logic.Anim();
     }
+
+    public void CreateDialog()
+    {
+        if (!_closed)
+            _myStep = new Logic.Dialog();
+    }
+
+    public void CreatePress()
+    {
+        if (!_closed)
+            _myStep = new Logic.PressButton();
+    }
+
+    public void setString1(string s)
+    {
+        if (!_closed)
+            _currentData.string1 = s;
+    }
+
+
     public void setButtonPressType(float type)
     {
         if (!_closed)
         {
-            _myStep = null;
-            if (_currentButton == null)
-            {
-
-                _currentButton = new buttonData();
-                _currentButton.type = (Logic.PressButton.PressType)type;
-            }
-            else
-            {
-                _currentButton.type = (Logic.PressButton.PressType)type;
-                if (_currentButton.name != "")
-                {
-                    _myStep = new Logic.PressButton(_currentButton.name, _currentButton.type);
-                    _currentButton = null;
-                }
-
-            }
+            _currentData.type = (Logic.PressButton.PressType)type;
         }
     }
+
     public void setOB(string ob)
     {
         if (!_closed)
-            if (_myStep != null)
-                _myStep.OB = ob;
-            else Debug.LogError("Step is null");
+            _myStep.OB = ob;
     }
+
     public void setResult(float result)
     {
         if (!_closed)
-            if (_myStep != null)
-                _myStep.result = (Logic.Step.Result)result;
-            else Debug.LogError("Step is null");
+            _myStep.result = (Logic.Step.Result)result;
     }
+
     public void setDuration(string dur)
     {
         if (!_closed)
@@ -138,6 +156,7 @@ public class StepCreator : MonoBehaviour
                     _myStep.duration = duration;
                 else Debug.LogError("Bad format");
     }
+
     public void setStartTime(string time)
     {
         if (!_closed)

@@ -24,9 +24,6 @@ namespace tfg
 #endif
             videoOffToOn.Prepare();
             videoOnToOff.Prepare();
-
-            videoOffToOn.loopPointReached += videoCompleted;
-            videoOnToOff.loopPointReached += videoCompleted;
         }
 
         public void playVideo(string name, PressButton.PressType pressType)
@@ -47,11 +44,13 @@ namespace tfg
                     break;
             }
         }
-        
-        private void videoCompleted(VideoPlayer vp)
+
+        public void stopVideo()
         {
             renderImage.enabled = false;
             interruptName.enabled = false;
+            videoOnToOff.Stop();
+            videoOffToOn.Stop();
         }
     }
 }
