@@ -96,11 +96,11 @@ namespace tfg
             {
                 case Source.Captain:
                     captainImage.gameObject.SetActive(true);
-                    captainText.text = "captain: " + dialog;
+                    captainText.text = dialog;
                     break;
                 case Source.First_Officer:
                     firstOfficerImage.gameObject.SetActive(true);
-                    firstOfficerText.text = "first officer: " + dialog;
+                    firstOfficerText.text = dialog;
                     break;
                 case Source.Radio:
                     break;
