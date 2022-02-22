@@ -97,7 +97,7 @@ namespace tfg
                         //todo si en el resto de tipos tenemos que gestionar el uso de forma especial tambien hay que añadir este foreach a cada uno
                         foreach (Interfaces.IEndStepHandler handler in endStepHandlers)
                         {
-                            handler.EndStep(nodoAcaba.step, nodoAcaba.source);
+                            handler.OnEndStep(nodoAcaba.step, nodoAcaba.source,colaEnds.NumeroElementos());
                         }
                     }
 
@@ -119,7 +119,7 @@ namespace tfg
                 colaEnds.Introducir(nodoActual);
                 foreach (Interfaces.INewStepHandler handler in newStepHandlers)
                 {
-                    handler.NewStep(nodoActual.step, nodoActual.source);
+                    handler.OnNewStep(nodoActual.step, nodoActual.source,colaStarts.NumeroElementos());
                 }
                 if (colaStarts.NumeroElementos() > 0)
                     nodoSiguiente = colaStarts.ObservarPrimero();

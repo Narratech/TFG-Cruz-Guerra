@@ -14,5 +14,6 @@ public class ImageModifier : MonoBehaviour
     {
         _img.sprite = image;
     }
+   
     
 }

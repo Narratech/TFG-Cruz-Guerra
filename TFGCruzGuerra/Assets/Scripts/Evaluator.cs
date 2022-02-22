@@ -18,6 +18,7 @@ namespace tfg
         [SerializeField] Animator _resultAnimator;
         [SerializeField] Transform[] _positions;
         [SerializeField] OBSelector[] _OB;
+        [SerializeField] ResultsDisplayer _resultsDisplayer;
         Dictionary<KeyValuePair<string, Logic.Source>, int> _happeningOBs;
         //todo esto hay que comprobarlo dependiendo del source
         Dictionary<Source, bool> _changedOB;
@@ -152,11 +153,14 @@ namespace tfg
                 _correctEvaluation[_currentSource].ExceptWith(new EvaluableInfo[] { info });
                 _resultText.setText("+1");
                 _resultText.setColor(Color.green);
+                _resultsDisplayer.detect(ResultsDisplayer.OBDetection.Correct);
             }
             else
             {
                 _resultText.setText("-1");
                 _resultText.setColor(Color.red);
+                _resultsDisplayer.detect(ResultsDisplayer.OBDetection.Incorrect);
+
             }
             _resultText.setPos(position);
 
@@ -165,9 +169,10 @@ namespace tfg
             GameManager.Instance.levelManager.setScaleTime(1);
         }
 
-        public void NewStep(Step step, Source source)
+        public void OnNewStep(Step step, Source source,int remainingSteps)
         {
             //? ESTO SIGUE TENIENDO EL PROBLEMA DE QUE SI NOS PONEN UN OB POSITIVO Y EL MISMO OB NEGATIVO A LA VEZ NO VA A IR BIEN
+            //! NO SE PUEDE PERMITIR QUE SE SUPERPONGAN OBS
             if (step.result != Step.Result.Neutral && step.OB != null)
             {
                 KeyValuePair<string, Logic.Source> pair = new KeyValuePair<string, Source>(step.OB, source);
@@ -178,11 +183,12 @@ namespace tfg
                     _changedOB[source] = true;
                 }
                 else _happeningOBs[pair] += sum;
+                _resultsDisplayer.newOB();
             }
 
         }
 
-        public void EndStep(Step step, Source source)
+        public void OnEndStep(Step step, Source source,int remainingSteps)
         {
             if (step.result != Step.Result.Neutral && step.OB != null)
             {
@@ -194,6 +200,8 @@ namespace tfg
                     if (_happeningOBs[pair] == 0)
                         _happeningOBs.Remove(pair);
                 }
+                if (remainingSteps == 0)
+                    _resultsDisplayer.display();
             }
         }
         void prepareFakeOptions(out Dictionary<string, string[]> competenceToFakeOptions, out Dictionary<string, int> competenceToFirstIndex, int Source)

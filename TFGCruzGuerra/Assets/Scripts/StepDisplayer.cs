@@ -46,7 +46,7 @@ namespace tfg
         }
 
 
-        public void NewStep(Step step, Source source)
+        public void OnNewStep(Step step, Source source,int remainingSteps)
         {
             switch (step)
             {
@@ -73,7 +73,7 @@ namespace tfg
             flightStateText.text = flightSection.ToString();
         }
 
-        public void EndStep(Step step, Source source)
+        public void OnEndStep(Step step, Source source,int remainingSteps)
         {
             switch (step)
             {
