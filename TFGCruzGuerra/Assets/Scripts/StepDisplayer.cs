@@ -52,15 +52,15 @@ namespace tfg
             {
                 case Dialog d:
                     putText(source, d.dialog);
-                    Debug.Log("dialogo");
+                    //Debug.Log("dialogo");
                     break;
                 case Anim a:
                     playAnim(source, a.animName);
-                    Debug.Log("anim");
+                    //Debug.Log("anim");
                     break;
                 case PressButton pb:
                     playInterruptButton(source, pb.interruptName, pb.pressType);
-                    Debug.Log("boton");
+                    //Debug.Log("boton");
                     break;
                 case FlightStageChange fSC:
                     playEnteredFlightStage(fSC.flightSection);
