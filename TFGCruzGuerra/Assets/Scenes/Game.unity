@@ -2351,6 +2351,7 @@ GameObject:
   - component: {fileID: 1015389401}
   - component: {fileID: 1015389403}
   - component: {fileID: 1015389402}
+  - component: {fileID: 1015389404}
   m_Layer: 5
   m_Name: StoppedTimePanel
   m_TagString: Untagged
@@ -2415,6 +2416,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015389400}
   m_CullTransparentMesh: 1
+--- !u!114 &1015389404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015389400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8150476072a70254a992430703e22f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evaluator: {fileID: 1394315639}
 --- !u!1 &1060686846
 GameObject:
   m_ObjectHideFlags: 0
@@ -3349,17 +3363,41 @@ PrefabInstance:
       value: Evaluator
       objectReference: {fileID: 0}
     - target: {fileID: 626780003564316984, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _rotVel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 626780003564316984, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: _myPanel
       value: 
       objectReference: {fileID: 1394315639}
+    - target: {fileID: 626780003564316984, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _acceptAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 626780003564316984, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _dragDivisor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1498831773381848518, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1570344250636133389, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _rotVel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570344250636133389, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: _myPanel
       value: 
       objectReference: {fileID: 1394315639}
+    - target: {fileID: 1570344250636133389, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _acceptAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570344250636133389, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _dragDivisor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2986608525490058634, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 28.889648
@@ -3385,13 +3423,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1248792334}
     - target: {fileID: 6120148902493500644, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _rotVel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120148902493500644, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: _myPanel
       value: 
       objectReference: {fileID: 1394315639}
+    - target: {fileID: 6120148902493500644, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _acceptAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120148902493500644, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _dragDivisor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477863549797695128, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _rotVel
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6477863549797695128, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: _myPanel
       value: 
       objectReference: {fileID: 1394315639}
+    - target: {fileID: 6477863549797695128, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _acceptAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477863549797695128, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _dragDivisor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6685200358083518303, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3477,13 +3539,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7306049227371744385, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _rotVel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306049227371744385, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: _myPanel
       value: 
       objectReference: {fileID: 1394315639}
+    - target: {fileID: 7306049227371744385, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _acceptAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306049227371744385, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _dragDivisor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353587802922331962, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _rotVel
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7353587802922331962, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: _myPanel
       value: 
       objectReference: {fileID: 1394315639}
+    - target: {fileID: 7353587802922331962, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _acceptAngle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353587802922331962, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
+      propertyPath: _dragDivisor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8444098353715161174, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -3.0957031
@@ -5531,7 +5617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 756563963606173263, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.5143585
+      value: 1.514267
       objectReference: {fileID: 0}
     - target: {fileID: 4426584256535268268, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_Pivot.x
@@ -5640,7 +5726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8258458300798147403, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.7000122
+      value: 1.6999512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb82f426cdb08441b001465176a5917, type: 3}
