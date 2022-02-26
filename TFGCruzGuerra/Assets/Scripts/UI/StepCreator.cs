@@ -11,10 +11,13 @@ public class StepCreator : MonoBehaviour
 
         public Logic.PressButton.PressType type;
 
+        public bool loop;
+
         public GeneralData()
         {
             string1 = "";
             type = Logic.PressButton.PressType.Default;
+            loop = false;
         }
     }
 
@@ -88,6 +91,10 @@ public class StepCreator : MonoBehaviour
                 p.interruptName = _currentData.string1;
                 p.pressType = _currentData.type;
                 break;
+            case Logic.SoundAlarm sa:
+                sa.soundAlarmName = _currentData.string1;
+                sa.loop = _currentData.loop;
+                break;
         }
     }
 
@@ -121,6 +128,13 @@ public class StepCreator : MonoBehaviour
             _myStep = new Logic.PressButton();
     }
 
+    public void CreateSoundAlarm()
+    {
+        if (!_closed)
+            _myStep = new Logic.SoundAlarm();
+    }
+
+
     public void setString1(string s)
     {
         if (!_closed)
@@ -133,6 +147,15 @@ public class StepCreator : MonoBehaviour
         if (!_closed)
         {
             _currentData.type = (Logic.PressButton.PressType)type;
+        }
+    }
+
+
+    public void setLoop(float type)
+    {
+        if (!_closed)
+        {
+            _currentData.loop = type > 0.5f;
         }
     }
 

@@ -22,6 +22,8 @@ namespace tfg
         //Flight Stage
         [SerializeField] private Text flightStateText;
 
+        [SerializeField] private SoundManager soundManager;
+
         void Start()
         {
 #if UNITY_EDITOR
@@ -52,25 +54,20 @@ namespace tfg
             {
                 case Dialog d:
                     putText(source, d.dialog);
-                    //Debug.Log("dialogo");
                     break;
                 case Anim a:
                     playAnim(source, a.animName);
-                    //Debug.Log("anim");
                     break;
                 case PressButton pb:
                     playInterruptButton(source, pb.interruptName, pb.pressType);
-                    //Debug.Log("boton");
                     break;
                 case FlightStageChange fSC:
                     playEnteredFlightStage(fSC.flightSection);
                     break;
+                case SoundAlarm sa:
+                    playSoundAlarm(sa.soundAlarmName, sa.loop);
+                    break;
             }
-        }
-
-        private void playEnteredFlightStage(FlightSections flightSection)
-        {
-            flightStateText.text = flightSection.ToString();
         }
 
         public void OnEndStep(Step step, Source source,int remainingSteps)
@@ -86,7 +83,26 @@ namespace tfg
                 case PressButton pb:
                     stopInterruptButton(source, pb.interruptName, pb.pressType);
                     break;
+                case SoundAlarm sa:
+                    if(sa.loop) stopSoundAlarm(sa.soundAlarmName);
+                    break;
             }
+        }
+
+        private void playSoundAlarm(string soundAlarmName, bool loop)
+        {
+            soundManager.Play(soundAlarmName, loop);
+        }
+
+        private void stopSoundAlarm(string soundAlarmName)
+        {
+            soundManager.Stop(soundAlarmName);
+        }
+
+
+        private void playEnteredFlightStage(FlightSections flightSection)
+        {
+            flightStateText.text = flightSection.ToString();
         }
 
 
