@@ -286,9 +286,7 @@ namespace Logic
             source = steps[stepsIt].Item1;
             step = steps[stepsIt].Item2;
 
-            ++stepsIt;
-
-            return stepsIt < steps.Count;
+            return stepsIt++ < steps.Count;
         }
 
         public int NumberOfSteps() { return steps.Count; }
