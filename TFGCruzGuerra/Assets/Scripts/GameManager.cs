@@ -8,6 +8,17 @@ namespace tfg
 {
     public class GameManager : MonoBehaviour
     {
+        public struct ResultsData
+        {
+            public ResultsData(int[] det, int OBs)
+            {
+                Detection = det;
+                TotalOBs = OBs;
+            }
+            public int[] Detection { get; }
+            public int TotalOBs { get; }
+
+        }
         public static GameManager Instance;
 
         [SerializeField] private Scene scene;
@@ -16,6 +27,7 @@ namespace tfg
 
         public Logic.Table_CompetencesToOB competencesToOB { get; private set; }
         public Logic.Table_OB_Steps OBToSteps { get; private set; }
+        public ResultsData Results { get; set; }
         private void Awake()
         {
             if (Instance != null)
@@ -25,18 +37,19 @@ namespace tfg
                 Instance.levelManager = levelManager;
 
                 Instance.competencesToOB = competencesToOB;
-                
+
                 Instance.OBToSteps = OBToSteps;
+
                 Destroy(gameObject);
             }
             else
             {
                 OBToSteps = Logic.JsonManager.ImportFromJSON<Logic.Table_OB_Steps>(/*Application.persistentDataPath*/"Assets/GameAssets/Tables/TableOBtoSteps.json");
                 competencesToOB = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(/*Application.persistentDataPath*/"Assets/GameAssets/Tables/TableCompetenceToOB.json");
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
             }
 
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
 
         public void goToScene(ButtonsScene scene)

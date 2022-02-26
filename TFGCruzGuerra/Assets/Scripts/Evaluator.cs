@@ -14,16 +14,17 @@ namespace tfg
             public string OB;
             public Step.Result result;
         }
+
         [SerializeField] TextModifier _resultText;
         [SerializeField] Animator _resultAnimator;
         [SerializeField] Transform[] _positions;
         [SerializeField] OBSelector[] _OB;
-        [SerializeField] ResultsDisplayer _resultsDisplayer;
+        [SerializeField] ResultsTracker _resultsTracker;
         Dictionary<KeyValuePair<string, Logic.Source>, int> _happeningOBs;
-        //todo esto hay que comprobarlo dependiendo del source
         Dictionary<Source, bool> _changedOB;
-        //usamos HashSet porque queremos que saber si está o no sea O(1)
-        Dictionary<Logic.Source, HashSet<EvaluableInfo>> _correctEvaluation;
+        //usamos Dictionary porque queremos que saber si está o no sea O(1) y guardamos en el bool si previamente se habia detectado ese OB( es decir, 
+        //el usuario habia visto el OB pero lo habia calificado incorrectamente)
+        Dictionary<Logic.Source, Dictionary<EvaluableInfo,bool>> _correctEvaluation;
         Logic.Source _currentSource;
         Logic.Table_CompetencesToOB _CompetencesToOB;
 
@@ -34,9 +35,9 @@ namespace tfg
             _changedOB[Source.First_Officer] = true;
             _happeningOBs = new Dictionary<KeyValuePair<string, Source>, int>();
             _CompetencesToOB = GameManager.Instance.competencesToOB;
-            _correctEvaluation = new Dictionary<Source, HashSet<EvaluableInfo>>();
-            _correctEvaluation[Source.Captain] = new HashSet<EvaluableInfo>();
-            _correctEvaluation[Source.First_Officer] = new HashSet<EvaluableInfo>();
+            _correctEvaluation = new Dictionary<Source, Dictionary<EvaluableInfo, bool>>();
+            _correctEvaluation[Source.Captain] = new Dictionary<EvaluableInfo, bool>();
+            _correctEvaluation[Source.First_Officer] = new Dictionary<EvaluableInfo, bool>();
             LevelManager.AddEndStepHandler(this);
             LevelManager.AddNewStepHandler(this);
         }
@@ -119,7 +120,7 @@ namespace tfg
                         EvaluableInfo info = new EvaluableInfo();
                         info.OB = obs.Key.Key;
                         info.result = obs.Value > 0 ? Step.Result.Good : Step.Result.Bad;
-                        _correctEvaluation[_currentSource].Add(info);
+                        _correctEvaluation[_currentSource].Add(info,false);
                         putOBinRandomIndex(info.OB, indexes, ref firstIndex);
 
                         //rellenamos con obs de pega y empezamos por 1 porque contamos el correcto
@@ -147,29 +148,44 @@ namespace tfg
             EvaluableInfo info = new EvaluableInfo();
             info.OB = oB;
             info.result = isPositive ? Step.Result.Good : Step.Result.Bad;
-            if (_correctEvaluation[_currentSource].Contains(info))
+            if (_correctEvaluation[_currentSource].TryGetValue(info,out bool previouslyDetected))
             {
                 //si ha acertado lo quitamos para la próxima de las buenas (aunque seguira apareciendo como opción)
-                _correctEvaluation[_currentSource].ExceptWith(new EvaluableInfo[] { info });
+                _correctEvaluation[_currentSource].Remove(info);
                 _resultText.setText("+1");
                 _resultText.setColor(Color.green);
-                _resultsDisplayer.detect(ResultsDisplayer.OBDetection.Correct);
+                _resultsTracker.detect(ResultsTracker.OBDetection.Correct,previouslyDetected);
             }
             else
             {
                 _resultText.setText("-1");
                 _resultText.setColor(Color.red);
-                _resultsDisplayer.detect(ResultsDisplayer.OBDetection.Incorrect);
+                Step.Result opposite = info.result == Step.Result.Good ? Step.Result.Bad : Step.Result.Good;
+                info.result = opposite;
+                //si el mismo OB con la evaluación contraria era correcto, es que se ha equivocado, por lo que estaria detectado pero incorrecto.
+                //En caso contrario es que el OB que ha señalado no estaba y por tanto no ha detectado el que era
+                bool isOBInCorrectEvaluation = _correctEvaluation[_currentSource].TryGetValue(info, out previouslyDetected);
+                if (isOBInCorrectEvaluation)
+                {
+
+                    _resultsTracker.detect(ResultsTracker.OBDetection.Incorrect, previouslyDetected);
+                    //como el contrario si es correcto, significa que ahora hemos detectado el OB
+                    _correctEvaluation[_currentSource][info] = true;
+                }
+                else
+                    //si el OB que ha marcado no estaba de ninguna forma, es imposible haberlo detectado anteriormente
+                    _resultsTracker.detect(ResultsTracker.OBDetection.Undetected, false);
+
 
             }
-            _resultText.setPos(position);
+            _resultText.setPos(Camera.main.WorldToScreenPoint(position));
 
             _resultAnimator.Play("Fade Up", 0, 0);
 
             GameManager.Instance.levelManager.setScaleTime(1);
         }
 
-        public void OnNewStep(Step step, Source source,int remainingSteps)
+        public void OnNewStep(Step step, Source source, int remainingSteps)
         {
             //? ESTO SIGUE TENIENDO EL PROBLEMA DE QUE SI NOS PONEN UN OB POSITIVO Y EL MISMO OB NEGATIVO A LA VEZ NO VA A IR BIEN
             //! NO SE PUEDE PERMITIR QUE SE SUPERPONGAN OBS
@@ -183,12 +199,12 @@ namespace tfg
                     _changedOB[source] = true;
                 }
                 else _happeningOBs[pair] += sum;
-                _resultsDisplayer.newOB();
+                _resultsTracker.newOB();
             }
 
         }
 
-        public void OnEndStep(Step step, Source source,int remainingSteps)
+        public void OnEndStep(Step step, Source source, int remainingSteps)
         {
             if (step.result != Step.Result.Neutral && step.OB != null)
             {
@@ -201,7 +217,7 @@ namespace tfg
                         _happeningOBs.Remove(pair);
                 }
                 if (remainingSteps == 0)
-                    _resultsDisplayer.display();
+                    _resultsTracker.informAndGoToResults();
             }
         }
         void prepareFakeOptions(out Dictionary<string, string[]> competenceToFakeOptions, out Dictionary<string, int> competenceToFirstIndex, int Source)
