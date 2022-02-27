@@ -24,7 +24,7 @@ namespace tfg
         Dictionary<Source, bool> _changedOB;
         //usamos Dictionary porque queremos que saber si está o no sea O(1) y guardamos en el bool si previamente se habia detectado ese OB( es decir, 
         //el usuario habia visto el OB pero lo habia calificado incorrectamente)
-        Dictionary<Logic.Source, Dictionary<EvaluableInfo,bool>> _correctEvaluation;
+        Dictionary<Logic.Source, HashSet<EvaluableInfo>> _correctEvaluation;
         Logic.Source _currentSource;
         Logic.Table_CompetencesToOB _CompetencesToOB;
 
@@ -35,9 +35,9 @@ namespace tfg
             _changedOB[Source.First_Officer] = true;
             _happeningOBs = new Dictionary<KeyValuePair<string, Source>, int>();
             _CompetencesToOB = GameManager.Instance.competencesToOB;
-            _correctEvaluation = new Dictionary<Source, Dictionary<EvaluableInfo, bool>>();
-            _correctEvaluation[Source.Captain] = new Dictionary<EvaluableInfo, bool>();
-            _correctEvaluation[Source.First_Officer] = new Dictionary<EvaluableInfo, bool>();
+            _correctEvaluation = new Dictionary<Source, HashSet<EvaluableInfo>>();
+            _correctEvaluation[Source.Captain] = new HashSet<EvaluableInfo>();
+            _correctEvaluation[Source.First_Officer] = new HashSet<EvaluableInfo>();
             LevelManager.AddEndStepHandler(this);
             LevelManager.AddNewStepHandler(this);
         }
@@ -120,7 +120,7 @@ namespace tfg
                         EvaluableInfo info = new EvaluableInfo();
                         info.OB = obs.Key.Key;
                         info.result = obs.Value > 0 ? Step.Result.Good : Step.Result.Bad;
-                        _correctEvaluation[_currentSource].Add(info,false);
+                        _correctEvaluation[_currentSource].Add(info);
                         putOBinRandomIndex(info.OB, indexes, ref firstIndex);
 
                         //rellenamos con obs de pega y empezamos por 1 porque contamos el correcto
@@ -148,13 +148,13 @@ namespace tfg
             EvaluableInfo info = new EvaluableInfo();
             info.OB = oB;
             info.result = isPositive ? Step.Result.Good : Step.Result.Bad;
-            if (_correctEvaluation[_currentSource].TryGetValue(info,out bool previouslyDetected))
+            if (_correctEvaluation[_currentSource].Contains(info))
             {
                 //si ha acertado lo quitamos para la próxima de las buenas (aunque seguira apareciendo como opción)
                 _correctEvaluation[_currentSource].Remove(info);
                 _resultText.setText("+1");
                 _resultText.setColor(Color.green);
-                _resultsTracker.detect(ResultsTracker.OBDetection.Correct,previouslyDetected);
+                _resultsTracker.detect(ResultsTracker.OBDetection.Correct);
             }
             else
             {
@@ -162,23 +162,12 @@ namespace tfg
                 _resultText.setColor(Color.red);
                 Step.Result opposite = info.result == Step.Result.Good ? Step.Result.Bad : Step.Result.Good;
                 info.result = opposite;
-                //si el mismo OB con la evaluación contraria era correcto, es que se ha equivocado, por lo que estaria detectado pero incorrecto.
-                //En caso contrario es que el OB que ha señalado no estaba y por tanto no ha detectado el que era
-                bool isOBInCorrectEvaluation = _correctEvaluation[_currentSource].TryGetValue(info, out previouslyDetected);
-                if (isOBInCorrectEvaluation)
-                {
-
-                    _resultsTracker.detect(ResultsTracker.OBDetection.Incorrect, previouslyDetected);
-                    //como el contrario si es correcto, significa que ahora hemos detectado el OB
-                    _correctEvaluation[_currentSource][info] = true;
-                }
-                else
-                    //si el OB que ha marcado no estaba de ninguna forma, es imposible haberlo detectado anteriormente
-                    _resultsTracker.detect(ResultsTracker.OBDetection.Undetected, false);
+                //si el OB que ha marcado no estaba de ninguna forma, es imposible haberlo detectado anteriormente
+                _resultsTracker.detect(ResultsTracker.OBDetection.Incorrect);
 
 
             }
-            _resultText.setPos(Camera.main.WorldToScreenPoint(position));
+            _resultText.setPos(Camera.main.ScreenToWorldPoint(position));
 
             _resultAnimator.Play("Fade Up", 0, 0);
 

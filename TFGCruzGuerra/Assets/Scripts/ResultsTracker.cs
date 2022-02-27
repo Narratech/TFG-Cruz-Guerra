@@ -11,7 +11,7 @@ namespace tfg
     {
         public enum OBDetection : byte
         {
-            Undetected, Correct, Incorrect
+            Correct, Incorrect, Undetected
         }
         int[] _detection;
         int _totalOBs;
@@ -20,7 +20,7 @@ namespace tfg
         private void Start()
         {
             _totalOBs = 0;
-            int length = Enum.GetValues(typeof(OBDetection)).Length;
+            int length = Enum.GetValues(typeof(OBDetection)).Length - 1;
             _detection = new int[length];
             for (int i = 0; i < length; i++)
             {
@@ -33,7 +33,6 @@ namespace tfg
         /// </summary>
         public void newOB()
         {
-            _detection[(byte)OBDetection.Undetected]++;
             _totalOBs++;
         }
         /// <summary>
@@ -41,31 +40,16 @@ namespace tfg
         /// correctos o incorrectos
         /// </summary>
         /// <param name="result">El resultado</param>
-        public void detect(OBDetection result, bool detectedPreviously)
+        public void detect(OBDetection result)
         {
-            //si no se habia detectado previamente, quitamos una de los undetected, ya que ahora si ha sido detectado, excepto en el caso
-            //de que el resultado sea undetected, pues eso significa que el OB ni siquiera "debia" ser detectado (es un OB puesto al azar)
 
-
-            //Si es undetected es que el OB seleccionado ni siquiera estaba en la lista de los que aparecen en el evento, por lo que se añade
-            //como fallo y suma al total de OBs
             if (result == OBDetection.Undetected)
             {
-                _totalOBs++;
-                _detection[(byte)OBDetection.Incorrect]++;
+                Debug.LogWarning("Evaluation can't be Undetected");
             }
-            //En caso contrario hay que ver si se habia detectado anteriormente. Si no se habia detectado es que este OB acaba de detectarse
-            //por primera vez, independientemente de si era correcto o incorrecto, por lo que se resta de los no detectados.
             else
             {
-                if (!detectedPreviously)
-                    _detection[(byte)OBDetection.Undetected]--;
-               //Si el OB se habia detectado previamente y es Incorrecto, quiere decir que el jugador se habia equivocado antes al evaluar el OB
-               //pero no al detectarlo y ahora le ha pasado lo mismo, por lo que es un fallo mas que añadir a la media
-                else if (result == OBDetection.Incorrect)
-                    _totalOBs++;
                 _detection[(byte)result]++;
-
             }
         }
         void changeScene()
@@ -75,7 +59,14 @@ namespace tfg
         }
         public void informAndGoToResults()
         {
-            GameManager.ResultsData rd = new GameManager.ResultsData(_detection, _totalOBs);
+            int totalDetection = 0;
+            for (int i = 0; i <= (byte)OBDetection.Incorrect; i++)
+            {
+                totalDetection += _detection[i];
+            }
+            //al hacer este maximo estamos teniendo tambien en cuenta los no detectados ya que si es mayor total obs es que hay no detectados y el jugador 
+            //no ha fallado demasiado pero si la suma es mayor es que el jugador ha fallado tanto que ha sobrepasado a los no detectados
+            GameManager.ResultsData rd = new GameManager.ResultsData(_detection, Math.Max(_totalOBs,totalDetection));
             GameManager.Instance.Results = rd;
             Invoke("changeScene", _secondsToWait);
         }
