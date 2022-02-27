@@ -13,6 +13,10 @@ namespace tfg
         [SerializeField] private Image captainImage, firstOfficerImage;
         [SerializeField] private Text captainText, firstOfficerText;
 
+        //Radio
+        [SerializeField] private Text radioText;
+        [SerializeField] private Animator radioAnim;
+
         //Animations
         [SerializeField] private Animator captainAnimator, firstOfficerAnimator;
 
@@ -22,6 +26,7 @@ namespace tfg
         //Flight Stage
         [SerializeField] private Text flightStateText;
 
+        //Sounds
         [SerializeField] private SoundManager soundManager;
 
         void Start()
@@ -119,6 +124,9 @@ namespace tfg
                     firstOfficerText.text = dialog;
                     break;
                 case Source.Radio:
+                    if(radioText.text == "")
+                        radioAnim.Play("Lift");
+                    radioText.text = dialog;
                     break;
             }
         }
@@ -134,6 +142,8 @@ namespace tfg
                     firstOfficerImage.gameObject.SetActive(false);
                     break;
                 case Source.Radio:
+                    radioText.text = "";
+                    radioAnim.Play("Drop");
                     break;
             }
         }
