@@ -57,6 +57,27 @@ namespace tfg
             SceneManager.LoadScene((int)scene.scene);
         }
 
+        public void goToSceneAsyncInTime(Scene scene, float inTime)
+        {
+            StartCoroutine(LoadYourAsyncScene(scene, inTime));
+        }
+
+        IEnumerator LoadYourAsyncScene(Scene scene, float inTime)
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync((int)scene);
+            asyncLoad.allowSceneActivation = false;
+
+            yield return new WaitForSecondsRealtime(inTime);
+
+            asyncLoad.allowSceneActivation = true;
+
+            // Wait until the asynchronous scene fully loads
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+        }
+
         public void exit()
         {
 #if UNITY_EDITOR

@@ -10,22 +10,22 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 0.0,
-        "duration": 4.0,
-        "result": 2,
-        "OB": "",
-        "dialog": "Hola soy Javier"
+        "duration": 5.0,
+        "result": 0,
+        "OB": "Identifies and assesses accurately the general environment as it may affect the operation",
+        "dialog": "Esa nube parece muy oscura"
       }
     },
     {
       "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
-      "Item1": 1,
+      "Item1": 2,
       "Item2": {
-        "$type": "Logic.Anim, Assembly-CSharp",
-        "startTime": 2.0,
-        "duration": 2.0,
-        "result": 2,
-        "OB": null,
-        "animName": "Point"
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 2,
+        "duration": 3.0,
+        "result": 0,
+        "OB": "",
+        "dialog": "Hola soy la radio"
       }
     }
   ]

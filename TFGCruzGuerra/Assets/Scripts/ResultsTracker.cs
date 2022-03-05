@@ -15,8 +15,7 @@ namespace tfg
         }
         int[] _detection;
         int _totalOBs;
-        [SerializeField] ButtonsScene _resultsScene;
-        [SerializeField] [Tooltip("Seconds to wait until scene changes")] float _secondsToWait = .5f;
+
         private void Start()
         {
             _totalOBs = 0;
@@ -52,11 +51,7 @@ namespace tfg
                 _detection[(byte)result]++;
             }
         }
-        void changeScene()
-        {
 
-            GameManager.Instance.goToScene(_resultsScene);
-        }
         public void informAndGoToResults()
         {
             int totalDetection = 0;
@@ -68,7 +63,6 @@ namespace tfg
             //no ha fallado demasiado pero si la suma es mayor es que el jugador ha fallado tanto que ha sobrepasado a los no detectados
             GameManager.ResultsData rd = new GameManager.ResultsData(_detection, Math.Max(_totalOBs,totalDetection));
             GameManager.Instance.Results = rd;
-            Invoke("changeScene", _secondsToWait);
         }
     }
 }

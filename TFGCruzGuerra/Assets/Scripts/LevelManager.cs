@@ -15,11 +15,18 @@ namespace tfg
 
         [SerializeField] private Image stoppedTimePanel;
 
+        [SerializeField] private Image fadeOutPanel;
+
         private Logic.Script script;
 
         Logic.Step _currentStep;
         static List<Interfaces.INewStepHandler> newStepHandlers;
         static List<Interfaces.IEndStepHandler> endStepHandlers;
+
+        [SerializeField] Scene _resultsScene;
+        [SerializeField] [Tooltip("Seconds to wait until scene changes")] float _secondsToWait = .5f;
+
+        private bool fading = false;
 
         private void Awake()
         {
@@ -44,8 +51,9 @@ namespace tfg
 
             //script.Create(stage, captain, firstOfficer, GameManager.Instance.competencesToOB, GameManager.Instance.OBToSteps, null, Logic.Source.Captain);
 
-            script = Logic.JsonManager.ImportFromJSON<Logic.Script>("Assets/GameAssets/Scripts/Testmio2JavierAntonio", true);
+            script = Logic.JsonManager.ImportFromJSON<Logic.Script>("Assets/GameAssets/Scripts/crearTestJavierAntonio", true);
         }
+
 
         public void Play()
         {
@@ -127,7 +135,28 @@ namespace tfg
                     nodoSiguiente = null;
             }
 
-            yield return null;
+            GameManager.Instance.goToSceneAsyncInTime(_resultsScene, _secondsToWait);
+
+            StartCoroutine(fadeOut());
+        }
+
+        private IEnumerator fadeOut()
+        {
+            Color panelColor = fadeOutPanel.color;
+            float fadeAmount;
+
+            float startTime = Time.time;
+
+            while (Time.time - startTime < _secondsToWait)
+            {
+                fadeAmount = (Time.time - startTime) / _secondsToWait;
+
+                panelColor = new Color(panelColor.r, panelColor.g, panelColor.b, fadeAmount);
+
+                fadeOutPanel.color = panelColor;
+
+                yield return new WaitForEndOfFrame();
+            }
         }
 
         public void nextStep()
