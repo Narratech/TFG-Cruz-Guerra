@@ -34,6 +34,12 @@ namespace tfg
             GameManager.Instance.levelManager.setScaleTime(0);
         }
 
+        public void stopEvaluating()
+        {
+            panel.close();
+            GameManager.Instance.levelManager.setScaleTime(1);
+        }
+
         public void OnNewStep(Step step, Source source, int remainingSteps)
         {
             switch (step)

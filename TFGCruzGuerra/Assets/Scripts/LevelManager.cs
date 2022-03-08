@@ -26,7 +26,7 @@ namespace tfg
         [SerializeField] Scene _resultsScene;
         [SerializeField] [Tooltip("Seconds to wait until scene changes")] float _secondsToWait = .5f;
 
-        private bool fading = false;
+        private IEnumerator playCoroutine;
 
         private void Awake()
         {
@@ -57,7 +57,8 @@ namespace tfg
 
         public void Play()
         {
-            StartCoroutine(PlayInCoroutine());
+            playCoroutine = PlayInCoroutine();
+            StartCoroutine(playCoroutine);
         }
         
         private IEnumerator PlayInCoroutine()
@@ -188,5 +189,14 @@ namespace tfg
         }
 
         public Logic.Step getCurrentStep() { return _currentStep; }
+
+        public void abort()
+        {
+            StopCoroutine(playCoroutine);
+
+            GameManager.Instance.goToSceneAsyncInTime(_resultsScene, _secondsToWait);
+
+            StartCoroutine(fadeOut());
+        }
     }
 }

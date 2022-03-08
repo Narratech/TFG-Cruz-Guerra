@@ -134,6 +134,11 @@ public class StepCreator : MonoBehaviour
             _myStep = new Logic.SoundAlarm();
     }
 
+    public void CreateAbort()
+    {
+        if (!_closed)
+            _myStep = new Logic.Abort();
+    }
 
     public void setString1(string s)
     {

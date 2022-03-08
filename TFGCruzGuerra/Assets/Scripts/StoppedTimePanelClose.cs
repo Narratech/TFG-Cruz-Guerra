@@ -7,12 +7,11 @@ namespace tfg
 {
     public class StoppedTimePanelClose : MonoBehaviour, IPointerDownHandler
     {
-        [SerializeField] PopUpPanel evaluator;
+        [SerializeField] Evaluate evaluate;
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            evaluator.close();
-            GameManager.Instance.levelManager.setScaleTime(1);
+            evaluate.stopEvaluating();
         }
     }
 }

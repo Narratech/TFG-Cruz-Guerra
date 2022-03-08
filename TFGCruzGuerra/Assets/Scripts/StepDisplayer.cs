@@ -26,6 +26,9 @@ namespace tfg
         //Flight Stage
         [SerializeField] private Text flightStateText;
 
+        //Abort
+        [SerializeField] private GameObject abortGO;
+
         //Sounds
         [SerializeField] private SoundManager soundManager;
 
@@ -72,6 +75,9 @@ namespace tfg
                 case SoundAlarm sa:
                     playSoundAlarm(sa.soundAlarmName, sa.loop);
                     break;
+                case Abort a:
+                    abortGO.SetActive(true);
+                    break;
             }
         }
 
@@ -91,6 +97,9 @@ namespace tfg
                 case SoundAlarm sa:
                     if(sa.loop) stopSoundAlarm(sa.soundAlarmName);
                     break;
+                case Abort a:
+                    abortGO.SetActive(false);
+                    break;
             }
         }
 
@@ -104,12 +113,10 @@ namespace tfg
             soundManager.Stop(soundAlarmName);
         }
 
-
         private void playEnteredFlightStage(FlightSections flightSection)
         {
             flightStateText.text = flightSection.ToString();
         }
-
 
         private void putText(Source source, string dialog)
         {
