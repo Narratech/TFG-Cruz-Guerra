@@ -22,24 +22,24 @@ AnimationClip:
         time: 0
         value: {x: 0, y: 0, z: 0}
         inSlope: {x: Infinity, y: 0, z: 0}
-        outSlope: {x: 75.250725, y: -2.4365218, z: 0}
+        outSlope: {x: 65.16356, y: -2.4365218, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.12072941, y: 0.13982302, z: 0.33333334}
       - serializedVersion: 3
         time: 5.75
-        value: {x: 432.69165, y: -14.01, z: 0}
-        inSlope: {x: 75.25074, y: -2.4365218, z: 0}
-        outSlope: {x: 75.25074, y: 0, z: 0}
+        value: {x: 374.69043, y: -14.01, z: 0}
+        inSlope: {x: 65.16356, y: -2.4365218, z: 0}
+        outSlope: {x: 65.16356, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.106194675, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 8.3
-        value: {x: 624.58105, y: -14.01, z: 0}
-        inSlope: {x: 75.250725, y: 0, z: 0}
+        time: 16.183332
+        value: {x: 1054.5635, y: -14.01, z: 0}
+        inSlope: {x: 65.16356, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
@@ -72,7 +72,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 8.3
+    m_StopTime: 16.183332
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -95,15 +95,15 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: Infinity
-        outSlope: 75.250725
+        outSlope: 65.16356
         tangentMode: 71
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.12072941
       - serializedVersion: 3
-        time: 8.3
-        value: 624.58105
-        inSlope: 75.250725
+        time: 16.183332
+        value: 1054.5635
+        inSlope: 65.16356
         outSlope: 0
         tangentMode: 5
         weightedMode: 0
