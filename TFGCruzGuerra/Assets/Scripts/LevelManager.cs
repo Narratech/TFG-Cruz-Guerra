@@ -57,22 +57,30 @@ namespace tfg
 
         public void Play()
         {
+            Debug.Log("Empiezo el play");
             playCoroutine = PlayInCoroutine();
             StartCoroutine(playCoroutine);
         }
-        
+
         private IEnumerator PlayInCoroutine()
         {
             float startTime = Time.time;
-
+            Utils.ColaPrioridad colaStarts=null;
+            Utils.ColaPrioridad colaEnds=null;
             //Nunca debe haber un nodo en ambas colas a la vez
-            Utils.ColaPrioridad colaStarts = new Utils.ColaPrioridad(script.NumberOfSteps(), Utils.Nodo.CompareStartTime);
-            Utils.ColaPrioridad colaEnds = new Utils.ColaPrioridad(script.NumberOfSteps(), Utils.Nodo.CompareEndTime);
-
+            try
+            {
+                colaStarts = new Utils.ColaPrioridad(script.NumberOfSteps(), Utils.Nodo.CompareStartTime);
+                colaEnds = new Utils.ColaPrioridad(script.NumberOfSteps(), Utils.Nodo.CompareEndTime);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning("EL ERROR ES "+e.Message);
+            }
             Logic.Source sourceNow;
             Logic.Step stepNow;
 
-            while(script.Next(out sourceNow, out stepNow))
+            while (script.Next(out sourceNow, out stepNow))
             {
                 colaStarts.Introducir(new Utils.Nodo(sourceNow, stepNow));
             }
@@ -83,18 +91,18 @@ namespace tfg
                 float timeElapsed = Time.time - startTime;
 
                 //Check si hay algun paso ha acabado
-                if(colaEnds.NumeroElementos() > 0 && timeElapsed > colaEnds.ObservarPrimero().endTime)
+                if (colaEnds.NumeroElementos() > 0 && timeElapsed > colaEnds.ObservarPrimero().endTime)
                 {
                     Utils.Nodo nodoAcaba = colaEnds.EliminarPrimero();
 
                     //Solo quito el texto si no hay nadie usandolo
                     bool usandose = false;
                     if (nodoAcaba.step is Logic.Dialog)
-                    { 
-                        for(int i = 0; i < colaEnds.NumeroElementos(); ++i)
+                    {
+                        for (int i = 0; i < colaEnds.NumeroElementos(); ++i)
                         {
                             //Si alguien lo usa
-                            if(colaEnds.Array()[i].step is Logic.Dialog && colaEnds.Array()[i].source == nodoAcaba.source)
+                            if (colaEnds.Array()[i].step is Logic.Dialog && colaEnds.Array()[i].source == nodoAcaba.source)
                             {
                                 usandose = true;
                                 break;
@@ -106,7 +114,7 @@ namespace tfg
                         //todo si en el resto de tipos tenemos que gestionar el uso de forma especial tambien hay que añadir este foreach a cada uno
                         foreach (Interfaces.IEndStepHandler handler in endStepHandlers)
                         {
-                            handler.OnEndStep(nodoAcaba.step, nodoAcaba.source,colaStarts.NumeroElementos());
+                            handler.OnEndStep(nodoAcaba.step, nodoAcaba.source, colaStarts.NumeroElementos());
                         }
                     }
 
@@ -116,7 +124,7 @@ namespace tfg
                 }
 
                 // tiempo pasado < tiempo de inicio -> hay que esperar mas
-                if(nodoSiguiente == null || timeElapsed < nodoSiguiente.startTime)
+                if (nodoSiguiente == null || timeElapsed < nodoSiguiente.startTime)
                 {
                     //Esperar 
                     yield return new WaitForSeconds(0.10f);
@@ -128,7 +136,7 @@ namespace tfg
                 colaEnds.Introducir(nodoActual);
                 foreach (Interfaces.INewStepHandler handler in newStepHandlers)
                 {
-                    handler.OnNewStep(nodoActual.step, nodoActual.source,colaStarts.NumeroElementos());
+                    handler.OnNewStep(nodoActual.step, nodoActual.source, colaStarts.NumeroElementos());
                 }
                 if (colaStarts.NumeroElementos() > 0)
                     nodoSiguiente = colaStarts.ObservarPrimero();
@@ -137,7 +145,7 @@ namespace tfg
             }
 
             GameManager.Instance.goToSceneAsyncInTime(_resultsScene, _secondsToWait);
-
+            Debug.Log("Ya no play");
             StartCoroutine(fadeOut());
         }
 
@@ -182,9 +190,9 @@ namespace tfg
         public void setScaleTime(float t)
         {
             Time.timeScale = t;
-            if (t <= 0.01) 
+            if (t <= 0.01)
                 stoppedTimePanel.enabled = true;
-            else 
+            else
                 stoppedTimePanel.enabled = false;
         }
 
