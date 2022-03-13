@@ -39,10 +39,6 @@ namespace tfg
 
                 Instance.levelManager = levelManager;
 
-                Instance.competencesToOB = competencesToOB;
-
-                Instance.OBToSteps = OBToSteps;
-
                 Destroy(gameObject);
             }
             else
