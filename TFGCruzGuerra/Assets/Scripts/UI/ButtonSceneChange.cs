@@ -13,13 +13,13 @@ namespace tfg.UI
         public void changeScene(ButtonsScene s)
         {
             GameManager.Instance.goToSceneAsyncInTime(s.scene, _secondsToWait);
-            StartCoroutine(fadeOut());
+            if(fadeOutPanel != null) StartCoroutine(fadeOut());
         }
 
         public void changeScene(Scene s)
         {
             GameManager.Instance.goToSceneAsyncInTime(s, _secondsToWait);
-            StartCoroutine(fadeOut());
+            if (fadeOutPanel != null) StartCoroutine(fadeOut());
         }
 
         private IEnumerator fadeOut()

@@ -10,8 +10,6 @@ namespace tfg
     {
         public static SelectLevelManager Instance;
 
-        [SerializeField] Image fadeOutPanel;
-
         [SerializeField] private ButtonSceneChange sceneChange;
 
         private void Awake()
