@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using tfg.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace tfg
 {

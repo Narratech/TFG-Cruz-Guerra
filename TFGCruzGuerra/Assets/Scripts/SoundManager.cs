@@ -26,6 +26,8 @@ namespace tfg
 
             foreach (AudioClip sound in audioAlarms)
                 audios.Add(sound.name, sound);
+
+            audioSource.volume = GameManager.Instance.volume;
         }
 
         public void Play(string audioName, bool loop = false)

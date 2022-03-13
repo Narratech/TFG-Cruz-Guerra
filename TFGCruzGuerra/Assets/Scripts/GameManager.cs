@@ -31,6 +31,8 @@ namespace tfg
 
         public string level { get; set; }
 
+        public float volume { get; set; }
+
         private void Awake()
         {
             if (Instance != null)
