@@ -28,6 +28,9 @@ namespace tfg
         public Logic.Table_CompetencesToOB competencesToOB { get; private set; }
         public Logic.Table_OB_Steps OBToSteps { get; private set; }
         public ResultsData Results { get; set; }
+
+        public string level { get; set; }
+
         private void Awake()
         {
             if (Instance != null)

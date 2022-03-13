@@ -16,6 +16,7 @@ namespace tfg
         [SerializeField] private Image stoppedTimePanel;
 
         [SerializeField] private Image fadeOutPanel;
+        [SerializeField] private float waitStart = 1.0f; 
 
         private Logic.Script script;
 
@@ -35,29 +36,18 @@ namespace tfg
             if (endStepHandlers == null)
                 endStepHandlers = new List<Interfaces.IEndStepHandler>();
 
-            script = new Logic.Script();
-            testLevel();
+            script = Logic.JsonManager.ImportFromJSON<Logic.Script>("Assets/GameAssets/Scripts/" + GameManager.Instance.level, true);
+
+            Play();
         }
 
         public static void AddNewStepHandler(Interfaces.INewStepHandler h) { newStepHandlers.Add(h); }
         public static void RemoveNewStepHandler(Interfaces.INewStepHandler h) { newStepHandlers.Remove(h); }
         public static void AddEndStepHandler(Interfaces.IEndStepHandler h) { endStepHandlers.Add(h); }
         public static void RemoveEndStepHandler(Interfaces.IEndStepHandler h) { endStepHandlers.Remove(h); }
-        public void testLevel()
+
+        private void Play()
         {
-            //Logic.Stage stage = Logic.JsonManager.ImportFromJSON<Logic.Stage>(AssetDatabase.GetAssetPath(stageJson));
-            //Logic.Pilot captain = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(captainJson));
-            //Logic.Pilot firstOfficer = Logic.JsonManager.ImportFromJSON<Logic.Pilot>(AssetDatabase.GetAssetPath(firstOfficerJson));
-
-            //script.Create(stage, captain, firstOfficer, GameManager.Instance.competencesToOB, GameManager.Instance.OBToSteps, null, Logic.Source.Captain);
-
-            script = Logic.JsonManager.ImportFromJSON<Logic.Script>("Assets/GameAssets/Scripts/crearTestJavierAntonio", true);
-        }
-
-
-        public void Play()
-        {
-            Debug.Log("Empiezo el play");
             playCoroutine = PlayInCoroutine();
             StartCoroutine(playCoroutine);
         }
@@ -85,6 +75,9 @@ namespace tfg
                 colaStarts.Introducir(new Utils.Nodo(sourceNow, stepNow));
             }
 
+            yield return new WaitForSeconds(Math.Max(0, waitStart - (Time.time - startTime)));
+
+            startTime = Time.time;
             Utils.Nodo nodoSiguiente = colaStarts.ObservarPrimero();
             while (true)
             {
@@ -145,7 +138,6 @@ namespace tfg
             }
 
             GameManager.Instance.goToSceneAsyncInTime(_resultsScene, _secondsToWait);
-            Debug.Log("Ya no play");
             StartCoroutine(fadeOut());
         }
 
