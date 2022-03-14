@@ -1422,5 +1422,13 @@ PrefabInstance:
       propertyPath: fadeOutPanel
       value: 
       objectReference: {fileID: 510302767}
+    - target: {fileID: 7353670001222291282, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: fadeOutInPanel
+      value: 
+      objectReference: {fileID: 510302767}
+    - target: {fileID: 7353670001222291282, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: _secondsToAppear
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e040f114709cad4eb79ebe432680683, type: 3}

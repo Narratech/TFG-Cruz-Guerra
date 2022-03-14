@@ -123,6 +123,71 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &235012
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291280, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291281, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: m_Name
+      value: ButtonSceneChanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353670001222291282, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: fadeOutInPanel
+      value: 
+      objectReference: {fileID: 576608067}
+    - target: {fileID: 7353670001222291282, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
+      propertyPath: _secondsToAppear
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e040f114709cad4eb79ebe432680683, type: 3}
 --- !u!1 &4652816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,6 +1875,7 @@ MonoBehaviour:
   firstOfficerJson: {fileID: 4900000, guid: bcfa93f6c8b0d34409b7fc9de16ba4be, type: 3}
   stoppedTimePanel: {fileID: 1015389402}
   fadeOutPanel: {fileID: 576608067}
+  waitStart: 1
   _resultsScene: 6
   _secondsToWait: 1
 --- !u!4 &749486199
