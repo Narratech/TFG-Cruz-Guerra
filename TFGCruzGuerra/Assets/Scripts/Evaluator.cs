@@ -5,16 +5,24 @@ using UnityEngine;
 using tfg.Interfaces;
 using Logic;
 using System.Linq;
+using UnityEngine.Events;
+
 namespace tfg
 {
     public class Evaluator : MonoBehaviour, INewStepHandler, IEndStepHandler
     {
-        private struct EvaluableInfo
+        public struct EvaluableInfo
         {
+            public EvaluableInfo(string ob,Step.Result r)
+            {
+                OB = ob;
+                result=r;
+            }
             public string OB;
             public Step.Result result;
         }
-
+        [SerializeField] bool _tutorial;
+        [SerializeField] UnityEvent _onTutorialMistake;
         [SerializeField] TextModifier _resultText;
         [SerializeField] Animator _resultAnimator;
         [SerializeField] Transform[] _positions;
@@ -40,6 +48,11 @@ namespace tfg
             _correctEvaluation[Source.First_Officer] = new HashSet<EvaluableInfo>();
             LevelManager.AddEndStepHandler(this);
             LevelManager.AddNewStepHandler(this);
+            foreach (OBSelector oBSelector in _OB)
+            {
+                oBSelector.Tutorial = _tutorial;
+                oBSelector.OnTutorialMistake = _onTutorialMistake;
+            }
         }
         public void setPos(int index)
         {
@@ -143,12 +156,30 @@ namespace tfg
             }
 
         }
+        /// <summary>
+        /// comprueba si la evaluacion dada por el jugador es correcta
+        /// </summary>
+        /// <param name="oB">OB que ha seleccionado el jugador</param>
+        /// <param name="isPositive">Si ha seleccionado positivo</param>
+        /// <param name="info">un EvaluableInfo ya formado. Si se pasa null se creara uno </param>
+        /// <returns>True si el jugador ha acertado</returns>
+        public bool evaluate(string oB, bool isPositive, EvaluableInfo info )
+        {
+            if (info.OB == "")
+            {
+                info = new EvaluableInfo();
+                info.OB = oB;
+                info.result = isPositive ? Step.Result.Good : Step.Result.Bad;
+            }
+            return _correctEvaluation[_currentSource].Contains(info);
+        }
         public void evaluate(string oB, bool isPositive, Vector2 position)
         {
             EvaluableInfo info = new EvaluableInfo();
             info.OB = oB;
             info.result = isPositive ? Step.Result.Good : Step.Result.Bad;
-            if (_correctEvaluation[_currentSource].Contains(info))
+            bool correct = evaluate(oB, isPositive,info);
+            if (correct)
             {
                 //si ha acertado lo quitamos para la próxima de las buenas (aunque seguira apareciendo como opción)
                 _correctEvaluation[_currentSource].Remove(info);
@@ -270,5 +301,6 @@ namespace tfg
             firstIndex++;
             _OB[myIndex].setOB(ob);
         }
+   
     }
 }

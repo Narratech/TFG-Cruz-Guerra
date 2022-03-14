@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace tfg
@@ -13,6 +14,7 @@ namespace tfg
         string _OB;
         float _angle;
         bool _animate;
+        bool _mistaken = false;
         [SerializeField] TextModifier _modifier;
         [SerializeField] Evaluator _evaluator;
         [SerializeField] PopUpPanel _myPanel;
@@ -20,6 +22,8 @@ namespace tfg
         [SerializeField] float _rotVel;
         [SerializeField] float _acceptAngle = 12;
         [SerializeField] float _dragDivisor = 2;
+        public UnityEvent OnTutorialMistake { get; set; }
+        public bool Tutorial { get; set; }
 
         float _startDragPoint;
 
@@ -33,20 +37,19 @@ namespace tfg
 
             if (newAngle >= _maxAngle) newAngle = _maxAngle;
             else if (newAngle < -_maxAngle) newAngle = -_maxAngle;
-
-            _angle = newAngle;
-            transform.localEulerAngles = new Vector3(0, 0, _angle);
-
-            ////si esta en el cuarto cuadrante lo pasamos al primero
-            //float oldAngle = transform.localEulerAngles.z > 270 ? transform.localEulerAngles.z - 360 : transform.localEulerAngles.z;
-
-            //float newAngle = (oldAngle - eventData.delta.x / _dragDivisor);
-
-            //if (Mathf.Abs(newAngle) <= _maxAngle)
-            //{
-            //    _angle = newAngle;
-            //    transform.localEulerAngles = new Vector3(0, 0, newAngle);
-            //}
+            //le dejamos girar si no es el tutorial o bien si es el tutorial y va a acertar
+            if (!Tutorial || Math.Abs(newAngle) < _acceptAngle ||
+                (Tutorial && _evaluator.evaluate(_OB, newAngle < 0, new Evaluator.EvaluableInfo("", Logic.Step.Result.Neutral))))
+            {
+                _angle = newAngle;
+                transform.localEulerAngles = new Vector3(0, 0, _angle);
+            }
+            //si ya nos hemos equivocado no volvemos a tirar el evento
+            else if (!_mistaken)
+            {
+                OnTutorialMistake?.Invoke();
+                _mistaken = true;
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -61,7 +64,11 @@ namespace tfg
                 _myPanel.close();
 
             }
-            else _animate = true;
+            else
+            {
+                _animate = true;
+                _mistaken = false;
+            }
         }
 
         private void Update()
