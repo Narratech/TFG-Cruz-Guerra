@@ -13,10 +13,10 @@ namespace tfg
     {
         public struct EvaluableInfo
         {
-            public EvaluableInfo(string ob,Step.Result r)
+            public EvaluableInfo(string ob, Step.Result r)
             {
                 OB = ob;
-                result=r;
+                result = r;
             }
             public string OB;
             public Step.Result result;
@@ -163,22 +163,17 @@ namespace tfg
         /// <param name="isPositive">Si ha seleccionado positivo</param>
         /// <param name="info">un EvaluableInfo ya formado. Si se pasa null se creara uno </param>
         /// <returns>True si el jugador ha acertado</returns>
-        public bool evaluate(string oB, bool isPositive, EvaluableInfo info )
+        public bool evaluate(EvaluableInfo info)
         {
-            if (info.OB == "")
-            {
-                info = new EvaluableInfo();
-                info.OB = oB;
-                info.result = isPositive ? Step.Result.Good : Step.Result.Bad;
-            }
+
             return _correctEvaluation[_currentSource].Contains(info);
         }
-        public void evaluate(string oB, bool isPositive, Vector2 position)
+        public void evaluate(string oB, bool isPositive)
         {
             EvaluableInfo info = new EvaluableInfo();
             info.OB = oB;
             info.result = isPositive ? Step.Result.Good : Step.Result.Bad;
-            bool correct = evaluate(oB, isPositive,info);
+            bool correct = evaluate(info);
             if (correct)
             {
                 //si ha acertado lo quitamos para la próxima de las buenas (aunque seguira apareciendo como opción)
@@ -198,7 +193,6 @@ namespace tfg
 
 
             }
-            _resultText.setPos(Camera.main.ScreenToWorldPoint(position));
 
             _resultAnimator.Play("Fade Up", 0, 0);
 
@@ -301,6 +295,6 @@ namespace tfg
             firstIndex++;
             _OB[myIndex].setOB(ob);
         }
-   
+
     }
 }

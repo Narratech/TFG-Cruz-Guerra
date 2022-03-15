@@ -39,7 +39,8 @@ namespace tfg
             else if (newAngle < -_maxAngle) newAngle = -_maxAngle;
             //le dejamos girar si no es el tutorial o bien si es el tutorial y va a acertar
             if (!Tutorial || Math.Abs(newAngle) < _acceptAngle ||
-                (Tutorial && _evaluator.evaluate(_OB, newAngle < 0, new Evaluator.EvaluableInfo("", Logic.Step.Result.Neutral))))
+                (Tutorial && _evaluator.evaluate(new Evaluator.EvaluableInfo(_OB,
+                newAngle < 0 ? Logic.Step.Result.Good : Logic.Step.Result.Bad))))
             {
                 _angle = newAngle;
                 transform.localEulerAngles = new Vector3(0, 0, _angle);
@@ -58,7 +59,7 @@ namespace tfg
             if (Mathf.Abs(_angle) > _acceptAngle)
             {
                 bool accept = _angle < 0;
-                _evaluator.evaluate(_OB, accept, eventData.position);
+                _evaluator.evaluate(_OB, accept);
                 transform.localEulerAngles = Vector3.zero;
                 _angle = 0;
                 _myPanel.close();

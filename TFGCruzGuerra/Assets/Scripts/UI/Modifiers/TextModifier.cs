@@ -18,10 +18,5 @@ public class TextModifier : MonoBehaviour
     {
         _text.color = color;
     }
-    public void setPos(Vector2 pos)
-    {
-        _text.transform.position = pos;
-        //_text.GetComponent<RectTransform>().anchoredPosition=pos;
-
-    }
+   
 }
