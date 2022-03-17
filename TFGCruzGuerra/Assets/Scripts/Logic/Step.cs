@@ -10,6 +10,7 @@ namespace Logic
         public enum Result { Good = 0, Bad = 1, Neutral=2 }
         public float startTime, duration;
         public Result result;
-        public string OB;
+        public string OB="";
+        public string modifier="";
     }
 }

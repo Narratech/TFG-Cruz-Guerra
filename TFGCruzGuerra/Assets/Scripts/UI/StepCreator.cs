@@ -28,6 +28,7 @@ public class StepCreator : MonoBehaviour
     Logic.Step _myStep;
     GeneralData _currentData;
 
+
     private void Start()
     {
         _currentData = new GeneralData();
@@ -38,7 +39,12 @@ public class StepCreator : MonoBehaviour
     {
         _closed = v;
     }
-
+    public void setModifier(string modifier)
+    {
+        if (_myStep != null)
+            _myStep.modifier = modifier;
+        else Debug.LogWarning("Step is null. Modifier won't be set");
+    }
     public void setEdit(StepItem item)
     {
         _editingItem = item;

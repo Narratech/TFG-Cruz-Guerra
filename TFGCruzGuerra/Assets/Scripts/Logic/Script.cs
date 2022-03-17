@@ -53,13 +53,13 @@ namespace Logic
             steps = new List<Tuple<Source, Step>>();
 
             sceneName = captainName = firstOfficerName = "";
-
             stepsIt = 0;
         }
         public void addStep(Source source, Step step)
         {
             steps.Add(Tuple.Create<Source, Step>(source, step));
         }
+      
         public void addExamples()
         {
             steps.Add(new Tuple<Source, Step>(current_, new Anim("Point")));

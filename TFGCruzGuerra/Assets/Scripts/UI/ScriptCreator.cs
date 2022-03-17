@@ -11,6 +11,8 @@ public class ScriptCreator : MonoBehaviour
     string _sceneName = "";
     string _pilotName = "";
     string _copilotName = "";
+    bool _tutorial = false;
+
     public void setSceneName(string sn)
     {
         _sceneName = sn;
@@ -23,6 +25,11 @@ public class ScriptCreator : MonoBehaviour
     {
         _copilotName = copilot;
     }
+  
+    public void setTutorial(bool tutorial)
+    {
+        _tutorial = tutorial;
+    }
     public void save()
     {
         if (_sceneName != "" && _pilotName != "" && _copilotName != "")
@@ -31,6 +38,7 @@ public class ScriptCreator : MonoBehaviour
             s.setCaptainName(_pilotName);
             s.setFirstOfficerName(_copilotName);
             s.setSceneName(_sceneName);
+
             foreach (StepItem item in _pilot.getItems())
             {
                 s.addStep(Logic.Source.Captain, item.stepInfo);
@@ -46,7 +54,7 @@ public class ScriptCreator : MonoBehaviour
             string directory = "Assets/GameAssets/Scripts/";
             if (!Directory.Exists(directory))
                 Directory.CreateDirectory("Assets/GameAssets/Scripts/");
-            s.ExportToJSON(directory + _sceneName + _pilotName + _copilotName + ".json",true);
+            s.ExportToJSON(directory + _sceneName + _pilotName + _copilotName + ".json", true);
         }
         else Debug.LogError("Some Names weren't given");
     }
