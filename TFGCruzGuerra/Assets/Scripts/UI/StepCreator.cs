@@ -101,6 +101,9 @@ public class StepCreator : MonoBehaviour
                 sa.soundAlarmName = _currentData.string1;
                 sa.loop = _currentData.loop;
                 break;
+            case Logic.WeatherChange wc:
+                wc.weather = _currentData.string1;
+                break;
         }
     }
 
@@ -144,6 +147,12 @@ public class StepCreator : MonoBehaviour
     {
         if (!_closed)
             _myStep = new Logic.Abort();
+    }
+
+    public void CreateWeatherChange()
+    {
+        if (!_closed)
+            _myStep = new Logic.WeatherChange();
     }
 
     public void setString1(string s)

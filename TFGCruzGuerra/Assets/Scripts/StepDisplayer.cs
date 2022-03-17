@@ -32,6 +32,10 @@ namespace tfg
         //Sounds
         [SerializeField] private SoundManager soundManager;
 
+        //Weather
+        [SerializeField] private SkyChanger skyChanger;
+
+
         void Start()
         {
 #if UNITY_EDITOR
@@ -77,6 +81,9 @@ namespace tfg
                     break;
                 case Abort a:
                     abortGO.SetActive(true);
+                    break;
+                case WeatherChange w:
+                    skyChanger.changeWeather(w.weather);
                     break;
             }
         }
