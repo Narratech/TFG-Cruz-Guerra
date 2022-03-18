@@ -6,12 +6,9 @@ using UnityEngine;
 
 public class SkyChanger : MonoBehaviour
 {
-
     [SerializeField] ParticleSystem rainParticlesEmission;
 
     [SerializeField] Material camSkybox;
-
-    [SerializeField] Material sunny, rainy;
 
     [SerializeField] float blendDuration = 1f;
 
@@ -26,6 +23,7 @@ public class SkyChanger : MonoBehaviour
     {
         weatherToSkyBox = new Dictionary<string, Material>();
         weatherToRainy = new Dictionary<string, bool>();
+
         foreach(WeatherScriptable w in weathers)
         {
             weatherToSkyBox.Add(w.weather, w.skyboxMaterial);
@@ -33,7 +31,6 @@ public class SkyChanger : MonoBehaviour
         }
 
         changeWeather(weathers[0].weather);
-        actualWeather = weathers[0].weather;
     }
 
     public void changeWeather(string weather)

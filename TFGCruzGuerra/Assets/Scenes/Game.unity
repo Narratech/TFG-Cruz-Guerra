@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: cfa072be4d2fe4e99b3daef5bf89acc8, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: db6c37367eb044b638890b6c76bd62e1, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.40210775, g: 0.41262513, b: 0.4372881, a: 1}
+  m_IndirectSpecularColor: {r: 0.5974761, g: 0.69160235, b: 0.8043295, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1015,6 +1015,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618495b1df1f201498e58d0506858ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tutorial: 0
+  _modifier: {fileID: 0}
   captainImage: {fileID: 1060686848}
   firstOfficerImage: {fileID: 1077421910}
   captainText: {fileID: 658259415}
@@ -1028,7 +1030,7 @@ MonoBehaviour:
   flightStateText: {fileID: 1882146592}
   abortGO: {fileID: 1487039803}
   soundManager: {fileID: 1767331875}
-  skyChanger: {fileID: 0}
+  skyChanger: {fileID: 467335129}
 --- !u!4 &425951173
 Transform:
   m_ObjectHideFlags: 0
@@ -1074,12 +1076,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rainParticlesEmission: {fileID: 1617607213}
   camSkybox: {fileID: 2100000, guid: d17ac4fd45ceb3746be7432183b192f9, type: 2}
-  sunny: {fileID: 2100000, guid: fdd37c9684c65482e83c0a503372fb48, type: 2}
-  rainy: {fileID: 2100000, guid: d24322c3e266d46d3b079bbd1b6d0f70, type: 2}
   blendDuration: 5
   weathers:
-  - {fileID: 11400000, guid: 0187d52be86afac419a912ee03033bb4, type: 2}
-  - {fileID: 11400000, guid: d32b87e1ef7928a499364f33097468d0, type: 2}
+  - {fileID: 11400000, guid: 0dac47a9de8dde7499dbfa02245f215d, type: 2}
+  - {fileID: 11400000, guid: 962214acd922a4a43b1f1d891fe49787, type: 2}
+  - {fileID: 11400000, guid: 8fe3d72803125ca4f992acc46064b16a, type: 2}
+  - {fileID: 11400000, guid: 41150f70947aebc4199d4d5a4d755eb8, type: 2}
+  - {fileID: 11400000, guid: 8278cd7de387b85418f2ba61468812ed, type: 2}
+  - {fileID: 11400000, guid: c958254f18f1d2a43b4c93364c13d7eb, type: 2}
+  - {fileID: 11400000, guid: 63f7d39b6cb0b1345add3d00fb0ce9b0, type: 2}
+  - {fileID: 11400000, guid: 16ffb173cb153c04da63644558fa050f, type: 2}
+  - {fileID: 11400000, guid: b143a1658ed0d3440b7213783aaf4545, type: 2}
+  - {fileID: 11400000, guid: baabac26611b9c743b47922d2109f3ce, type: 2}
 --- !u!4 &467335130
 Transform:
   m_ObjectHideFlags: 0

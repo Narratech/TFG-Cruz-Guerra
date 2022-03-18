@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c97c7751da652b44a9d5efd245cd53b4, type: 3}
-  m_Name: Rainy
+  m_Name: NightAbove1
   m_EditorClassIdentifier: 
-  weather: Rainy
-  rain: 1
-  skyboxMaterial: {fileID: 2100000, guid: d24322c3e266d46d3b079bbd1b6d0f70, type: 2}
+  weather: NightAbove1
+  rain: 0
+  skyboxMaterial: {fileID: 2100000, guid: 10420919a8ad94f5d8e93daaf033fcc1, type: 2}

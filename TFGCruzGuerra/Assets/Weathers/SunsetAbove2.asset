@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c97c7751da652b44a9d5efd245cd53b4, type: 3}
-  m_Name: Sunny
+  m_Name: SunsetAbove2
   m_EditorClassIdentifier: 
-  weather: Sunny
+  weather: SunsetAbove2
   rain: 0
-  skyboxMaterial: {fileID: 2100000, guid: fdd37c9684c65482e83c0a503372fb48, type: 2}
+  skyboxMaterial: {fileID: 2100000, guid: b206b91bd6186435e981b4732e27e865, type: 2}
