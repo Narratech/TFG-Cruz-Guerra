@@ -16,8 +16,7 @@ namespace tfg
         [SerializeField] private Image stoppedTimePanel;
 
         [SerializeField] private Image fadeOutPanel;
-        [SerializeField] private float waitStart = 1.0f; 
-
+        [SerializeField] private float waitStart = 1.0f;
         private Logic.Script script;
 
         Logic.Step _currentStep;

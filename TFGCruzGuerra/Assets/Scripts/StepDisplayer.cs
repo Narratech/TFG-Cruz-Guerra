@@ -9,6 +9,9 @@ namespace tfg
 {
     public class StepDisplayer : MonoBehaviour, Interfaces.INewStepHandler, Interfaces.IEndStepHandler
     {
+        [SerializeField] bool _tutorial = false;
+        [SerializeField] StepModifierDisplayer _modifier;
+        public bool PlayRadioExitAnim { get; set; } = true;
         //Dialogs
         [SerializeField] private Image captainImage, firstOfficerImage;
         [SerializeField] private Text captainText, firstOfficerText;
@@ -39,8 +42,8 @@ namespace tfg
         void Start()
         {
 #if UNITY_EDITOR
-            if(captainImage == null || firstOfficerImage == null || 
-                captainText == null || firstOfficerText == null || 
+            if (captainImage == null || firstOfficerImage == null ||
+                captainText == null || firstOfficerText == null ||
                 captainAnimator == null || firstOfficerAnimator == null ||
                 captainInterrupt == null || firstOfficerInterrupt == null)
             {
@@ -60,7 +63,7 @@ namespace tfg
         }
 
 
-        public void OnNewStep(Step step, Source source,int remainingSteps)
+        public void OnNewStep(Step step, Source source, int remainingSteps)
         {
             switch (step)
             {
@@ -86,9 +89,14 @@ namespace tfg
                     skyChanger.changeWeather(w.weather);
                     break;
             }
+            if (_tutorial && step.OB != null && step.OB != "")
+                Time.timeScale = 0;
+            //prima el modificador al tutorial, ya que esta pensado para situaciones especiales, como el tutorial
+            _modifier?.Modify(step.modifier);
         }
 
-        public void OnEndStep(Step step, Source source,int remainingSteps)
+
+        public void OnEndStep(Step step, Source source, int remainingSteps)
         {
             switch (step)
             {
@@ -102,7 +110,7 @@ namespace tfg
                     stopInterruptButton(source, pb.interruptName, pb.pressType);
                     break;
                 case SoundAlarm sa:
-                    if(sa.loop) stopSoundAlarm(sa.soundAlarmName);
+                    if (sa.loop) stopSoundAlarm(sa.soundAlarmName);
                     break;
                 case Abort a:
                     abortGO.SetActive(false);
@@ -138,7 +146,7 @@ namespace tfg
                     firstOfficerText.text = dialog;
                     break;
                 case Source.Radio:
-                    if(radioText.text == "")
+                    if (radioText.text == "")
                         radioAnim.Play("Lift");
                     radioText.text = dialog;
                     break;
@@ -156,8 +164,12 @@ namespace tfg
                     firstOfficerImage.gameObject.SetActive(false);
                     break;
                 case Source.Radio:
-                    radioText.text = "";
-                    radioAnim.Play("Drop");
+                    if (PlayRadioExitAnim)
+                    {
+                        radioText.text = "";
+                        radioAnim.Play("Drop");
+                        PlayRadioExitAnim = false;
+                    }
                     break;
             }
         }

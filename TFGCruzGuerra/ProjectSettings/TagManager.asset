@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Dialog
+    uniqueID: 2062506227
+    locked: 0
   - name: Particles
     uniqueID: 233485925
+    locked: 0
+  - name: Background
+    uniqueID: 3089758925
     locked: 0

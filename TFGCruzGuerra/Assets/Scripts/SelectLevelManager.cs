@@ -16,9 +16,12 @@ namespace tfg
             Instance = this;
         }
 
-        public void playLevel(string level)
+        public void playLevel(string level,bool tutorial)
         {
             GameManager.Instance.level = level;
+            if (tutorial)
+                sceneChange.changeScene(Scene.Tutorial);
+            else
             sceneChange.changeScene(Scene.Game);
         }
     }

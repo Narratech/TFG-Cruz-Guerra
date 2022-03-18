@@ -10,7 +10,7 @@ namespace tfg.UI
         [SerializeField] private TextMeshProUGUI levelName;
 
         private string _level;
-        public string level { 
+        public string Level { 
             get
             {
                 return _level;
@@ -21,10 +21,12 @@ namespace tfg.UI
                 levelName.text = _level;
             }
         }
+        private bool _tutorial;
+        public bool Tutorial { set { _tutorial = value; } }
 
         public void selected()
         {
-            SelectLevelManager.Instance.playLevel(_level);
+            SelectLevelManager.Instance.playLevel(_level,_tutorial);
         }
     }
 }

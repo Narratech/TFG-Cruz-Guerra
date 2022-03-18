@@ -59,7 +59,24 @@ namespace tfg
             if (index < _positions.Length && index >= 0)
                 transform.position = _positions[index].position;
         }
-
+        public bool getTutorial()
+        {
+            return _tutorial;
+        }
+        public void cannotEvaluate()
+        {
+            foreach (OBSelector selector in _OB)
+            {
+                selector.CanEvaluate = false;
+            }
+        }
+        public void canEvaluate()
+        {
+            foreach (OBSelector selector in _OB)
+            {
+                selector.CanEvaluate = true;
+            }
+        }
         public void setRandomOBs(int Source)
         {
             transform.GetChild(0).gameObject.SetActive(true);

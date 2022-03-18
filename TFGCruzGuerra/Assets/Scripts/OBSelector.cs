@@ -24,6 +24,7 @@ namespace tfg
         [SerializeField] float _dragDivisor = 2;
         public UnityEvent OnTutorialMistake { get; set; }
         public bool Tutorial { get; set; }
+        public bool CanEvaluate { get; set; } = true;
 
         float _startDragPoint;
 
@@ -56,14 +57,16 @@ namespace tfg
         public void OnEndDrag(PointerEventData eventData)
         {
             //sabemos que es positivo si el ángulo es negativo y solo evaluamos si el jugador no ha deshecho la eleccion
-            if (Mathf.Abs(_angle) > _acceptAngle)
+
+            if (Mathf.Abs(_angle) > _acceptAngle && CanEvaluate)
             {
                 bool accept = _angle < 0;
                 _evaluator.evaluate(_OB, accept);
                 transform.localEulerAngles = Vector3.zero;
                 _angle = 0;
                 _myPanel.close();
-
+                if (Tutorial)
+                    Time.timeScale = 1;
             }
             else
             {
@@ -72,36 +75,36 @@ namespace tfg
             }
         }
 
-        private void Update()
+    private void Update()
+    {
+        if (_animate)
         {
-            if (_animate)
+            if (Math.Abs(_angle) > 0)
             {
-                if (Math.Abs(_angle) > 0)
-                {
-                    _angle -= _rotVel * Math.Sign(_angle) * Time.unscaledDeltaTime;
-                    if ((int)Math.Abs(_angle) == 0)
-                        _angle = 0;
-                    transform.localEulerAngles = new Vector3(0, 0, _angle);
-                }
-                else _animate = false;
+                _angle -= _rotVel * Math.Sign(_angle) * Time.unscaledDeltaTime;
+                if ((int)Math.Abs(_angle) == 0)
+                    _angle = 0;
+                transform.localEulerAngles = new Vector3(0, 0, _angle);
             }
-        }
-
-        public void setOB(string OB)
-        {
-            _OB = OB;
-            _modifier.setText(OB);
-        }
-
-        public string getOB()
-        {
-            return _OB;
-        }
-
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            _startDragPoint = eventData.position.x;
+            else _animate = false;
         }
     }
+
+    public void setOB(string OB)
+    {
+        _OB = OB;
+        _modifier.setText(OB);
+    }
+
+    public string getOB()
+    {
+        return _OB;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        _startDragPoint = eventData.position.x;
+    }
+}
 
 }
