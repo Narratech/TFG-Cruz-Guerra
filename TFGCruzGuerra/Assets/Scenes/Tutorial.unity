@@ -2028,7 +2028,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731598133}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: cfa072be4d2fe4e99b3daef5bf89acc8, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: db6c37367eb044b638890b6c76bd62e1, type: 2}
 --- !u!1 &740110605
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,7 +3096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2986608525490058634, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 28.896118
+      value: 28.896057
       objectReference: {fileID: 0}
     - target: {fileID: 3023216438004484547, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_FontData.m_MinSize
@@ -10301,16 +10301,16 @@ MonoBehaviour:
   _highlights:
   - highlightObject: {fileID: 1879767810}
     secondsToWait: 4
-    secondsHighlighting: 3
+    secondsHighlighting: 4
   - highlightObject: {fileID: 1316110915}
-    secondsToWait: 48
-    secondsHighlighting: 10
+    secondsToWait: 52
+    secondsHighlighting: 6
   - highlightObject: {fileID: 2010464589}
     secondsToWait: 4
-    secondsHighlighting: 3
+    secondsHighlighting: 4
   - highlightObject: {fileID: 2010464589}
-    secondsToWait: 48
-    secondsHighlighting: 10
+    secondsToWait: 52
+    secondsHighlighting: 6
   _background: {fileID: 677008878}
 --- !u!4 &2064483908
 Transform:
