@@ -10,7 +10,8 @@ namespace tfg.UI
     public class CreateLevelPanels : MonoBehaviour
     {
         [SerializeField] private LevelButton prefabLevel;
-
+        [SerializeField] Color normalBackground;
+        [SerializeField] Color tutorialBackground;
         private void Start()
         {
             const string path = "Assets/GameAssets/Scripts/";
@@ -19,8 +20,12 @@ namespace tfg.UI
             foreach (FileInfo file in fileInfo)
             {
                 LevelButton go = Instantiate<LevelButton>(prefabLevel, transform);
-                go.Level = file.Name.Substring(0, file.Name.Length - 5); // minus ".json"
-                go.Tutorial = file.Name.StartsWith("Tutorial");
+                string[] name = file.Name.Split('.');
+                go.Level = name[1]; 
+                go.Tutorial = file.Name.Contains("Tutorial");
+                if (go.Tutorial)
+                    go.setBackGroundColor(tutorialBackground);
+                else go.setBackGroundColor(normalBackground);
 
             }
         }

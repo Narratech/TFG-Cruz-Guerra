@@ -1,0 +1,240 @@
+{
+  "$type": "Logic.Script, Assembly-CSharp",
+  "sceneName": "Tuto",
+  "captainName": "ri",
+  "firstOfficerName": "al",
+  "steps": [
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 0.0,
+        "duration": 4.0,
+        "result": 0,
+        "OB": null,
+        "Modifier":"radiodontdisappear",
+        "dialog": "Hello, I'm the radio operator. I'm going to teach you how this simulator works."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 4.0,
+        "duration": 4.0,
+        "result": 0,
+        "OB": null,
+        "Modifier":"radiodontdisappear",
+        "dialog": "In the first place, we can see the flight phase we are in."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 8.0,
+        "duration": 4.0,
+        "result": 0,
+        "OB": null,
+        "Modifier":"radiodontdisappear",
+        "dialog": "When the pilot or the copilot talks or gestures, he or she can be showing an OB"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 12.0,
+        "duration": 3.0,
+        "result": 0,
+        "OB": null,
+        "Modifier":"radiodontdisappear",
+        "dialog": "You can evaluate him/her then by cliking on him/her."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 15.0,
+        "duration": 5.0,
+        "result": 0,
+        "OB": null,
+        "dialog": "Now, the pilot is going to insult the copilot. This is a clear indicator that he doesn't project self-control in all situations."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 20.0,
+        "duration": 4.0,
+        "result": 0,
+        "OB": null,
+        "dialog": "Click on the pilot to start the process."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 20.0,
+        "duration": 4.0,
+        "result": 1,
+        "Modifier":"continueafterclick,cantexitevaluator,evalDisable",
+        "OB": "Projects self-control in all situations",
+        "dialog": "You idiot! You can't just set the altitude too low or we're going to crash!"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 24.0,
+        "duration": 5.0,
+        "result": 1,
+        "OB": "",
+        "Modifier":"dontstop,radiodontdisappear,cantexitevaluator",
+        "dialog": "This is the evaluator. As you can see, it displays a list of OBs. The OB that the pilot showed is in the list."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 29.0,
+        "duration": 5.0,
+        "result": 1,
+        "OB": "",
+        "Modifier":"dontstop,radiodontdisappear,cantexitevaluator",
+        "dialog": "You can evaluate the behaviour regarding an OB as positive or as negative"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 34.0,
+        "duration": 5.0,
+        "result": 1,
+        "OB": "",
+        "Modifier":"dontstop,radiodontdisappear,cantexitevaluator",
+        "dialog": "If you want to evaluate the behaviour as positive, slide the option to the right. If you want to evaluate it as negative, slide to the left."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 39.0,
+        "duration": 5.0,
+        "result": 1,
+        "OB": "",
+        "Modifier":"dontstop,radiodontdisappear,cantexitevaluator",
+        "dialog": "You should slide to a certain distance from the center of the option if you want to avoid mistakes.If you don't slide enough, the option will come back to the center."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 44.0,
+        "duration": 5.0,
+        "result": 1,
+        "OB": "",
+        "Modifier":"radiodontdisappear,cantexitevaluator",
+        "dialog": "Also, you can click outside the evaluator if you don't want to evaluate anything. This will close the evaluator. This is disabled in this tutorial."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 49.0,
+        "duration": 3.0,
+        "result": 1,
+        "OB": "",
+        "Modifier":"radiodontdisappear,evalEnable,cantexitevaluator,stop,cantevaluate",
+        "dialog": "Try to evaluate the pilot now."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Abort, Assembly-CSharp",
+        "startTime": 52.0,
+        "duration": 14.0,
+        "result": 0,
+        "OB": "",
+        "Modifier":"canexitevaluator"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 52.0,
+        "duration": 4.0,
+        "result": 1,
+        "OB": "",
+        "Modifier":"radiodontdisappear",
+        "dialog": "Sometimes, the pilots will face dangerous situations. In these cases, you can abort the mission."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 56.0,
+        "duration": 4.0,
+        "result": 1,
+        "OB": "",
+        "Modifier":"radiodontdisappear",
+        "dialog": "In this case they're flying too low and could collide with a mountain"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 60.0,
+        "duration": 4.0,
+        "result": 1,
+        "OB": "",
+        "Modifier":"radiodontdisappear",
+        "dialog": "Now you can abort the mission an go directly to the results screen or see what happens."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 66.0,
+        "duration": 3.0,
+        "result": 1,
+        "OB": "",
+        "dialog": "We did it! We could avoid the mountain!"
+      }
+    }
+    
+    
+  ]
+}

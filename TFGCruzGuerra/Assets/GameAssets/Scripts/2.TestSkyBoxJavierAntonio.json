@@ -1,0 +1,47 @@
+{
+  "$type": "Logic.Script, Assembly-CSharp",
+  "sceneName": "TestSkyBox",
+  "captainName": "Javier",
+  "firstOfficerName": "Antonio",
+  "steps": [
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.WeatherChange, Assembly-CSharp",
+        "weather": "SunnyAbove1",
+        "startTime": 2.0,
+        "duration": 1.0,
+        "result": 0,
+        "OB": "",
+        "modifier": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.WeatherChange, Assembly-CSharp",
+        "weather": "SunsetAbove1",
+        "startTime": 10.0,
+        "duration": 1.0,
+        "result": 0,
+        "OB": "",
+        "modifier": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.WeatherChange, Assembly-CSharp",
+        "weather": "DayStorm",
+        "startTime": 16.0,
+        "duration": 1.0,
+        "result": 0,
+        "OB": "",
+        "modifier": ""
+      }
+    }
+  ]
+}
