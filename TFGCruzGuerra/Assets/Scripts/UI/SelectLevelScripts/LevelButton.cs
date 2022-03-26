@@ -21,7 +21,9 @@ namespace tfg.UI
             set
             {
                 _level = value;
-                levelName.text = _level;
+                string []name = value.Split('.');
+
+                levelName.text = name.Length==2?name[1]:name[0];
             }
         }
         private bool _tutorial;
