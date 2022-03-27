@@ -13,13 +13,15 @@ namespace tfg
         [SerializeField] Evaluator evaluator;
 
         [SerializeField] Button CaptainBubble, CaptainInterrupt, FOBubble, FOInterrupt;
-        public bool CountinueAfterClick { get; set; }
-        public bool CanEvaluate { get; set; } = true;
+
+        [SerializeField] bool _tutorial = false;
+
+        public bool CanEvaluate { get; set; } = false;
+
         private void Start()
         {
             LevelManager.AddNewStepHandler(this);
             LevelManager.AddEndStepHandler(this);
-            CountinueAfterClick = true;
         }
 
         void OnDestroy()
@@ -32,16 +34,14 @@ namespace tfg
         {
             if (CanEvaluate)
             {
-
                 evaluator.setPos(pilot);
                 panel.open();
                 evaluator.setRandomOBs(pilot);
-                GameManager.Instance.levelManager.setScaleTime(0);
-                if (CountinueAfterClick)
-                {
-                    Time.timeScale = 1;
-                    CountinueAfterClick = false;
-                }
+
+                if(!_tutorial)
+                    GameManager.Instance.levelManager.setScaleTime(0);
+                else
+                    GameManager.Instance.levelManager.setScaleTime(1);
             }
         }
 

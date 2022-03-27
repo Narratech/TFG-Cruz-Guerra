@@ -177,10 +177,13 @@ namespace tfg
             _currentStep = step;
         }
 
-        //Called from button
         public void setScaleTime(float t)
         {
             Time.timeScale = t;
+
+            if (stoppedTimePanel == null)
+                return;
+
             if (t <= 0.01)
                 stoppedTimePanel.enabled = true;
             else
@@ -194,6 +197,8 @@ namespace tfg
             StopCoroutine(playCoroutine);
 
             GameManager.Instance.goToSceneAsyncInTime(_resultsScene, _secondsToWait);
+
+            setScaleTime(1);
 
             StartCoroutine(fadeOut());
         }

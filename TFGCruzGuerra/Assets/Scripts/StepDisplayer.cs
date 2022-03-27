@@ -89,12 +89,14 @@ namespace tfg
                     skyChanger.changeWeather(w.weather);
                     break;
             }
-            if (_tutorial && step.OB != null && step.OB != "")
-                Time.timeScale = 0;
-            //prima el modificador al tutorial, ya que esta pensado para situaciones especiales, como el tutorial
-            _modifier?.Modify(step.modifier);
-        }
 
+            //prima el modificador al tutorial, ya que esta pensado para situaciones especiales, como el tutorial
+            if (_tutorial)
+            {
+                GameManager.Instance.levelManager.setScaleTime(0);
+                _modifier?.Modify(step.modifier);
+            }
+        }
 
         public void OnEndStep(Step step, Source source, int remainingSteps)
         {

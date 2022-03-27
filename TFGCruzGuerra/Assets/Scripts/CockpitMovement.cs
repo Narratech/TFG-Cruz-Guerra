@@ -21,9 +21,9 @@ namespace tfg
 
         void Update()
         {
-            timeLeftX -= Time.deltaTime;
-            timeLeftY -= Time.deltaTime;
-            timeLeftZ -= Time.deltaTime;
+            timeLeftX -= Time.unscaledDeltaTime;
+            timeLeftY -= Time.unscaledDeltaTime;
+            timeLeftZ -= Time.unscaledDeltaTime;
 
             if (timeLeftX < 0)
             {
@@ -41,7 +41,7 @@ namespace tfg
                 toZ = Random.Range(-maxRotation, maxRotation);
             }
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(toX, toY, toZ), Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(toX, toY, toZ), Time.unscaledDeltaTime);
         }
     }
 }

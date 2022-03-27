@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using tfg.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace tfg
 {
@@ -11,24 +13,23 @@ namespace tfg
         [SerializeField] StepDisplayer stepDisplayer;
         [SerializeField] Evaluator eval;
         [SerializeField] StoppedTimePanelClose close;
+        [SerializeField] GameObject nextStep;
+        [SerializeField] Highlighter highlighter;
+
         public void Modify(string modifier)
         {
             foreach (string mod in modifier.Split(','))
             {
-
                 switch (mod)
                 {
-                    case "dontstop":
-                        Time.timeScale = 1;
-                        break;
-                    case "continueafterclick":
-                        evaluate.CountinueAfterClick = true;
-                        break;
-                    case "stop":
-                        Time.timeScale = 0;
-                        break;
                     case "radiodontdisappear":
                         stepDisplayer.PlayRadioExitAnim = false;
+                        break;
+                    case "nextstepappear":
+                        nextStep.SetActive(true);
+                        break;
+                    case "nextstepdissappear":
+                        nextStep.SetActive(false);
                         break;
                     case "evalDisable":
                         eval.cannotEvaluate();
@@ -45,8 +46,27 @@ namespace tfg
                     case "cantevaluate":
                         evaluate.CanEvaluate = false;
                         break;
-
-
+                    case "canevaluate":
+                        evaluate.CanEvaluate = true;
+                        break;
+                    case "hlradio":
+                        highlighter.highLight("radio", true);
+                        break;
+                    case "hlstopradio":
+                        highlighter.highLight("radio", false);
+                        break;
+                    case "hlstage":
+                        highlighter.highLight("stage", true);
+                        break;
+                    case "hlstopstage":
+                        highlighter.highLight("stage", false);
+                        break;
+                    case "hlabort":
+                        highlighter.highLight("abort", true);
+                        break;
+                    case "hlstopabort":
+                        highlighter.highLight("abort", false);
+                        break;
                     default:
                         break;
                 }

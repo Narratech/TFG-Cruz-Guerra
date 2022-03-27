@@ -12,31 +12,27 @@ namespace tfg.UI
         [Serializable]
         struct Highlight
         {
+            public string name;
             public Canvas highlightObject;
-            public float secondsToWait;
-            public float secondsHighlighting;
         }
         [SerializeField] Highlight[] _highlights;
         [SerializeField] GameObject _background;
-        private void Start()
-        {
-            IEnumerator routine;
-            foreach (Highlight highlight in _highlights)
-            {
-                routine = HighlightElement(highlight);
 
-                StartCoroutine(routine);
+        public void highLight(string h, bool a)
+        {
+            foreach(Highlight hl in _highlights)
+            {
+                if(hl.name == h)
+                {
+                    highLight(hl, a);
+                }
             }
         }
-        IEnumerator HighlightElement(Highlight highlight)
+
+        private void highLight(Highlight h, bool a)
         {
-            yield return new WaitForSeconds(highlight.secondsToWait);
-            _background.SetActive(true);
-            int layer = highlight.highlightObject.sortingOrder;
-            highlight.highlightObject.sortingOrder = 1;
-            yield return new WaitForSeconds(highlight.secondsHighlighting);
-            highlight.highlightObject.sortingOrder = layer;
-            _background.SetActive(false);
+            _background.SetActive(a);
+            h.highlightObject.sortingOrder = a ? 100 : 1;
         }
     }
 }

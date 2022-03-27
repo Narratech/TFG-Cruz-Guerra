@@ -20,11 +20,11 @@ namespace tfg
             Color panelColor = img.color;
             float fadeAmount;
 
-            float startTime = Time.time;
+            float startTime = Time.unscaledTime;
 
-            while (Time.time - startTime < seconds)
+            while (Time.unscaledTime - startTime < seconds)
             {
-                fadeAmount = (Time.time - startTime) / seconds;
+                fadeAmount = (Time.unscaledTime - startTime) / seconds;
 
                 panelColor = new Color(panelColor.r, panelColor.g, panelColor.b, fadeAmount);
 

@@ -207,8 +207,6 @@ namespace tfg
                 info.result = opposite;
                 //si el OB que ha marcado no estaba de ninguna forma, es imposible haberlo detectado anteriormente
                 _resultsTracker.detect(ResultsTracker.OBDetection.Incorrect);
-
-
             }
 
             _resultAnimator.Play("Fade Up", 0, 0);

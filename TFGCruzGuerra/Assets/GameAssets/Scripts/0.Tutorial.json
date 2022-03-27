@@ -10,10 +10,10 @@
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 0.0,
-        "duration": 4.0,
+        "duration": 0.1,
         "result": 0,
         "OB": null,
-        "Modifier":"radiodontdisappear",
+        "Modifier":"radiodontdisappear,cantevaluate,evalDisable,hlradio",
         "dialog": "Hello, I'm the radio operator. I'm going to teach you how this simulator works."
       }
     },
@@ -22,11 +22,11 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 4.0,
-        "duration": 4.0,
+        "startTime": 0.1,
+        "duration": 0.1,
         "result": 0,
         "OB": null,
-        "Modifier":"radiodontdisappear",
+        "Modifier":"radiodontdisappear,hlstopradio,hlstage",
         "dialog": "In the first place, we can see the flight phase we are in."
       }
     },
@@ -35,11 +35,11 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 8.0,
-        "duration": 4.0,
+        "startTime": 0.2,
+        "duration": 0.1,
         "result": 0,
         "OB": null,
-        "Modifier":"radiodontdisappear",
+        "Modifier":"radiodontdisappear,hlstopstage,hlradio",
         "dialog": "When the pilot or the copilot talks or gestures, he or she can be showing an OB"
       }
     },
@@ -48,8 +48,8 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 12.0,
-        "duration": 3.0,
+        "startTime": 0.3,
+        "duration": 0.1,
         "result": 0,
         "OB": null,
         "Modifier":"radiodontdisappear",
@@ -61,8 +61,8 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 15.0,
-        "duration": 5.0,
+        "startTime": 0.4,
+        "duration": 0.1,
         "result": 0,
         "OB": null,
         "dialog": "Now, the pilot is going to insult the copilot. This is a clear indicator that he doesn't project self-control in all situations."
@@ -73,10 +73,11 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 20.0,
-        "duration": 4.0,
+        "startTime": 0.5,
+        "duration": 0.1,
         "result": 0,
         "OB": null,
+        "Modifier": "nextstepdissappear,hlstopradio",
         "dialog": "Click on the pilot to start the process."
       }
     },
@@ -85,10 +86,10 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 20.0,
-        "duration": 4.0,
+        "startTime": 0.5,
+        "duration": 0.8,
         "result": 1,
-        "Modifier":"continueafterclick,cantexitevaluator,evalDisable",
+        "Modifier":"canevaluate,cantexitevaluator",
         "OB": "Projects self-control in all situations",
         "dialog": "You idiot! You can't just set the altitude too low or we're going to crash!"
       }
@@ -98,11 +99,11 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 24.0,
-        "duration": 5.0,
+        "startTime": 0.7,
+        "duration": 0.1,
         "result": 1,
         "OB": "",
-        "Modifier":"dontstop,radiodontdisappear,cantexitevaluator",
+        "Modifier":"cantevaluate,dontstop,radiodontdisappear,cantexitevaluator,nextstepappear,hlradio",
         "dialog": "This is the evaluator. As you can see, it displays a list of OBs. The OB that the pilot showed is in the list."
       }
     },
@@ -111,8 +112,8 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 29.0,
-        "duration": 5.0,
+        "startTime": 0.8,
+        "duration": 0.1,
         "result": 1,
         "OB": "",
         "Modifier":"dontstop,radiodontdisappear,cantexitevaluator",
@@ -124,8 +125,8 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 34.0,
-        "duration": 5.0,
+        "startTime": 0.9,
+        "duration": 0.1,
         "result": 1,
         "OB": "",
         "Modifier":"dontstop,radiodontdisappear,cantexitevaluator",
@@ -137,8 +138,8 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 39.0,
-        "duration": 5.0,
+        "startTime": 1.0,
+        "duration": 0.1,
         "result": 1,
         "OB": "",
         "Modifier":"dontstop,radiodontdisappear,cantexitevaluator",
@@ -150,8 +151,8 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 44.0,
-        "duration": 5.0,
+        "startTime": 1.1,
+        "duration": 0.1,
         "result": 1,
         "OB": "",
         "Modifier":"radiodontdisappear,cantexitevaluator",
@@ -163,11 +164,11 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 49.0,
-        "duration": 3.0,
+        "startTime": 1.2,
+        "duration": 0.1,
         "result": 1,
         "OB": "",
-        "Modifier":"radiodontdisappear,evalEnable,cantexitevaluator,stop,cantevaluate",
+        "Modifier":"nextstepdissappear,evalEnable,hlstopradio",
         "dialog": "Try to evaluate the pilot now."
       }
     },
@@ -176,8 +177,8 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Abort, Assembly-CSharp",
-        "startTime": 52.0,
-        "duration": 14.0,
+        "startTime": 1.3,
+        "duration": 3.5,
         "result": 0,
         "OB": "",
         "Modifier":"canexitevaluator"
@@ -188,11 +189,11 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 52.0,
-        "duration": 4.0,
+        "startTime": 1.3,
+        "duration": 0.1,
         "result": 1,
         "OB": "",
-        "Modifier":"radiodontdisappear",
+        "Modifier":"nextstepappear",
         "dialog": "Sometimes, the pilots will face dangerous situations. In these cases, you can abort the mission."
       }
     },
@@ -201,8 +202,8 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 56.0,
-        "duration": 4.0,
+        "startTime": 2.4,
+        "duration": 0.1,
         "result": 1,
         "OB": "",
         "Modifier":"radiodontdisappear",
@@ -214,11 +215,11 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 60.0,
-        "duration": 4.0,
+        "startTime": 2.5,
+        "duration": 0.1,
         "result": 1,
         "OB": "",
-        "Modifier":"radiodontdisappear",
+        "Modifier":"radiodontdisappear,nextstepdissappear",
         "dialog": "Now you can abort the mission an go directly to the results screen or see what happens."
       }
     },
@@ -227,14 +228,12 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 66.0,
-        "duration": 3.0,
+        "startTime": 4.5,
+        "duration": 1.5,
         "result": 1,
         "OB": "",
         "dialog": "We did it! We could avoid the mountain!"
       }
-    }
-    
-    
+    } 
   ]
 }
