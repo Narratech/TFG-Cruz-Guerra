@@ -148,9 +148,8 @@ namespace tfg
                     firstOfficerText.text = dialog;
                     break;
                 case Source.Radio:
-                    if (radioText.text == "")
-                        radioAnim.Play("Lift");
                     radioText.text = dialog;
+                    radioAnim.Play("FadeIn");
                     break;
             }
         }
@@ -169,8 +168,7 @@ namespace tfg
                     if (PlayRadioExitAnim)
                     {
                         radioText.text = "";
-                        radioAnim.Play("Drop");
-                        PlayRadioExitAnim = false;
+                        radioAnim.Play("FadeOut");
                     }
                     break;
             }
