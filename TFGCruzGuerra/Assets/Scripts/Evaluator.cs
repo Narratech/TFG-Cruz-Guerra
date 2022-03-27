@@ -230,7 +230,8 @@ namespace tfg
                     _changedOB[source] = true;
                 }
                 else _happeningOBs[pair] += sum;
-                _resultsTracker.newOB();
+                if (step.OB != null && step.OB != "")
+                    _resultsTracker.newOB();
             }
 
         }

@@ -19,7 +19,7 @@ namespace tfg
         {
             LevelManager.AddNewStepHandler(this);
             LevelManager.AddEndStepHandler(this);
-            CountinueAfterClick = true;
+            CountinueAfterClick = false;
         }
 
         void OnDestroy()

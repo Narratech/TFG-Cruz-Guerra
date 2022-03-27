@@ -33,8 +33,8 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 5.5,
-        "duration": 1.0,
+        "startTime": 6.5,
+        "duration": 3.0,
         "result": 0,
         "OB": "",
         "dialog": "Ciao"

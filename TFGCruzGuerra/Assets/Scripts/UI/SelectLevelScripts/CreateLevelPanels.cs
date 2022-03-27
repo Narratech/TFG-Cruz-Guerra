@@ -20,7 +20,6 @@ namespace tfg.UI
             foreach (FileInfo file in fileInfo)
             {
                 LevelButton go = Instantiate<LevelButton>(prefabLevel, transform);
-                string name = file.Name.Split('.')[1];
                 go.Level = file.Name.Substring(0,file.Name.Length-5);// 
                 go.Tutorial = file.Name.Contains("Tutorial");
                 if (go.Tutorial)
