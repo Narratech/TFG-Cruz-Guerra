@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 namespace tfg.UI
 {
-
     public class Highlighter : MonoBehaviour
     {
         [Serializable]

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5982163, g: 0.69219977, b: 0.804809, a: 1}
+  m_IndirectSpecularColor: {r: 0.5974761, g: 0.69160235, b: 0.8043295, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2219,6 +2219,7 @@ MonoBehaviour:
   CaptainInterrupt: {fileID: 330808070}
   FOBubble: {fileID: 1764737243}
   FOInterrupt: {fileID: 1214688738}
+  _tutorial: 0
 --- !u!1 &979705786
 GameObject:
   m_ObjectHideFlags: 0
@@ -10652,17 +10653,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 79294801}
     m_Modifications:
-    - target: {fileID: 199181327895399832, guid: ceb82f426cdb08441b001465176a5917, type: 3}
-      propertyPath: m_Color.a
+    - target: {fileID: 1876945145, guid: ceb82f426cdb08441b001465176a5917, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1240417468462678592, guid: ceb82f426cdb08441b001465176a5917, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1715737264908269859, guid: ceb82f426cdb08441b001465176a5917, type: 3}
-      propertyPath: m_Color.a
-      value: 0
+    - target: {fileID: 4424600900876711883, guid: ceb82f426cdb08441b001465176a5917, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4426584256535268268, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_Pivot.x
@@ -10734,7 +10731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4426584256535268268, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20.000275
+      value: -20.000244
       objectReference: {fileID: 0}
     - target: {fileID: 4426584256535268268, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10752,31 +10749,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: radio
       objectReference: {fileID: 0}
-    - target: {fileID: 4426584256535268269, guid: ceb82f426cdb08441b001465176a5917, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7500710615339003236, guid: ceb82f426cdb08441b001465176a5917, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -3.6553802
-      objectReference: {fileID: 0}
-    - target: {fileID: 7608999048458904588, guid: ceb82f426cdb08441b001465176a5917, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.012939453
-      objectReference: {fileID: 0}
-    - target: {fileID: 7608999048458904588, guid: ceb82f426cdb08441b001465176a5917, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.6099243
-      objectReference: {fileID: 0}
-    - target: {fileID: 7709630816649959853, guid: ceb82f426cdb08441b001465176a5917, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1.1015625
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2010464590, guid: ceb82f426cdb08441b001465176a5917, type: 3}
+    - {fileID: 2010464589, guid: ceb82f426cdb08441b001465176a5917, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ceb82f426cdb08441b001465176a5917, type: 3}
 --- !u!114 &4426584257499448512 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1240417468462678592, guid: ceb82f426cdb08441b001465176a5917, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2010464591, guid: ceb82f426cdb08441b001465176a5917, type: 3}
   m_PrefabInstance: {fileID: 4426584257499448511}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
