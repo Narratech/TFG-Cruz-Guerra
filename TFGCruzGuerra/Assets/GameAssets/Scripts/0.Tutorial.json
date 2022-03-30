@@ -202,7 +202,7 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 2.4,
+        "startTime": 1.4,
         "duration": 0.1,
         "result": 1,
         "OB": "",
@@ -215,11 +215,11 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 2.5,
+        "startTime": 1.5,
         "duration": 0.1,
         "result": 1,
         "OB": "",
-        "Modifier":"radiodontdisappear,nextstepdissappear",
+        "Modifier":"radiodontdisappear,nextstepdissappear,continue",
         "dialog": "Now you can abort the mission an go directly to the results screen or see what happens."
       }
     },
@@ -228,10 +228,11 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 4.5,
+        "startTime": 3.5,
         "duration": 1.5,
         "result": 1,
         "OB": "",
+        "Modifier":"continue",
         "dialog": "We did it! We could avoid the mountain!"
       }
     } 
