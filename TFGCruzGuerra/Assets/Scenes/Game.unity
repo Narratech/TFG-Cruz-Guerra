@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5974761, g: 0.69160235, b: 0.8043295, a: 1}
+  m_IndirectSpecularColor: {r: 0.5982163, g: 0.69219977, b: 0.804809, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3680,6 +3680,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1171121848}
+        m_TargetAssemblyTypeName: tfg.ResultsTracker, Assembly-CSharp
+        m_MethodName: inform
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 749486198}
         m_TargetAssemblyTypeName: tfg.LevelManager, Assembly-CSharp
         m_MethodName: abort

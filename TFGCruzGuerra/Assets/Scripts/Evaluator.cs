@@ -247,7 +247,7 @@ namespace tfg
                         _happeningOBs.Remove(pair);
                 }
                 if (remainingSteps == 0)
-                    _resultsTracker.informAndGoToResults();
+                    _resultsTracker.inform();
             }
         }
         void prepareFakeOptions(out Dictionary<string, string[]> competenceToFakeOptions, out Dictionary<string, int> competenceToFirstIndex, int Source)

@@ -52,7 +52,7 @@ namespace tfg
             }
         }
 
-        public void informAndGoToResults()
+        public void inform()
         {
             int totalDetection = 0;
             for (int i = 0; i <= (byte)OBDetection.Incorrect; i++)
