@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: 9ab7df7b6d8afb44e923f2c640fba82d, type: 2}
   m_Position: {x: 5096, y: 21, z: 1137}
-  m_EulerAngles: {x: 4, y: -180, z: 0}
+  m_EulerAngles: {x: 1.36, y: -180, z: 0}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
   m_RemoveStartOffset: 1
