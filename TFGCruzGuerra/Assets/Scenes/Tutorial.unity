@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2abff367e065c444aa1df85687bf18d4, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -3099,7 +3099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2986608525490058634, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 28.896057
+      value: 28.89605
       objectReference: {fileID: 0}
     - target: {fileID: 3023216438004484547, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_FontData.m_MinSize
@@ -9053,7 +9053,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -10203,6 +10203,10 @@ PrefabInstance:
     - target: {fileID: 6879015935046865690, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_UpdateMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500710615339003236, guid: ceb82f426cdb08441b001465176a5917, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.655386
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb82f426cdb08441b001465176a5917, type: 3}

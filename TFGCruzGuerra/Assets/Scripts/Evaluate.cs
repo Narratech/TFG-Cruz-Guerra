@@ -22,6 +22,8 @@ namespace tfg
         {
             LevelManager.AddNewStepHandler(this);
             LevelManager.AddEndStepHandler(this);
+
+            CanEvaluate = !_tutorial;
         }
 
         void OnDestroy()
