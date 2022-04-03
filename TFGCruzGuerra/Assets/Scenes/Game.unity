@@ -919,9 +919,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a726ab673b9b8c45a651bf99336efc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRotation: 0.25
-  timeFreq: 2
-  randomTimeFreq: 0.4
+  maxRotation: 0.4
+  timeFreq: 3
+  randomTimeFreq: 0.6
 --- !u!1 &343624577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +1088,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 16ffb173cb153c04da63644558fa050f, type: 2}
   - {fileID: 11400000, guid: b143a1658ed0d3440b7213783aaf4545, type: 2}
   - {fileID: 11400000, guid: baabac26611b9c743b47922d2109f3ce, type: 2}
+  - {fileID: 11400000, guid: e685ab9713abea54aa0e497b4452eb69, type: 2}
+  - {fileID: 11400000, guid: 9f6ba6b13554b4d4aba59b38b5eee186, type: 2}
 --- !u!4 &467335130
 Transform:
   m_ObjectHideFlags: 0
@@ -1366,7 +1368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3919772526075093209, guid: 1164518ad3df07e47a4aa17495f38f7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28666982
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 3919772526075093209, guid: 1164518ad3df07e47a4aa17495f38f7c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3247,7 +3249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2986608525490058634, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 28.895866
+      value: 28.895874
       objectReference: {fileID: 0}
     - target: {fileID: 3023216438004484547, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_FontData.m_MinSize
@@ -4143,7 +4145,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4196,7 +4198,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 40
+      scalar: 60
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -4628,7 +4630,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 128
+    maxNumParticles: 256
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -4893,7 +4895,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 256
+      scalar: 1224
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -8774,7 +8776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617607211}
   m_LocalRotation: {x: 0.9258985, y: -0, z: -0, w: -0.3777725}
-  m_LocalPosition: {x: -2.81, y: 1.22, z: 33.73}
+  m_LocalPosition: {x: -2.81, y: -0.38, z: 32.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10333,7 +10335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3919772526075093209, guid: 1164518ad3df07e47a4aa17495f38f7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.30259603
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 3919772526075093209, guid: 1164518ad3df07e47a4aa17495f38f7c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10743,7 +10745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4426584256535268268, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20.000214
+      value: -19.999878
       objectReference: {fileID: 0}
     - target: {fileID: 4426584256535268268, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10760,6 +10762,10 @@ PrefabInstance:
     - target: {fileID: 4426584256535268269, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_Name
       value: radio
+      objectReference: {fileID: 0}
+    - target: {fileID: 7500710615339003236, guid: ceb82f426cdb08441b001465176a5917, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.6553898
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2010464590, guid: ceb82f426cdb08441b001465176a5917, type: 3}

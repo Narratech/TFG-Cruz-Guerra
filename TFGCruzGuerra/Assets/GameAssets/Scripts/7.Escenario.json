@@ -1,0 +1,865 @@
+{
+  "$type": "Logic.Script, Assembly-CSharp",
+  "sceneName": "testaudio",
+  "captainName": "peter",
+  "firstOfficerName": "pedro",
+  "steps": [
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.WeatherChange, Assembly-CSharp",
+        "weather": "SunnyAbove1",
+        "startTime": 0,
+        "duration": 1.0,
+        "result": 0,
+        "OB": "",
+        "modifier": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.FlightStageChange, Assembly-CSharp",
+        "startTime": 0.0,
+        "duration": 1.0,
+        "result": 2,
+        "OB": "",
+        "flightSection": 4
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 1.0,
+        "duration": 3.0,
+        "result": 2,
+        "OB": "",
+        "dialog": "Would you like to use autobrake?"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 4.0,
+        "duration": 3.0,
+        "result": 2,
+        "OB": "",
+        "dialog": "Do not worry, I will brake it manually. Always Works here!"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.FlightStageChange, Assembly-CSharp",
+        "startTime": 8.0,
+        "duration": 1.0,
+        "result": 2,
+        "OB": "",
+        "flightSection": 5
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 9.0,
+        "duration": 3.0,
+        "result": 2,
+        "OB": "",
+        "dialog": "There is a difference of 150 m less using flap 40"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 12.0,
+        "duration": 3.0,
+        "result": 0,
+        "OB": "Asks relevant and effective questions",
+        "dialog": "Should we use Flap 30?"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 15.0,
+        "duration": 2.5,
+        "result": 2,
+        "OB": "",
+        "dialog": "Yeah, Flaps 30 would do. 141 plus 5 ah"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 17.5,
+        "duration": 3,
+        "result": 0,
+        "OB": "Communicates relevant concerns and intentions",
+        "dialog": "I'm going to introduce the data into the EFB"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Anim, Assembly-CSharp",
+        "startTime": 19,
+        "duration": 2,
+        "result": 0,
+        "OB": "",
+        "animName": "Point"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 22.0,
+        "duration": 3,
+        "result": 0,
+        "OB": "Listens actively and demonstrates understanding when receiving information",
+        "dialog": "Ok, that's the best option"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 26.0,
+        "duration": 5,
+        "result": 2,
+        "OB": "",
+        "dialog": "ATC clearance. Niugini 73, descend to reach FL340 by time 23:05Z13, and report level, FL340."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 30.0,
+        "duration": 4,
+        "result": 2,
+        "OB": "",
+        "dialog": "Cruise, FL340, to Chuuk airport, report arrival. Report leaving FL280, flight level 180 and flight level 080, time, time check, 254 and a quarter."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 34,
+        "duration": 3,
+        "result": 0,
+        "OB": "Conveys messages clearly, accurately and concisely",
+        "dialog": "We're already high so we need to start the descent now ah"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 37,
+        "duration": 2.5,
+        "result": 0,
+        "OB": "Adheres to standard radiotelephone phraseology and procedures",
+        "dialog": "Air Niugini 73 to San Francisco. We are maintaining FL340"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 39.5,
+        "duration": 2.5,
+        "result": 0,
+        "OB": "Communicates relevant concerns and intentions",
+        "dialog": "Ok, we're high on profile. Going to descend to get back on the required profile"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.WeatherChange, Assembly-CSharp",
+        "weather": "DayFurry",
+        "startTime": 39.0,
+        "duration": 1.0,
+        "result": 2,
+        "OB": "",
+        "modifier": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 44,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "Alright, we catching back on profile, so just keep the speed up"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 48,
+        "duration": 3,
+        "result": 0,
+        "OB": "Anticipates accurately what could happen, plans and stays ahead of the situation",
+        "dialog": "Air Niugini 73 to Chuuk. We need a weather update."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 51.5,
+        "duration": 2.5,
+        "result": 2,
+        "OB": "",
+        "dialog": "Chuuk to Air Niugini 73”. Roger that. Please stand by for the update"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 54,
+        "duration": 2,
+        "result": 2,
+        "OB": "",
+        "dialog": "Ok, we'll be waiting for it"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 57,
+        "duration": 3,
+        "result": 0,
+        "OB": "Uses initiative and gives directions when required",
+        "dialog": "Looks like we are still on high profile. Can you go on VNAV?"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 60,
+        "duration": 1,
+        "result": 2,
+        "OB": "",
+        "dialog": "Ok"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 62,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "Chuuk to Air Niugini 73. Here's the weather update you requested."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 64,
+        "duration": 6,
+        "result": 2,
+        "OB": "",
+        "dialog": "Wind variable at 5, visibility 14 scattered 012 charlie bravo, broken 120 overcast 280, temperature 26 dew point 25, altimeter 29.73."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 70,
+        "duration": 2,
+        "result": 2,
+        "OB": "",
+        "dialog": "Ok, thanks for the report"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 73,
+        "duration": 2.5,
+        "result": 2,
+        "OB": "",
+        "dialog": "Air Niugini 73 to San Francisco. We are passing FL180"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.WeatherChange, Assembly-CSharp",
+        "weather": "DayFog",
+        "startTime": 74.0,
+        "duration": 1.0,
+        "result": 2,
+        "OB": "",
+        "modifier": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 76,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "Air Niugini 73 here. We are going to track for the RNAV runway 4 from the east south-east"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 79,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "Air Niugini 73 to San Francisco. Currently we are passing 8000 ft on descent"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 82,
+        "duration": 3,
+        "result": 1,
+        "OB": "Conveys messages clearly, accurately and concisely",
+        "dialog": "Alright, the missed approach is-"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.WeatherChange, Assembly-CSharp",
+        "weather": "DayStorm",
+        "startTime": 83.0,
+        "duration": 1.0,
+        "result": 2,
+        "OB": "",
+        "modifier": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 86,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "okay, we on RNAV at 041 and I'll go 1,000."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 89,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "Air Niugini 73 here. We are stablished on 041 inbound via the RNAV runway 04"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.PressButton, Assembly-CSharp",
+        "startTime": 91,
+        "duration": 2.0,
+        "result": 0,
+        "OB": null,
+        "interruptName": "Gear Down",
+        "pressType": 0
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.PressButton, Assembly-CSharp",
+        "startTime": 93,
+        "duration": 2.0,
+        "result": 0,
+        "OB": null,
+        "interruptName": "Flaps 15",
+        "pressType": 0
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 95,
+        "duration": 3,
+        "result": 1,
+        "OB": "Identifies and follows all operating instructions in a timely manner",
+        "dialog": "We just configure as we can ah"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Anim, Assembly-CSharp",
+        "startTime": 99,
+        "duration": 2,
+        "result": 2,
+        "OB": "",
+        "animName": "Point"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 99,
+        "duration": 3,
+        "result": 0,
+        "OB": "Identifies and assesses accurately the general environment as it may affect the operation",
+        "dialog": "Looks like there are some showers in the area"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 102,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "That must be some storm, but it'll be out soon."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 102,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "More important than that, read the landing checklist, please."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 105,
+        "duration": 4,
+        "result": 1,
+        "OB": "Accurately reads and interprets required company and flight documentation",
+        "dialog": "landing gear, flaps, lights and runway in sight check."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 109,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "ah we'll probably just go down on the PAPI's."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 112,
+        "duration": 2,
+        "result": 2,
+        "OB": "",
+        "dialog": "alright flaps 30, flaps 40"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 112,
+        "duration": 3,
+        "result": 0,
+        "OB": "Accurately reads and interprets required company and flight documentation",
+        "dialog": "landing checks."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.SoundAlarm, Assembly-CSharp",
+        "startTime": 115.5,
+        "duration": 1.0,
+        "result": 2,
+        "OB": null,
+        "soundAlarmName": "1000",
+        "loop": false
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 115,
+        "duration": 2,
+        "result": 2,
+        "OB": "",
+        "dialog": "OK, stable."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 117,
+        "duration": 2,
+        "result": 2,
+        "OB": "",
+        "dialog": "continue"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 119,
+        "duration": 2,
+        "result": 2,
+        "OB": "",
+        "dialog": "and visual, 900 cloud base."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.PressButton, Assembly-CSharp",
+        "startTime": 121,
+        "duration": 4.0,
+        "result": 1,
+        "OB": "Correctly operates aircraft systems and associated equipment",
+        "interruptName": "Altitude: 5000 ft",
+        "pressType": 0
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.WeatherChange, Assembly-CSharp",
+        "weather": "DayStorm", 
+        "startTime": 122.0,
+        "duration": 1.0,
+        "result": 0,
+        "OB": "",
+        "modifier": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.PressButton, Assembly-CSharp",
+        "startTime": 124,
+        "duration": 2.0,
+        "result": 2,
+        "OB": "",
+        "interruptName": "Wiper",
+        "pressType": 0
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 125,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "Okay, landing"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 127,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "dialog": "Visual, one red"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 131,
+        "duration": 3,
+        "result": 0,
+        "OB": "Conveys messages clearly, accurately and concisely",
+        "dialog": "Three whites"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.SoundAlarm, Assembly-CSharp",
+        "startTime": 133,
+        "duration": 1.0,
+        "result": 2,
+        "OB": null,
+        "soundAlarmName": "Minimum",
+        "loop": false
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.SoundAlarm, Assembly-CSharp",
+        "startTime": 134,
+        "duration": 1.0,
+        "result": 2,
+        "OB": null,
+        "soundAlarmName": "Sink rate",
+        "loop": true
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 135,
+        "duration": 3,
+        "result": 1,
+        "OB": "Identifies and manages risks effectively",
+        "dialog": "I just wanna get on profile"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.SoundAlarm, Assembly-CSharp",
+        "startTime": 138,
+        "duration": 1.0,
+        "result": 1,
+        "OB": "Identifies and manages risks effectively",
+        "soundAlarmName": "Glidescope",
+        "loop": false
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.SoundAlarm, Assembly-CSharp",
+        "startTime": 139,
+        "duration": 1.0,
+        "result": 1,
+        "OB": "Identifies and manages risks effectively",
+        "soundAlarmName": "Sink rate",
+        "loop": false
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 135,
+        "duration": 3,
+        "result": 1,
+        "OB": "that's fine, I'll just go a little bit more.",
+        "dialog": "I just wanna get on profile"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.SoundAlarm, Assembly-CSharp",
+        "startTime": 138,
+        "duration": 1.0,
+        "result": 1,
+        "OB": "Identifies and manages risks effectively",
+        "soundAlarmName": "Glidescope",
+        "loop": false
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 139,
+        "duration": 3,
+        "result": 1,
+        "OB": "Confidently intervenes when important for safety",
+        "dialog": ". . ."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 142,
+        "duration": 3,
+        "result": 1,
+        "OB": "Recognizes and effectively responds to indications of reduced situation awareness",
+        "dialog": "See the runway?"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Abort, Assembly-CSharp",
+        "startTime": 144,
+        "duration": 8,
+        "result": 0,
+        "OB": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.SoundAlarm, Assembly-CSharp",
+        "startTime": 145,
+        "duration": 1.0,
+        "result": 2,
+        "OB": "",
+        "soundAlarmName": "100",
+        "loop": false
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 146,
+        "duration": 3,
+        "result": 1,
+        "OB": "",
+        "dialog": "Monitor airspeed. Okay, got it."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.SoundAlarm, Assembly-CSharp",
+        "startTime": 149,
+        "duration": 1.0,
+        "result": 1,
+        "OB": "Identifies and manages risks effectively",
+        "soundAlarmName": "Glidescope",
+        "loop": false
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.SoundAlarm, Assembly-CSharp",
+        "startTime": 150,
+        "duration": 3,
+        "result": 2,
+        "OB": "",
+        "soundAlarmName": "Glidescope",
+        "loop": true
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 149,
+        "duration": 4,
+        "result": 2,
+        "OB": "",
+        "dialog": "TOO LOW! WE'RE TOO LOW! WE'RE TOO LOW! WE'RE TOO LOW!"
+      }
+    }
+  ]
+}
