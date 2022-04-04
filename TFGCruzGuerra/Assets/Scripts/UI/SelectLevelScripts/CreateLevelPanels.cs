@@ -12,16 +12,15 @@ namespace tfg.UI
         [SerializeField] private LevelButton prefabLevel;
         [SerializeField] Color normalBackground;
         [SerializeField] Color tutorialBackground;
+        [SerializeField] TextAsset[] levels;
         private void Start()
         {
-            const string path = "Assets/GameAssets/Scripts/";
-            DirectoryInfo info = new DirectoryInfo(path);
-            IEnumerable<FileInfo> fileInfo = info.GetFiles().Where(name => !name.Name.EndsWith(".meta"));
-            foreach (FileInfo file in fileInfo)
+
+            foreach (TextAsset level in levels)
             {
                 LevelButton go = Instantiate<LevelButton>(prefabLevel, transform);
-                go.Level = file.Name.Substring(0,file.Name.Length-5);// 
-                go.Tutorial = file.Name.Contains("Tutorial");
+                go.Level = level;
+                go.Tutorial = level.name.Contains("Tutorial");
                 if (go.Tutorial)
                     go.setBackGroundColor(tutorialBackground);
                 else go.setBackGroundColor(normalBackground);

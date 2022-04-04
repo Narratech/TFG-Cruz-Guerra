@@ -11,8 +11,8 @@ namespace tfg.UI
         [SerializeField] private TextMeshProUGUI levelName;
         [SerializeField] Image _backGround;
 
-        private string _level;
-        public string Level
+        private TextAsset _level;
+        public TextAsset Level
         {
             get
             {
@@ -21,9 +21,7 @@ namespace tfg.UI
             set
             {
                 _level = value;
-                string[] name = value.Split('.');
-                //si no tiene numeros se pone directamente el nombre, si tiene numeros se quita
-                levelName.text = name.Length == 2 ? name[1] : name[0];
+                levelName.text = value.name;
             }
         }
         private bool _tutorial;

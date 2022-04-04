@@ -16,7 +16,7 @@ namespace tfg
             Instance = this;
         }
 
-        public void playLevel(string level,bool tutorial)
+        public void playLevel(TextAsset level,bool tutorial)
         {
             GameManager.Instance.level = level;
             if (tutorial)

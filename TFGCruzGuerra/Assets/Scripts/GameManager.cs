@@ -25,11 +25,14 @@ namespace tfg
 
         [SerializeField] public LevelManager levelManager;
 
+        [SerializeField] private TextAsset competencesToOBText;
+        [SerializeField] private TextAsset OBToStepsText;
+
         public Logic.Table_CompetencesToOB competencesToOB { get; private set; }
         public Logic.Table_OB_Steps OBToSteps { get; private set; }
         public ResultsData Results { get; set; }
 
-        public string level { get; set; }
+        public TextAsset level { get; set; }
 
         public float volume { get; set; }
 
@@ -45,12 +48,14 @@ namespace tfg
             }
             else
             {
-                OBToSteps = Logic.JsonManager.ImportFromJSON<Logic.Table_OB_Steps>(/*Application.persistentDataPath*/"Assets/GameAssets/Tables/TableOBtoSteps.json");
-                competencesToOB = Logic.JsonManager.ImportFromJSON<Logic.Table_CompetencesToOB>(/*Application.persistentDataPath*/"Assets/GameAssets/Tables/TableCompetenceToOB.json");
                 Instance = this;
+                if (competencesToOB == null && competencesToOBText != null)
+                    competencesToOB = Logic.JsonManager.parseJSON<Logic.Table_CompetencesToOB>(competencesToOBText.ToString());
+                if (OBToSteps == null && OBToStepsText != null)
+                    OBToSteps = Logic.JsonManager.parseJSON<Logic.Table_OB_Steps>(OBToStepsText.ToString());
+
                 DontDestroyOnLoad(gameObject);
             }
-
         }
 
         public void goToScene(ButtonsScene scene)
