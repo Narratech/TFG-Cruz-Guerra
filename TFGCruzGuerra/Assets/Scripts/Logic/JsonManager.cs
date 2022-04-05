@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Logic
 {
-   public class JsonManager
+    public class JsonManager
     {
         /// <summary>
         /// Called after importFromJson
@@ -22,7 +22,8 @@ namespace Logic
         {
             try
             {
-                if (!route.EndsWith(".json")) {
+                if (!route.EndsWith(".json"))
+                {
                     route = route + ".json";
                 }
                 StreamWriter scen = new StreamWriter(route);
@@ -49,20 +50,34 @@ namespace Logic
         {
             try
             {
-                if (!route.EndsWith(".json")) {
+                if (!route.EndsWith(".json"))
+                {
                     route = route + ".json";
                 }
                 StreamReader read = new StreamReader(route);
+                return parseJSON<T>(read.ReadToEnd(), declareType);
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
+                return default(T);
+            }
+        }
+        public static T parseJSON<T>(string Json, bool declareType = false) where T : JsonManager
+        {
+            try
+            {
 
                 JsonSerializerSettings settings = new JsonSerializerSettings();
                 settings.Formatting = Formatting.Indented;
 
-                if(declareType)
-                    settings.TypeNameHandling = TypeNameHandling.Objects; 
+                if (declareType)
+                    settings.TypeNameHandling = TypeNameHandling.Objects;
 
-                T t = JsonConvert.DeserializeObject<T>(read.ReadToEnd(), settings);
-                read.Close();
-                if (t.Init() < 0) {
+                T t = JsonConvert.DeserializeObject<T>(Json, settings);
+
+                if (t.Init() < 0)
+                {
                     Console.Error.WriteLine("Error initializing: " + t);
                 }
                 return t;
@@ -73,6 +88,7 @@ namespace Logic
                 return default(T);
             }
         }
+
     }
 }
 

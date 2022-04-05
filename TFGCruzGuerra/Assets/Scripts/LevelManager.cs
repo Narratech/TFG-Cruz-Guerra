@@ -34,9 +34,7 @@ namespace tfg
                 newStepHandlers = new List<Interfaces.INewStepHandler>();
             if (endStepHandlers == null)
                 endStepHandlers = new List<Interfaces.IEndStepHandler>();
-
-            script = Logic.JsonManager.ImportFromJSON<Logic.Script>("Assets/GameAssets/Scripts/" + GameManager.Instance.level, true);
-
+            script = Logic.JsonManager.parseJSON<Logic.Script>(GameManager.Instance.level.ToString(), true);
             Play();
         }
 
@@ -54,8 +52,8 @@ namespace tfg
         private IEnumerator PlayInCoroutine()
         {
             float startTime = Time.time;
-            Utils.ColaPrioridad colaStarts=null;
-            Utils.ColaPrioridad colaEnds=null;
+            Utils.ColaPrioridad colaStarts = null;
+            Utils.ColaPrioridad colaEnds = null;
             //Nunca debe haber un nodo en ambas colas a la vez
             try
             {
@@ -64,7 +62,7 @@ namespace tfg
             }
             catch (Exception e)
             {
-                Debug.LogWarning("EL ERROR ES "+e.Message);
+                Debug.LogWarning("EL ERROR ES " + e.Message);
             }
             Logic.Source sourceNow;
             Logic.Step stepNow;
