@@ -887,7 +887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222631403810918564, guid: 9ef5f59c124c68345a73029b13e0e214, type: 3}
       propertyPath: scene
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6222631403810918564, guid: 9ef5f59c124c68345a73029b13e0e214, type: 3}
       propertyPath: levelManager
@@ -10206,7 +10206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7500710615339003236, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.655386
+      value: -3.6553802
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb82f426cdb08441b001465176a5917, type: 3}

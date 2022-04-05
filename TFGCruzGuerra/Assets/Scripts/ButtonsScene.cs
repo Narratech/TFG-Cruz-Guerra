@@ -5,7 +5,7 @@ namespace tfg
     [System.Serializable]
     public enum Scene
     {
-        Menu, Options, Encyclopedia, Credits, SelectLevel, Game, Results, Tutorial
+        Loader, Menu, Options, Encyclopedia, Credits, SelectLevel, Game, Results, Tutorial
     }
 
     public class ButtonsScene : MonoBehaviour

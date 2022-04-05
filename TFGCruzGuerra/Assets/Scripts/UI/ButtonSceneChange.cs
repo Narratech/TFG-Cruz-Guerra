@@ -8,7 +8,7 @@ namespace tfg.UI
     public class ButtonSceneChange : MonoBehaviour
     {
         [SerializeField] private Image fadeOutInPanel;
-        [SerializeField] [Range(0.1f, 1f)] float _secondsToWait = 0.5f;
+        [SerializeField] [Range(0f, 1f)] float _secondsToWait = 0.5f;
         [SerializeField] [Range(0f, 1f)] float _secondsToAppear = 0.5f;
 
         private void Start()

@@ -53,6 +53,11 @@ namespace tfg
 
         }
 
+        void Start()
+        {
+            if(scene == Scene.Loader) goToSceneAsyncInTime(Scene.Menu, 3);       
+        }
+
         public void goToScene(ButtonsScene scene)
         {
             SceneManager.LoadScene((int)scene.scene);

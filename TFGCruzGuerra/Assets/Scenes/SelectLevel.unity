@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222631403810918564, guid: 9ef5f59c124c68345a73029b13e0e214, type: 3}
       propertyPath: scene
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6222631403810918565, guid: 9ef5f59c124c68345a73029b13e0e214, type: 3}
       propertyPath: m_Name
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df68a2d7a0fb9e049bb4e3700de68248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 0
+  scene: 1
 --- !u!114 &995847791
 MonoBehaviour:
   m_ObjectHideFlags: 0

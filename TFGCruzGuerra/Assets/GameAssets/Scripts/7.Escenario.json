@@ -683,7 +683,7 @@
         "duration": 1.0,
         "result": 2,
         "OB": null,
-        "soundAlarmName": "Minimum",
+        "soundAlarmName": "Minimums",
         "loop": false
       }
     },
@@ -696,7 +696,7 @@
         "duration": 1.0,
         "result": 2,
         "OB": null,
-        "soundAlarmName": "Sink rate",
+        "soundAlarmName": "Sinkrate",
         "loop": true
       }
     },
@@ -734,7 +734,7 @@
         "duration": 1.0,
         "result": 1,
         "OB": "Identifies and manages risks effectively",
-        "soundAlarmName": "Sink rate",
+        "soundAlarmName": "Sinkrate",
         "loop": false
       }
     },
