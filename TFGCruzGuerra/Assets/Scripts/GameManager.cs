@@ -38,7 +38,7 @@ namespace tfg
 
         public TextAsset level { get; set; }
 
-        public float volume { get; set; }
+        public float volume { get; set; } = 1;
 
         private void Awake()
         {
