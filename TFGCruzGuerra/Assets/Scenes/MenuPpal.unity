@@ -1740,6 +1740,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222631403810918564, guid: 9ef5f59c124c68345a73029b13e0e214, type: 3}
+      propertyPath: scene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222631403810918564, guid: 9ef5f59c124c68345a73029b13e0e214, type: 3}
+      propertyPath: menuCam
+      value: 
+      objectReference: {fileID: 15090722}
+    - target: {fileID: 6222631403810918564, guid: 9ef5f59c124c68345a73029b13e0e214, type: 3}
       propertyPath: OBToStepsText
       value: 
       objectReference: {fileID: 4900000, guid: c0dc5c93c4c05cc47ac272db6a88d19c, type: 3}

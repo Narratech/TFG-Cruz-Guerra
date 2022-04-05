@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 namespace tfg
 {
@@ -28,6 +29,9 @@ namespace tfg
         [SerializeField] private TextAsset competencesToOBText;
         [SerializeField] private TextAsset OBToStepsText;
 
+        [SerializeField] private VideoMenuPlayer menuVideo;
+        [SerializeField] private Camera menuCam;
+
         public Logic.Table_CompetencesToOB competencesToOB { get; private set; }
         public Logic.Table_OB_Steps OBToSteps { get; private set; }
         public ResultsData Results { get; set; }
@@ -44,11 +48,19 @@ namespace tfg
 
                 Instance.levelManager = levelManager;
 
+                if (scene == Scene.Menu)
+                    Instance.menuVideo.start(menuCam);
+                else
+                    Instance.menuVideo.stop();
+
                 Destroy(gameObject);
             }
             else
             {
                 Instance = this;
+
+                menuVideo.prepareVideo();
+
                 if (competencesToOB == null && competencesToOBText != null)
                     competencesToOB = Logic.JsonManager.parseJSON<Logic.Table_CompetencesToOB>(competencesToOBText.ToString());
                 if (OBToSteps == null && OBToStepsText != null)
@@ -56,6 +68,8 @@ namespace tfg
 
                 DontDestroyOnLoad(gameObject);
             }
+
+            
         }
 
         void Start()
