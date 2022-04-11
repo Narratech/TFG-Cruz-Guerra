@@ -3,6 +3,8 @@
   "sceneName": "testaudio",
   "captainName": "peter",
   "firstOfficerName": "pedro",
+  "captainVariant":"Louise-0",
+  "firstOfficerVariant":"Louise-0",
   "steps": [
     {
       "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",

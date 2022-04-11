@@ -35,6 +35,8 @@ namespace tfg
             if (endStepHandlers == null)
                 endStepHandlers = new List<Interfaces.IEndStepHandler>();
             script = Logic.JsonManager.parseJSON<Logic.Script>(GameManager.Instance.level.ToString(), true);
+            GameManager.Instance.PilotVariant = script.getCaptainVariant();
+            GameManager.Instance.CoPilotVariant = script.getFirstOfficerVariant();
             Play();
         }
 

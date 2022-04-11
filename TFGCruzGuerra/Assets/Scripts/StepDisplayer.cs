@@ -20,8 +20,6 @@ namespace tfg
         [SerializeField] private Text radioText;
         [SerializeField] private Animator radioAnim;
 
-        //Animations
-        [SerializeField] private Animator captainAnimator, firstOfficerAnimator;
 
         //Interrupts
         [SerializeField] private InterruptManager captainInterrupt, firstOfficerInterrupt;
@@ -38,13 +36,13 @@ namespace tfg
         //Weather
         [SerializeField] private SkyChanger skyChanger;
 
+        private Animator captainAnimator, firstOfficerAnimator;
 
         void Start()
         {
 #if UNITY_EDITOR
             if (captainImage == null || firstOfficerImage == null ||
                 captainText == null || firstOfficerText == null ||
-                captainAnimator == null || firstOfficerAnimator == null ||
                 captainInterrupt == null || firstOfficerInterrupt == null)
             {
                 Debug.LogError("StepDisplayer Serialized field not setted");
@@ -224,6 +222,14 @@ namespace tfg
                     firstOfficerInterrupt.stopVideo();
                     break;
             }
+        }
+        public void setCaptainAnimator(Animator a)
+        {
+            captainAnimator = a;
+        }
+        public void setFirstOfficerAnimator(Animator a)
+        {
+            firstOfficerAnimator = a;
         }
     }
 }

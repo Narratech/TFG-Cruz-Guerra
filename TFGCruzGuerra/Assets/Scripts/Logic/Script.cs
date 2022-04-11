@@ -36,7 +36,7 @@ namespace Logic
         private Source current_;
 
         [JsonProperty]
-        private string sceneName, captainName, firstOfficerName;
+        private string sceneName, captainName, firstOfficerName,captainVariant,firstOfficerVariant;
 
         [JsonProperty]
         private List<Tuple<Source, Step>> steps;
@@ -66,6 +66,8 @@ namespace Logic
             steps.Add(new Tuple<Source, Step>(current_, new PressButton("Air pump", PressButton.PressType.OffToOn)));
         }
 
+        public string getCaptainVariant() { return captainVariant; }
+        public string getFirstOfficerVariant() { return firstOfficerVariant; }
         public void setCaptainName(string pilot)
         {
             captainName = pilot;
