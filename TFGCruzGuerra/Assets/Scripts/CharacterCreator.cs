@@ -13,11 +13,19 @@ namespace tfg
         [SerializeField] Transform _PilotPos;
         [SerializeField] Transform _CopilotPos;
         [SerializeField] StepDisplayer _displayer;
+#if UNITY_EDITOR
+        [SerializeField] string _pilot;
+        [SerializeField] string _copilot;
+#endif
         private void Start()
         {
+#if UNITY_EDITOR
+            string[] pilot = _pilot.Split('-');
+            string[] copilot = _copilot.Split('-');
+#else
             string[] pilot = GameManager.Instance.PilotVariant.Split('-');
             string[] copilot = GameManager.Instance.CoPilotVariant.Split('-');
-        
+#endif   
             string charName = pilot[0].ToLower();
             int variant = int.Parse(pilot[1]);
             Animator go = charName == "joe" ? _JoeVariants[variant] : _LouiseVariants[variant];
