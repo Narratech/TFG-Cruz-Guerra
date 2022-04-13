@@ -50,7 +50,7 @@ namespace tfg
 #endif
         private void Start()
         {
-#if !UNITY_EDITOR
+#if UNITY_EDITOR
             string[] pilotSplitted = _editorPilot.Split('-');
             string[] copilotSplitted = _editorCopilot.Split('-');
 #else

@@ -27,6 +27,7 @@ namespace tfg
 
             _videoPlayer.renderMode = VideoRenderMode.CameraFarPlane;
             _videoPlayer.targetCamera = cam;
+            _videoPlayer.isLooping = true;
             _videoPlayer.Play();
         }
     }
