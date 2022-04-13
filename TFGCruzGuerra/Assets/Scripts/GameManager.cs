@@ -31,8 +31,6 @@ namespace tfg
 
         [SerializeField] private VideoMenuPlayer menuVideo;
         [SerializeField] private Camera menuCam;
-        const int maxNumVariants = 5;
-        const string defaultVariant = "Joe-0";
         public Logic.Table_CompetencesToOB competencesToOB { get; private set; }
         public Logic.Table_OB_Steps OBToSteps { get; private set; }
         public ResultsData Results { get; set; }
@@ -41,32 +39,9 @@ namespace tfg
 
         public float volume { get; set; } = 1;
 
-        public string PilotVariant
-        {
-            get { return _pilotVariant; }
-            set
-            {
-                string[] variant = value.Split('-');
-                //si la variante no esta correctamente separada o si la variante tiene algun error de nombre o de numero
-                if (variant.Length != 2 || (variant[0].ToLower() != "joe" && variant[0].ToLower() != "louise") || !int.TryParse(variant[1], out int numVariant) || numVariant >= maxNumVariants || numVariant < 0)
-                    _pilotVariant = defaultVariant;
-                else _pilotVariant = value;
-            }
-        }
-        public string CoPilotVariant
-        {
-            get { return _copilotVariant; }
-            set
-            {
-                string[] variant = value.Split('-');
-                //si la variante no esta correctamente separada o si la variante tiene algun error de nombre o de numero
-                if (variant.Length != 2 || (variant[0].ToLower() != "joe" && variant[0].ToLower() != "louise") || !int.TryParse(variant[1], out int numVariant) || numVariant >= maxNumVariants || numVariant < 0)
-                    _copilotVariant = defaultVariant;
-                else _copilotVariant = value;
-            }
-        }
-        string _pilotVariant;
-        string _copilotVariant;
+        public string PilotVariant { get; set; }
+        
+        public string CoPilotVariant{ get; set; }
         private void Awake()
         {
             if (Instance != null)

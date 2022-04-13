@@ -9333,12 +9333,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _JoeVariants:
   - {fileID: 8177226140241732967, guid: 1164518ad3df07e47a4aa17495f38f7c, type: 3}
+  - {fileID: 753393938619676267, guid: b7376137739d76743b017c57505e4504, type: 3}
   - {fileID: 919132149608431105, guid: 062832e83b1a8e348977aeb5e69d925e, type: 3}
   - {fileID: 9179696188381603045, guid: 992aea0f2234bbd4782bb5374946ba0b, type: 3}
   - {fileID: 4979256700282742294, guid: 095d78141799ede499e5fd340c6d7da3, type: 3}
   - {fileID: 8961275351287486812, guid: f8f966575793dd64881bad8f39cf092b, type: 3}
   _LouiseVariants:
   - {fileID: 5063582780265853889, guid: 3c15c7f8cb75b524b8cac04a01bab734, type: 3}
+  - {fileID: 5349462382094245250, guid: 6be2e0c09de0ae141bfeb670cca7077d, type: 3}
   - {fileID: 1824296714024052289, guid: ed560f2c03be7c4498847b5d06b738de, type: 3}
   - {fileID: 9058530182740371798, guid: 6a5baff37697fca4783187d7f96b91b8, type: 3}
   - {fileID: 6014284576157437223, guid: 09b386adc0232ab41b02c9f5ad08d92a, type: 3}
@@ -9347,8 +9349,8 @@ MonoBehaviour:
   _PilotPos: {fileID: 543450653280528197}
   _CopilotPos: {fileID: 3919772525537811446}
   _displayer: {fileID: 425951172}
-  _pilot: Louise-0
-  _copilot: Louise-1
+  _editorPilot: Joe-5
+  _editorCopilot: Louise-5
 --- !u!4 &2021911724
 Transform:
   m_ObjectHideFlags: 0

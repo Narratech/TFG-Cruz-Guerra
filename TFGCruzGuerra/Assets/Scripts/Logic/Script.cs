@@ -42,6 +42,8 @@ namespace Logic
         private List<Tuple<Source, Step>> steps;
 
         private int stepsIt;
+        [JsonProperty]
+        private float timeScale;
 
         public Script()
         {
@@ -65,7 +67,10 @@ namespace Logic
             steps.Add(new Tuple<Source, Step>(current_, new Anim("Point")));
             steps.Add(new Tuple<Source, Step>(current_, new PressButton("Air pump", PressButton.PressType.OffToOn)));
         }
-
+        public float getTimeScale()
+        {
+            return timeScale;
+        }
         public string getCaptainVariant() { return captainVariant; }
         public string getFirstOfficerVariant() { return firstOfficerVariant; }
         public void setCaptainName(string pilot)

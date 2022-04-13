@@ -18,7 +18,7 @@ namespace tfg
         [SerializeField] private Image fadeOutPanel;
         [SerializeField] private float waitStart = 1.0f;
         private Logic.Script script;
-
+        private float timeScale;
         Logic.Step _currentStep;
         static List<Interfaces.INewStepHandler> newStepHandlers;
         static List<Interfaces.IEndStepHandler> endStepHandlers;
@@ -37,6 +37,8 @@ namespace tfg
             script = Logic.JsonManager.parseJSON<Logic.Script>(GameManager.Instance.level.ToString(), true);
             GameManager.Instance.PilotVariant = script.getCaptainVariant();
             GameManager.Instance.CoPilotVariant = script.getFirstOfficerVariant();
+            timeScale = script.getTimeScale();
+            Time.timeScale = timeScale;
             Play();
         }
 
