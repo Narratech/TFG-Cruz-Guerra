@@ -5,7 +5,7 @@
   "firstOfficerName": "pedro",
   "captainVariant":"Joe-1",
   "firstOfficerVariant":"Joe-1",
-  "timeScale":0.7,
+  "timeScale":0.5,
   "steps": [
     {
       "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
@@ -122,10 +122,10 @@
       "Item2": {
         "$type": "Logic.Anim, Assembly-CSharp",
         "startTime": 19,
-        "duration": 2,
+        "duration": 4,
         "result": 0,
         "OB": "",
-        "animName": "Point"
+        "animName": "Typing"
       }
     },
     {
@@ -724,7 +724,7 @@
         "duration": 1.0,
         "result": 1,
         "OB": "Identifies and manages risks effectively",
-        "soundAlarmName": "Glidescope",
+        "soundAlarmName": "Glideslope",
         "loop": false
       }
     },
@@ -762,7 +762,7 @@
         "duration": 1.0,
         "result": 1,
         "OB": "Identifies and manages risks effectively",
-        "soundAlarmName": "Glidescope",
+        "soundAlarmName": "Glideslope",
         "loop": false
       }
     },
@@ -835,7 +835,7 @@
         "duration": 1.0,
         "result": 1,
         "OB": "Identifies and manages risks effectively",
-        "soundAlarmName": "Glidescope",
+        "soundAlarmName": "Glideslope",
         "loop": false
       }
     },
@@ -848,7 +848,7 @@
         "duration": 3,
         "result": 2,
         "OB": "",
-        "soundAlarmName": "Glidescope",
+        "soundAlarmName": "Glideslope",
         "loop": true
       }
     },

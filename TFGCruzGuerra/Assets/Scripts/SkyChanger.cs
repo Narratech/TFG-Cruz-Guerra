@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SkyChanger : MonoBehaviour
 {
-    [SerializeField] ParticleSystem rainParticlesEmission;
+    [SerializeField] ParticleSystem[] rainParticlesEmission;
 
     [SerializeField] Material camSkybox;
 
@@ -24,7 +24,7 @@ public class SkyChanger : MonoBehaviour
         weatherToSkyBox = new Dictionary<string, Material>();
         weatherToRainy = new Dictionary<string, bool>();
 
-        foreach(WeatherScriptable w in weathers)
+        foreach (WeatherScriptable w in weathers)
         {
             weatherToSkyBox.Add(w.weather, w.skyboxMaterial);
             weatherToRainy.Add(w.weather, w.rain);
@@ -39,9 +39,12 @@ public class SkyChanger : MonoBehaviour
             return;
 
         actualWeather = weather;
+        foreach (ParticleSystem system in rainParticlesEmission)
+        {
 
-        ParticleSystem.EmissionModule a = rainParticlesEmission.emission;
-        a.enabled = weatherToRainy[weather];
+            ParticleSystem.EmissionModule emissionModule = system.emission;
+            emissionModule.enabled = weatherToRainy[weather];
+        }
 
         StartCoroutine(blend(weatherToSkyBox[weather]));
     }
@@ -52,7 +55,7 @@ public class SkyChanger : MonoBehaviour
 
         float startTime = Time.time;
 
-        while(Time.time < startTime + blendDuration)
+        while (Time.time < startTime + blendDuration)
         {
             float lerp = (Time.time - startTime) / blendDuration;
             camSkybox.SetFloat("_Blend", lerp);
