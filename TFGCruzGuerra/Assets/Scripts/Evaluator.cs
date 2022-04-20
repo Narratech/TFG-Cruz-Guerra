@@ -82,8 +82,6 @@ namespace tfg
             transform.GetChild(0).gameObject.SetActive(true);
             //! Precondicion: Hay como maximo 3 obs buenos del source adecuado
             //Si los ob son exactamente los mismos que cuando clickó no hacemos nada y nos quedamos con los mismos
-            //todo sabemos de antemano cuantos ob distintos estan pasando, por lo que podemos poner para cada uno el correcto y los x incorrectos
-            //todo que le toquen. X sería ob.length/n de obs pasando
             Logic.Source parsedSource = (Logic.Source)(Source);
             if (_changedOB[parsedSource])
             {
@@ -157,7 +155,6 @@ namespace tfg
                         string competence = _CompetencesToOB.getCompetenceFromOB(info.OB);
                         for (int i = 1; i < OBGroups; i++)
                         {
-                            //? Que hacemos si no hay suficientes ob en la competencia? (aunque por como dividimos esto deberian seleccionarse max 3 obs)
                             int first = competenceToFirstIndex[competence];
                             int rand = UnityEngine.Random.Range(first, competenceToFakeOptions[competence].Length);
                             putOBinRandomIndex(competenceToFakeOptions[competence][rand], indexes, ref firstIndex);
