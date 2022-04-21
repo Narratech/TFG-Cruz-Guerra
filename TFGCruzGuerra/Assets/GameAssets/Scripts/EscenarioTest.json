@@ -1,0 +1,241 @@
+{
+  "$type": "Logic.Script, Assembly-CSharp",
+  "sceneName": "Testing",
+  "captainName": "joe",
+  "firstOfficerName": "louise",
+  "captainVariant":"Joe-1",
+  "firstOfficerVariant":"Joe-1",
+  "timeScale":1.0,
+  "steps": [
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.WeatherChange, Assembly-CSharp",
+        "weather": "SunnyAbove3",
+        "startTime": 0,
+        "duration": 1.0,
+        "result": 2,
+        "OB": "",
+        "modifier": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 0.0,
+        "duration": 5.0,
+        "result": 0,
+        "OB": "Identifies and assesses accurately the general environment as it may affect the operation",
+        "dialog": "That cloud look's too dark, doesn't it?"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Anim, Assembly-CSharp",
+        "startTime": 2.0,
+        "duration": 2.0,
+        "result": 2,
+        "OB": "",
+        "animName": "Point"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 6.0,
+        "duration": 3.0,
+        "result": 2,
+        "OB": null,
+        "dialog": "Hmm, perhaps"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 9.0,
+        "duration": 4.0,
+        "result": 2,
+        "OB": null,
+        "dialog": "What does the radar say?"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 13.0,
+        "duration": 4.0,
+        "result": 2,
+        "OB": null,
+        "dialog": "radar indicates it's nothing serious..."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 17,
+        "duration": 4,
+        "result": 2,
+        "OB": null,
+        "dialog": "But it really looks way too intimidating to be nothing serious"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 21,
+        "duration": 4,
+        "result": 0,
+        "OB": "Communicates relevant concerns and intentions",
+        "dialog": "We should avoid it"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 25,
+        "duration": 5.0,
+        "result": 0,
+        "OB": "Confidently intervenes when important for safety",
+        "dialog": "Agree, going manual"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Anim, Assembly-CSharp",
+        "startTime": 27,
+        "duration": 3.0,
+        "result": 2,
+        "OB": null,
+        "animName": "Point"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.PressButton, Assembly-CSharp",
+        "startTime": 27.0,
+        "duration": 3.0,
+        "result": 0,
+        "OB": null,
+        "interruptName": "Auto Pilot",
+        "pressType": 1
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.WeatherChange, Assembly-CSharp",
+        "weather": "DayFog",
+        "startTime": 32,
+        "duration": 1.0,
+        "result": 2,
+        "OB": "",
+        "modifier": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 35,
+        "duration": 5.0,
+        "result": 2,
+        "OB": null,
+        "dialog": "Ehm... the radar indicates terrain ahead"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 40,
+        "duration": 5.0,
+        "result": 2,
+        "OB": null,
+        "dialog": "The radar is going nuts"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 45,
+        "duration": 4.0,
+        "result": 0,
+        "OB": null,
+        "dialog": "What? What do you mean?!"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 50,
+        "duration": 5.0,
+        "result": 1,
+        "OB": "Maintains self-control in all situations",
+        "dialog": "Just shut up and listen!. Keep the plane leveled"
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 2,
+      "Item2": {
+        "$type": "Logic.Abort, Assembly-CSharp",
+        "startTime": 52,
+        "duration": 10,
+        "result": 2,
+        "OB": null
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 55,
+        "duration": 3,
+        "result": 1,
+        "OB": null,
+        "dialog": "What if the radars right? Then we ..."
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 1,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 57,
+        "duration": 5.0,
+        "result": 1,
+        "OB": "Creates an atmosphere of open communication and encourages team participation",
+        "dialog": "Yeah yeah I doubt it"
+      }
+    }
+  ]
+}
