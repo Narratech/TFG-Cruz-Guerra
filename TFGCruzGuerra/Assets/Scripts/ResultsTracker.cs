@@ -19,7 +19,7 @@ namespace tfg
         private void Start()
         {
             _totalOBs = 0;
-            int length = Enum.GetValues(typeof(OBDetection)).Length - 1;
+            int length = Enum.GetValues(typeof(OBDetection)).Length;
             _detection = new int[length];
             for (int i = 0; i < length; i++)
             {
