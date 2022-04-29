@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 124006928556730352}
   - component: {fileID: 81224155518073360}
   - component: {fileID: 114117033023592744}
+  - component: {fileID: 2739596456390539072}
   m_Layer: 0
   m_Name: Edge Detection Camera
   m_TagString: MainCamera
@@ -192,6 +193,20 @@ MonoBehaviour:
   edgeCombineShader: {fileID: 4800000, guid: 511abb2eb6715b24cbed418dfbb4d492, type: 3}
   normalsShader: {fileID: 4800000, guid: d4ffee9bcfa1ea743a6428c9ac30e12f, type: 3}
   normalsCapturingCamera: {fileID: 20960583905349482}
+--- !u!114 &2739596456390539072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312849641718884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245f270f72e80e64387df2820b6862b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultFov: 66
+  maxFov: 101
 --- !u!1 &1359139798054902
 GameObject:
   m_ObjectHideFlags: 0

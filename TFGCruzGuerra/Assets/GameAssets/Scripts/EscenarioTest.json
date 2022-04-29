@@ -227,7 +227,7 @@
     },
     {
       "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
-      "Item1": 1,
+      "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 59,
