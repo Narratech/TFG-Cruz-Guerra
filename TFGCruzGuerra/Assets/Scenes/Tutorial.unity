@@ -1979,6 +1979,10 @@ PrefabInstance:
       propertyPath: normalsSensitivity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2739596456390539072, guid: 639ac7944bb681a42b4c77d9e38087af, type: 3}
+      propertyPath: defaultFov
+      value: 66
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 639ac7944bb681a42b4c77d9e38087af, type: 3}
 --- !u!20 &731598132 stripped
@@ -3105,7 +3109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2986608525490058634, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 28.896057
+      value: 28.896118
       objectReference: {fileID: 0}
     - target: {fileID: 3023216438004484547, guid: 7fc1c919e7f58ca4ebdd0289c13e9d6d, type: 3}
       propertyPath: m_FontData.m_MinSize
@@ -10213,6 +10217,10 @@ PrefabInstance:
     - target: {fileID: 7500710615339003236, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -3.6553955
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709630816649959853, guid: ceb82f426cdb08441b001465176a5917, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.1015625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb82f426cdb08441b001465176a5917, type: 3}
