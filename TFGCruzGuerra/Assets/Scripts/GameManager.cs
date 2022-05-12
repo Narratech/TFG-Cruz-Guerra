@@ -103,6 +103,8 @@ namespace tfg
             {
                 yield return null;
             }
+
+            Time.timeScale = 1;
         }
 
         public void exit()

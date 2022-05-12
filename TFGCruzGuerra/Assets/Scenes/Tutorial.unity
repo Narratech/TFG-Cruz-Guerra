@@ -942,7 +942,7 @@ MonoBehaviour:
   stoppedTimePanel: {fileID: 1392237621}
   fadeOutPanel: {fileID: 1341637261}
   waitStart: 1
-  _resultsScene: 6
+  _resultsScene: 7
   _secondsToWait: 1
 --- !u!4 &346949054
 Transform:
@@ -2150,7 +2150,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -328, y: 0}
+  m_AnchoredPosition: {x: -396, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &756397142
@@ -2856,8 +2856,6 @@ MonoBehaviour:
   firstOfficerText: {fileID: 740110608}
   radioText: {fileID: 2010464591}
   radioAnim: {fileID: 2010464587}
-  captainAnimator: {fileID: 570360599}
-  firstOfficerAnimator: {fileID: 212347398}
   captainInterrupt: {fileID: 410173760}
   firstOfficerInterrupt: {fileID: 1494600254}
   flightStateText: {fileID: 1071300522}
@@ -3712,7 +3710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 328, y: 0}
+  m_AnchoredPosition: {x: 396, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &1341637260
@@ -10214,7 +10212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7500710615339003236, guid: ceb82f426cdb08441b001465176a5917, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.6553879
+      value: -3.6553955
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb82f426cdb08441b001465176a5917, type: 3}

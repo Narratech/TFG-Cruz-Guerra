@@ -185,7 +185,7 @@
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 45,
         "duration": 4.0,
-        "result": 0,
+        "result": 2,
         "OB": null,
         "dialog": "What? What do you mean?!"
       }
@@ -220,7 +220,7 @@
         "$type": "Logic.Dialog, Assembly-CSharp",
         "startTime": 55,
         "duration": 4,
-        "result": 1,
+        "result": 2,
         "OB": null,
         "dialog": "What if the radar's right? Then we ..."
       }

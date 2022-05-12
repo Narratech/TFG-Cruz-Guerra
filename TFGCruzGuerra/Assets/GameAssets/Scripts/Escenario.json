@@ -15,7 +15,7 @@
         "weather": "SunnyAbove1",
         "startTime": 0,
         "duration": 1.0,
-        "result": 0,
+        "result": 2,
         "OB": "",
         "modifier": ""
       }
@@ -498,7 +498,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 102,
+        "startTime": 105,
         "duration": 3,
         "result": 2,
         "OB": "",
@@ -510,7 +510,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 105,
+        "startTime": 108,
         "duration": 4,
         "result": 1,
         "OB": "Accurately reads and interprets required company and flight documentation",
@@ -519,10 +519,10 @@
     },
     {
       "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
-      "Item1": 1,
+      "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 109,
+        "startTime": 112,
         "duration": 3,
         "result": 2,
         "OB": "",
@@ -531,10 +531,10 @@
     },
     {
       "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
-      "Item1": 1,
+      "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 112,
+        "startTime": 115,
         "duration": 2,
         "result": 2,
         "OB": "",
@@ -543,10 +543,10 @@
     },
     {
       "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
-      "Item1": 1,
+      "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 112,
+        "startTime": 118,
         "duration": 3,
         "result": 0,
         "OB": "Accurately reads and interprets required company and flight documentation",
@@ -558,7 +558,7 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.SoundAlarm, Assembly-CSharp",
-        "startTime": 115.5,
+        "startTime": 120,
         "duration": 1.0,
         "result": 2,
         "OB": null,
@@ -571,7 +571,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 115,
+        "startTime": 122,
         "duration": 2,
         "result": 2,
         "OB": "",
@@ -583,7 +583,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 117,
+        "startTime": 124,
         "duration": 2,
         "result": 2,
         "OB": "",
@@ -595,7 +595,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 119,
+        "startTime": 126,
         "duration": 2,
         "result": 2,
         "OB": "",
@@ -607,8 +607,8 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.PressButton, Assembly-CSharp",
-        "startTime": 121,
-        "duration": 4.0,
+        "startTime": 127,
+        "duration": 3.0,
         "result": 1,
         "OB": "Correctly operates aircraft systems and associated equipment",
         "interruptName": "Altitude: 5000 ft",
@@ -621,11 +621,36 @@
       "Item2": {
         "$type": "Logic.WeatherChange, Assembly-CSharp",
         "weather": "DayStorm", 
-        "startTime": 122.0,
+        "startTime": 128.0,
         "duration": 1.0,
-        "result": 0,
+        "result": 2,
         "OB": "",
         "modifier": ""
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.PressButton, Assembly-CSharp",
+        "startTime": 132,
+        "duration": 2.0,
+        "result": 2,
+        "OB": "",
+        "interruptName": "AutoPilot",
+        "pressType": 0
+      }
+    },
+    {
+      "$type": "System.Tuple`2[[Logic.Source, Assembly-CSharp],[Logic.Step, Assembly-CSharp]], mscorlib",
+      "Item1": 0,
+      "Item2": {
+        "$type": "Logic.Dialog, Assembly-CSharp",
+        "startTime": 133,
+        "duration": 3,
+        "result": 0,
+        "OB": "Communicates relevant concerns and intentions",
+        "dialog": "I'm going back on profile."
       }
     },
     {
@@ -633,7 +658,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.PressButton, Assembly-CSharp",
-        "startTime": 124,
+        "startTime": 135,
         "duration": 2.0,
         "result": 2,
         "OB": "",
@@ -646,7 +671,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 125,
+        "startTime": 137,
         "duration": 3,
         "result": 2,
         "OB": "",
@@ -658,7 +683,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 127,
+        "startTime": 140,
         "duration": 3,
         "result": 2,
         "OB": "",
@@ -670,7 +695,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 131,
+        "startTime": 143,
         "duration": 3,
         "result": 0,
         "OB": "Conveys messages clearly, accurately and concisely",
@@ -682,7 +707,7 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.SoundAlarm, Assembly-CSharp",
-        "startTime": 133,
+        "startTime": 145,
         "duration": 1.0,
         "result": 2,
         "OB": null,
@@ -695,7 +720,7 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.SoundAlarm, Assembly-CSharp",
-        "startTime": 134,
+        "startTime": 146,
         "duration": 1.0,
         "result": 2,
         "OB": null,
@@ -708,7 +733,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 135,
+        "startTime": 147,
         "duration": 3,
         "result": 1,
         "OB": "Identifies and manages risks effectively",
@@ -720,7 +745,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.SoundAlarm, Assembly-CSharp",
-        "startTime": 138,
+        "startTime": 150,
         "duration": 1.0,
         "result": 1,
         "OB": "Identifies and manages risks effectively",
@@ -733,7 +758,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.SoundAlarm, Assembly-CSharp",
-        "startTime": 139,
+        "startTime": 151,
         "duration": 1.0,
         "result": 1,
         "OB": "Identifies and manages risks effectively",
@@ -746,11 +771,11 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 135,
+        "startTime": 153,
         "duration": 3,
         "result": 1,
-        "OB": "that's fine, I'll just go a little bit more.",
-        "dialog": "I just wanna get on profile"
+        "OB": "Identifies and manages risks effectively",
+        "dialog": "that's fine, I'll just go a little bit more."
       }
     },
     {
@@ -758,7 +783,7 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.SoundAlarm, Assembly-CSharp",
-        "startTime": 138,
+        "startTime": 154,
         "duration": 1.0,
         "result": 1,
         "OB": "Identifies and manages risks effectively",
@@ -771,7 +796,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 139,
+        "startTime": 155,
         "duration": 3,
         "result": 1,
         "OB": "Confidently intervenes when important for safety",
@@ -783,7 +808,7 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 142,
+        "startTime": 158,
         "duration": 3,
         "result": 1,
         "OB": "Recognizes and effectively responds to indications of reduced situation awareness",
@@ -795,9 +820,9 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.Abort, Assembly-CSharp",
-        "startTime": 144,
+        "startTime": 158,
         "duration": 8,
-        "result": 0,
+        "result": 2,
         "OB": ""
       }
     },
@@ -806,7 +831,7 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.SoundAlarm, Assembly-CSharp",
-        "startTime": 145,
+        "startTime": 159,
         "duration": 1.0,
         "result": 2,
         "OB": "",
@@ -819,10 +844,10 @@
       "Item1": 0,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 146,
+        "startTime": 161,
         "duration": 3,
         "result": 1,
-        "OB": "",
+        "OB": "Identifies and manages risks effectively",
         "dialog": "Monitor airspeed. Okay, got it."
       }
     },
@@ -831,7 +856,7 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.SoundAlarm, Assembly-CSharp",
-        "startTime": 149,
+        "startTime": 162,
         "duration": 1.0,
         "result": 1,
         "OB": "Identifies and manages risks effectively",
@@ -844,11 +869,11 @@
       "Item1": 2,
       "Item2": {
         "$type": "Logic.SoundAlarm, Assembly-CSharp",
-        "startTime": 150,
-        "duration": 3,
+        "startTime": 163,
+        "duration": 2,
         "result": 2,
         "OB": "",
-        "soundAlarmName": "Glideslope",
+        "soundAlarmName": "Sinkrate",
         "loop": true
       }
     },
@@ -857,8 +882,8 @@
       "Item1": 1,
       "Item2": {
         "$type": "Logic.Dialog, Assembly-CSharp",
-        "startTime": 149,
-        "duration": 4,
+        "startTime": 165,
+        "duration": 2,
         "result": 2,
         "OB": "",
         "dialog": "TOO LOW! WE'RE TOO LOW! WE'RE TOO LOW! WE'RE TOO LOW!"
