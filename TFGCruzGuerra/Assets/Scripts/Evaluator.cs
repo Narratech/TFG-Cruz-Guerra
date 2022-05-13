@@ -208,14 +208,14 @@ namespace tfg
 
             _resultAnimator.Play("Fade Up", 0, 0);
 
-            GameManager.Instance.levelManager.setScaleTime(1);
+            GameManager.Instance.levelManager.restoreScaleTime();
         }
 
         public void OnNewStep(Step step, Source source, int remainingSteps)
         {
             //? ESTO SIGUE TENIENDO EL PROBLEMA DE QUE SI NOS PONEN UN OB POSITIVO Y EL MISMO OB NEGATIVO A LA VEZ NO VA A IR BIEN
             //! NO SE PUEDE PERMITIR QUE SE SUPERPONGAN OBS
-            if (step.result != Step.Result.Neutral && step.OB != null)
+            if (step.result != Step.Result.Neutral && step.OB != null && step.OB != "")
             {
                 KeyValuePair<string, Logic.Source> pair = new KeyValuePair<string, Source>(step.OB, source);
                 int sum = step.result == Step.Result.Good ? 1 : -1;
@@ -243,9 +243,9 @@ namespace tfg
                     if (_happeningOBs[pair] == 0)
                         _happeningOBs.Remove(pair);
                 }
-                if (remainingSteps == 0)
-                    _resultsTracker.inform();
             }
+            if (remainingSteps == 0)
+                _resultsTracker.inform();
         }
         void prepareFakeOptions(out Dictionary<string, string[]> competenceToFakeOptions, out Dictionary<string, int> competenceToFirstIndex, int Source)
         {

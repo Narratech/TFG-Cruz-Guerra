@@ -23,7 +23,7 @@ namespace tfg
                 switch (mod)
                 {
                     case "continue":
-                        GameManager.Instance.levelManager.setScaleTime(1);
+                        GameManager.Instance.levelManager.restoreScaleTime();
                         break;
                     case "radiodontdisappear":
                         stepDisplayer.PlayRadioExitAnim = false;

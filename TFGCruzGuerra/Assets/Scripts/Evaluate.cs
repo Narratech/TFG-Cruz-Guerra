@@ -50,7 +50,7 @@ namespace tfg
         public void stopEvaluating()
         {
             panel.close();
-            GameManager.Instance.levelManager.setScaleTime(1);
+            GameManager.Instance.levelManager.restoreScaleTime();
         }
 
         public void OnNewStep(Step step, Source source, int remainingSteps)

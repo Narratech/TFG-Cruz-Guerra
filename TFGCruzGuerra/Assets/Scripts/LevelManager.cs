@@ -18,13 +18,13 @@ namespace tfg
         [SerializeField] private Image fadeOutPanel;
         [SerializeField] private float waitStart = 1.0f;
         private Logic.Script script;
-        private float timeScale;
+        private float timeScale = 1;
         Logic.Step _currentStep;
         static List<Interfaces.INewStepHandler> newStepHandlers;
         static List<Interfaces.IEndStepHandler> endStepHandlers;
 
         [SerializeField] Scene _resultsScene;
-        [SerializeField] [Tooltip("Seconds to wait until scene changes")] float _secondsToWait = .5f;
+        [SerializeField][Tooltip("Seconds to wait until scene changes")] float _secondsToWait = .5f;
 
         private IEnumerator playCoroutine;
 
@@ -190,6 +190,10 @@ namespace tfg
                 stoppedTimePanel.enabled = true;
             else
                 stoppedTimePanel.enabled = false;
+        }
+        public void restoreScaleTime()
+        {
+            setScaleTime(timeScale);
         }
 
         public Logic.Step getCurrentStep() { return _currentStep; }

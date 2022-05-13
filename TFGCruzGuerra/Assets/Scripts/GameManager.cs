@@ -40,8 +40,8 @@ namespace tfg
         public float volume { get; set; } = 1;
 
         public string PilotVariant { get; set; }
-        
-        public string CoPilotVariant{ get; set; }
+
+        public string CoPilotVariant { get; set; }
         private void Awake()
         {
             if (Instance != null)
@@ -103,8 +103,8 @@ namespace tfg
             {
                 yield return null;
             }
-
-            Time.timeScale = 1;
+            if (levelManager != null)
+                levelManager.restoreScaleTime();
         }
 
         public void exit()

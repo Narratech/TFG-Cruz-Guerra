@@ -725,7 +725,7 @@
         "result": 2,
         "OB": null,
         "soundAlarmName": "Sinkrate",
-        "loop": true
+        "loop": false
       }
     },
     {
@@ -874,7 +874,7 @@
         "result": 2,
         "OB": "",
         "soundAlarmName": "Sinkrate",
-        "loop": true
+        "loop": false
       }
     },
     {
